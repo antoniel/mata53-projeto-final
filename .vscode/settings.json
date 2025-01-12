@@ -1,0 +1,29 @@
+{
+  "workbench.colorCustomizations": {
+    "minimap.errorHighlight": "#ff0000",
+    "terminal.background": "#00000000"
+  },
+  "files.exclude": {
+    "main.aux": false,
+    "main.bbl": false,
+    "main.blg": false,
+    "main.fdb_latexmk": false,
+    "main.fls": false,
+    "main.log": false,
+    "main.out": false,
+    "main.toc": false,
+    "main.synctex.gz": false,
+    ".gitignore": false,
+    "slides/main.aux": false,
+    "slides/main.bbl": false,
+    "slides/main.blg": false,
+    "slides/main.fdb_latexmk": false,
+    "slides/main.fls": false,
+    "slides/main.log": false,
+    "slides/main.nav": false,
+    "slides/main.out": false,
+    "slides/main.snm": false,
+    "slides/main.synctex.gz": false,
+    "slides/main.toc": false
+  }
+}

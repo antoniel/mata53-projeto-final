@@ -1,0 +1,2961 @@
+{
+  "nodes": [
+    {
+      "id": 0,
+      "lat": -13.000871,
+      "lon": -38.5054976
+    },
+    {
+      "id": 1,
+      "lat": -13.0016275,
+      "lon": -38.5057271
+    },
+    {
+      "id": 2,
+      "lat": -13.0059992,
+      "lon": -38.5022951
+    },
+    {
+      "id": 3,
+      "lat": -13.0015487,
+      "lon": -38.504915
+    },
+    {
+      "id": 4,
+      "lat": -12.9967448,
+      "lon": -38.5074438
+    },
+    {
+      "id": 5,
+      "lat": -13.0058092,
+      "lon": -38.509052
+    },
+    {
+      "id": 6,
+      "lat": -13.0102334,
+      "lon": -38.5090905
+    },
+    {
+      "id": 7,
+      "lat": -13.0051664,
+      "lon": -38.5090235
+    },
+    {
+      "id": 8,
+      "lat": -13.0047016,
+      "lon": -38.5087659
+    },
+    {
+      "id": 9,
+      "lat": -13.000863,
+      "lon": -38.5173021
+    },
+    {
+      "id": 10,
+      "lat": -13.0017505,
+      "lon": -38.5204862
+    },
+    {
+      "id": 11,
+      "lat": -13.0021992,
+      "lon": -38.5209184
+    },
+    {
+      "id": 12,
+      "lat": -13.0053852,
+      "lon": -38.5212234
+    },
+    {
+      "id": 13,
+      "lat": -13.0105001,
+      "lon": -38.5093208
+    },
+    {
+      "id": 14,
+      "lat": -13.0085746,
+      "lon": -38.5156531
+    },
+    {
+      "id": 15,
+      "lat": -13.0092685,
+      "lon": -38.5149346
+    },
+    {
+      "id": 16,
+      "lat": -13.0108213,
+      "lon": -38.5011403
+    },
+    {
+      "id": 17,
+      "lat": -13.009108,
+      "lon": -38.5162502
+    },
+    {
+      "id": 18,
+      "lat": -13.0091951,
+      "lon": -38.5171327
+    },
+    {
+      "id": 19,
+      "lat": -13.0093912,
+      "lon": -38.5161242
+    },
+    {
+      "id": 20,
+      "lat": -13.0090381,
+      "lon": -38.5151814
+    },
+    {
+      "id": 21,
+      "lat": -13.0099592,
+      "lon": -38.5093178
+    },
+    {
+      "id": 22,
+      "lat": -13.0091195,
+      "lon": -38.5147689
+    },
+    {
+      "id": 23,
+      "lat": -13.0079463,
+      "lon": -38.5159785
+    },
+    {
+      "id": 24,
+      "lat": -13.0073258,
+      "lon": -38.5163747
+    },
+    {
+      "id": 25,
+      "lat": -13.0069637,
+      "lon": -38.5169495
+    },
+    {
+      "id": 26,
+      "lat": -13.0000372,
+      "lon": -38.5059426
+    },
+    {
+      "id": 27,
+      "lat": -13.0076847,
+      "lon": -38.5160744
+    },
+    {
+      "id": 28,
+      "lat": -13.0039018,
+      "lon": -38.5188952
+    },
+    {
+      "id": 29,
+      "lat": -13.0069634,
+      "lon": -38.5186109
+    },
+    {
+      "id": 30,
+      "lat": -13.0055935,
+      "lon": -38.5149832
+    },
+    {
+      "id": 31,
+      "lat": -13.0069264,
+      "lon": -38.515728
+    },
+    {
+      "id": 32,
+      "lat": -13.0067779,
+      "lon": -38.5160064
+    },
+    {
+      "id": 33,
+      "lat": -13.0051605,
+      "lon": -38.5162618
+    },
+    {
+      "id": 34,
+      "lat": -13.0010537,
+      "lon": -38.5173572
+    },
+    {
+      "id": 35,
+      "lat": -13.0064427,
+      "lon": -38.5178864
+    },
+    {
+      "id": 36,
+      "lat": -13.0067012,
+      "lon": -38.5177205
+    },
+    {
+      "id": 37,
+      "lat": -13.0103252,
+      "lon": -38.5108951
+    },
+    {
+      "id": 38,
+      "lat": -13.0059656,
+      "lon": -38.5221914
+    },
+    {
+      "id": 39,
+      "lat": -13.0071381,
+      "lon": -38.5204166
+    },
+    {
+      "id": 40,
+      "lat": -13.0104739,
+      "lon": -38.4990301
+    },
+    {
+      "id": 41,
+      "lat": -13.009294,
+      "lon": -38.5000498
+    },
+    {
+      "id": 42,
+      "lat": -13.0097251,
+      "lon": -38.499832
+    },
+    {
+      "id": 43,
+      "lat": -13.0052164,
+      "lon": -38.5163663
+    },
+    {
+      "id": 44,
+      "lat": -13.0066576,
+      "lon": -38.5208261
+    },
+    {
+      "id": 45,
+      "lat": -13.0060357,
+      "lon": -38.5203744
+    },
+    {
+      "id": 46,
+      "lat": -13.0067544,
+      "lon": -38.5188724
+    },
+    {
+      "id": 47,
+      "lat": -13.0069346,
+      "lon": -38.5191406
+    },
+    {
+      "id": 48,
+      "lat": -13.0063542,
+      "lon": -38.5196693
+    },
+    {
+      "id": 49,
+      "lat": -13.005301,
+      "lon": -38.5187357
+    },
+    {
+      "id": 50,
+      "lat": -13.0043906,
+      "lon": -38.5186504
+    },
+    {
+      "id": 51,
+      "lat": -13.006149,
+      "lon": -38.5171682
+    },
+    {
+      "id": 52,
+      "lat": -13.0058745,
+      "lon": -38.516303
+    },
+    {
+      "id": 53,
+      "lat": -13.0047439,
+      "lon": -38.5172966
+    },
+    {
+      "id": 54,
+      "lat": -13.0073266,
+      "lon": -38.5177875
+    },
+    {
+      "id": 55,
+      "lat": -13.007416,
+      "lon": -38.5181163
+    },
+    {
+      "id": 56,
+      "lat": -13.0024013,
+      "lon": -38.517657
+    },
+    {
+      "id": 57,
+      "lat": -13.0021939,
+      "lon": -38.5179242
+    },
+    {
+      "id": 58,
+      "lat": -13.0016843,
+      "lon": -38.5192157
+    },
+    {
+      "id": 59,
+      "lat": -13.0027754,
+      "lon": -38.5192854
+    },
+    {
+      "id": 60,
+      "lat": -13.0017725,
+      "lon": -38.516728
+    },
+    {
+      "id": 61,
+      "lat": -13.0009251,
+      "lon": -38.5178166
+    },
+    {
+      "id": 62,
+      "lat": -13.0024206,
+      "lon": -38.5209819
+    },
+    {
+      "id": 63,
+      "lat": -13.0013564,
+      "lon": -38.5199903
+    },
+    {
+      "id": 64,
+      "lat": -13.0010825,
+      "lon": -38.519785
+    },
+    {
+      "id": 65,
+      "lat": -13.0016046,
+      "lon": -38.5196651
+    },
+    {
+      "id": 66,
+      "lat": -13.0041069,
+      "lon": -38.5163189
+    },
+    {
+      "id": 67,
+      "lat": -13.0038212,
+      "lon": -38.5163176
+    },
+    {
+      "id": 68,
+      "lat": -13.0026813,
+      "lon": -38.5173248
+    },
+    {
+      "id": 69,
+      "lat": -13.0079537,
+      "lon": -38.5170727
+    },
+    {
+      "id": 70,
+      "lat": -13.0061284,
+      "lon": -38.5031942
+    },
+    {
+      "id": 71,
+      "lat": -13.0062802,
+      "lon": -38.5021791
+    },
+    {
+      "id": 72,
+      "lat": -13.0064181,
+      "lon": -38.5020792
+    },
+    {
+      "id": 73,
+      "lat": -13.0075604,
+      "lon": -38.5019322
+    },
+    {
+      "id": 74,
+      "lat": -13.0073872,
+      "lon": -38.5102146
+    },
+    {
+      "id": 75,
+      "lat": -13.0080307,
+      "lon": -38.5102
+    },
+    {
+      "id": 76,
+      "lat": -13.0083182,
+      "lon": -38.5101909
+    },
+    {
+      "id": 77,
+      "lat": -13.0080179,
+      "lon": -38.509348
+    },
+    {
+      "id": 78,
+      "lat": -13.008006,
+      "lon": -38.509126
+    },
+    {
+      "id": 79,
+      "lat": -13.0096892,
+      "lon": -38.5082484
+    },
+    {
+      "id": 80,
+      "lat": -13.0111329,
+      "lon": -38.5071757
+    },
+    {
+      "id": 81,
+      "lat": -13.0060794,
+      "lon": -38.5090687
+    },
+    {
+      "id": 82,
+      "lat": -13.0060237,
+      "lon": -38.5090597
+    },
+    {
+      "id": 83,
+      "lat": -13.0062824,
+      "lon": -38.508269
+    },
+    {
+      "id": 84,
+      "lat": -13.0070284,
+      "lon": -38.5156681
+    },
+    {
+      "id": 85,
+      "lat": -13.0054058,
+      "lon": -38.5154559
+    },
+    {
+      "id": 86,
+      "lat": -13.0106352,
+      "lon": -38.5082235
+    },
+    {
+      "id": 87,
+      "lat": -13.0108806,
+      "lon": -38.5071155
+    },
+    {
+      "id": 88,
+      "lat": -13.008274,
+      "lon": -38.5003565
+    },
+    {
+      "id": 89,
+      "lat": -13.0049132,
+      "lon": -38.5177586
+    },
+    {
+      "id": 90,
+      "lat": -13.0030498,
+      "lon": -38.5179323
+    },
+    {
+      "id": 91,
+      "lat": -13.0042821,
+      "lon": -38.5179108
+    },
+    {
+      "id": 92,
+      "lat": -13.0057781,
+      "lon": -38.5151639
+    },
+    {
+      "id": 93,
+      "lat": -13.0074545,
+      "lon": -38.5146982
+    },
+    {
+      "id": 94,
+      "lat": -13.0095532,
+      "lon": -38.5143542
+    },
+    {
+      "id": 95,
+      "lat": -13.0098361,
+      "lon": -38.5153865
+    },
+    {
+      "id": 96,
+      "lat": -13.0080022,
+      "lon": -38.5082524
+    },
+    {
+      "id": 97,
+      "lat": -13.0082461,
+      "lon": -38.500103
+    },
+    {
+      "id": 98,
+      "lat": -13.0066,
+      "lon": -38.5155317
+    },
+    {
+      "id": 99,
+      "lat": -12.9996138,
+      "lon": -38.5061084
+    },
+    {
+      "id": 100,
+      "lat": -13.0054301,
+      "lon": -38.5090724
+    },
+    {
+      "id": 101,
+      "lat": -13.0053555,
+      "lon": -38.5093077
+    },
+    {
+      "id": 102,
+      "lat": -13.0078663,
+      "lon": -38.5093512
+    },
+    {
+      "id": 103,
+      "lat": -13.0078575,
+      "lon": -38.5091263
+    },
+    {
+      "id": 104,
+      "lat": -13.0080326,
+      "lon": -38.516425
+    },
+    {
+      "id": 105,
+      "lat": -13.0082039,
+      "lon": -38.5091224
+    },
+    {
+      "id": 106,
+      "lat": -13.0082005,
+      "lon": -38.5093438
+    },
+    {
+      "id": 107,
+      "lat": -13.0096388,
+      "lon": -38.5093213
+    },
+    {
+      "id": 108,
+      "lat": -13.0096347,
+      "lon": -38.5090982
+    },
+    {
+      "id": 109,
+      "lat": -13.0107124,
+      "lon": -38.5088224
+    },
+    {
+      "id": 110,
+      "lat": -12.9988134,
+      "lon": -38.5063867
+    },
+    {
+      "id": 111,
+      "lat": -12.9994892,
+      "lon": -38.5064901
+    },
+    {
+      "id": 112,
+      "lat": -12.9996779,
+      "lon": -38.5063747
+    },
+    {
+      "id": 113,
+      "lat": -12.9997245,
+      "lon": -38.5065259
+    },
+    {
+      "id": 114,
+      "lat": -13.0001625,
+      "lon": -38.5061408
+    },
+    {
+      "id": 115,
+      "lat": -13.000646,
+      "lon": -38.5066231
+    },
+    {
+      "id": 116,
+      "lat": -13.0015876,
+      "lon": -38.5065805
+    },
+    {
+      "id": 117,
+      "lat": -13.0020985,
+      "lon": -38.5061882
+    },
+    {
+      "id": 118,
+      "lat": -13.0032793,
+      "lon": -38.5059194
+    },
+    {
+      "id": 119,
+      "lat": -13.0055136,
+      "lon": -38.5181015
+    },
+    {
+      "id": 120,
+      "lat": -13.0055182,
+      "lon": -38.5179725
+    },
+    {
+      "id": 121,
+      "lat": -13.007099,
+      "lon": -38.5170156
+    },
+    {
+      "id": 122,
+      "lat": -13.0065807,
+      "lon": -38.5180306
+    },
+    {
+      "id": 123,
+      "lat": -13.007195,
+      "lon": -38.5181283
+    },
+    {
+      "id": 124,
+      "lat": -13.0022135,
+      "lon": -38.5168554
+    },
+    {
+      "id": 125,
+      "lat": -13.0019287,
+      "lon": -38.5178291
+    },
+    {
+      "id": 126,
+      "lat": -13.0094919,
+      "lon": -38.5063812
+    },
+    {
+      "id": 127,
+      "lat": -13.0104796,
+      "lon": -38.5024172
+    },
+    {
+      "id": 128,
+      "lat": -13.0095415,
+      "lon": -38.5164885
+    },
+    {
+      "id": 129,
+      "lat": -13.0086493,
+      "lon": -38.5176682
+    },
+    {
+      "id": 130,
+      "lat": -13.0028714,
+      "lon": -38.5162446
+    },
+    {
+      "id": 131,
+      "lat": -13.0051066,
+      "lon": -38.5091434
+    },
+    {
+      "id": 132,
+      "lat": -13.0081908,
+      "lon": -38.5145604
+    },
+    {
+      "id": 133,
+      "lat": -13.0087099,
+      "lon": -38.5146683
+    },
+    {
+      "id": 134,
+      "lat": -13.0100839,
+      "lon": -38.5110591
+    },
+    {
+      "id": 135,
+      "lat": -13.0099332,
+      "lon": -38.5101745
+    },
+    {
+      "id": 136,
+      "lat": -13.0095212,
+      "lon": -38.5040599
+    },
+    {
+      "id": 137,
+      "lat": -13.0093368,
+      "lon": -38.5005202
+    },
+    {
+      "id": 138,
+      "lat": -13.0099794,
+      "lon": -38.4994206
+    },
+    {
+      "id": 139,
+      "lat": -13.0101829,
+      "lon": -38.4990911
+    },
+    {
+      "id": 140,
+      "lat": -13.0058063,
+      "lon": -38.5094558
+    },
+    {
+      "id": 141,
+      "lat": -13.0059419,
+      "lon": -38.50885
+    },
+    {
+      "id": 142,
+      "lat": -13.0060687,
+      "lon": -38.5094686
+    },
+    {
+      "id": 143,
+      "lat": -13.0024296,
+      "lon": -38.5211238
+    },
+    {
+      "id": 144,
+      "lat": -13.0073426,
+      "lon": -38.515644
+    },
+    {
+      "id": 145,
+      "lat": -13.0073054,
+      "lon": -38.5157661
+    },
+    {
+      "id": 146,
+      "lat": -13.0074351,
+      "lon": -38.5165375
+    },
+    {
+      "id": 147,
+      "lat": -13.0078696,
+      "lon": -38.5196476
+    },
+    {
+      "id": 148,
+      "lat": -13.0068768,
+      "lon": -38.5206684
+    },
+    {
+      "id": 149,
+      "lat": -13.0081733,
+      "lon": -38.4999434
+    },
+    {
+      "id": 150,
+      "lat": -13.0086349,
+      "lon": -38.5110449
+    },
+    {
+      "id": 151,
+      "lat": -13.0014439,
+      "lon": -38.517552
+    },
+    {
+      "id": 152,
+      "lat": -13.0079066,
+      "lon": -38.5193191
+    },
+    {
+      "id": 153,
+      "lat": -13.0079117,
+      "lon": -38.5179923
+    },
+    {
+      "id": 154,
+      "lat": -13.0070833,
+      "lon": -38.5203453
+    },
+    {
+      "id": 155,
+      "lat": -13.0099771,
+      "lon": -38.5024206
+    },
+    {
+      "id": 156,
+      "lat": -13.0099949,
+      "lon": -38.5114755
+    },
+    {
+      "id": 157,
+      "lat": -13.0028043,
+      "lon": -38.5161236
+    },
+    {
+      "id": 158,
+      "lat": -13.0076663,
+      "lon": -38.5164281
+    },
+    {
+      "id": 159,
+      "lat": -13.0093706,
+      "lon": -38.5142764
+    },
+    {
+      "id": 160,
+      "lat": -13.0078193,
+      "lon": -38.5162484
+    },
+    {
+      "id": 161,
+      "lat": -13.0077944,
+      "lon": -38.5164212
+    },
+    {
+      "id": 162,
+      "lat": -13.0080666,
+      "lon": -38.5163131
+    },
+    {
+      "id": 163,
+      "lat": -13.0101084,
+      "lon": -38.5090909
+    },
+    {
+      "id": 164,
+      "lat": -13.0096132,
+      "lon": -38.5090986
+    },
+    {
+      "id": 165,
+      "lat": -13.0096487,
+      "lon": -38.5110548
+    },
+    {
+      "id": 166,
+      "lat": -13.0096858,
+      "lon": -38.5114607
+    },
+    {
+      "id": 167,
+      "lat": -13.0069449,
+      "lon": -38.5189272
+    },
+    {
+      "id": 168,
+      "lat": -13.0049082,
+      "lon": -38.5160346
+    },
+    {
+      "id": 169,
+      "lat": -13.010159,
+      "lon": -38.5036007
+    },
+    {
+      "id": 170,
+      "lat": -13.0092594,
+      "lon": -38.5060292
+    },
+    {
+      "id": 171,
+      "lat": -13.0097825,
+      "lon": -38.5000945
+    },
+    {
+      "id": 172,
+      "lat": -12.9978009,
+      "lon": -38.5066834
+    },
+    {
+      "id": 173,
+      "lat": -13.0048132,
+      "lon": -38.5161653
+    },
+    {
+      "id": 174,
+      "lat": -13.0072525,
+      "lon": -38.5203184
+    },
+    {
+      "id": 175,
+      "lat": -13.0072801,
+      "lon": -38.5202914
+    },
+    {
+      "id": 176,
+      "lat": -13.0072066,
+      "lon": -38.5202145
+    },
+    {
+      "id": 177,
+      "lat": -13.0093299,
+      "lon": -38.5155114
+    },
+    {
+      "id": 178,
+      "lat": -13.0091575,
+      "lon": -38.5178071
+    },
+    {
+      "id": 179,
+      "lat": -13.0091602,
+      "lon": -38.5179283
+    },
+    {
+      "id": 180,
+      "lat": -13.009671,
+      "lon": -38.5129722
+    },
+    {
+      "id": 181,
+      "lat": -13.0092804,
+      "lon": -38.5124708
+    }
+  ],
+  "edges": [
+    {
+      "source": 0,
+      "target": 3,
+      "weight": 99.5182593770244,
+      "name": "Avenida Anita Garibaldi"
+    },
+    {
+      "source": 0,
+      "target": 1,
+      "weight": 89.99678521210136,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 1,
+      "target": 3,
+      "weight": 96.76899596360965,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 1,
+      "target": 117,
+      "weight": 72.38025413278018,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 2,
+      "target": 71,
+      "weight": 33.719475590000414,
+      "name": ""
+    },
+    {
+      "source": 3,
+      "target": 2,
+      "weight": 604.2397263452622,
+      "name": "Avenida Anita Garibaldi"
+    },
+    {
+      "source": 4,
+      "target": 172,
+      "weight": 145.79988346365897,
+      "name": ""
+    },
+    {
+      "source": 5,
+      "target": 140,
+      "weight": 67.6917305393163,
+      "name": ""
+    },
+    {
+      "source": 5,
+      "target": 100,
+      "weight": 42.235638784629515,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 6,
+      "target": 163,
+      "weight": 13.899453023483,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 7,
+      "target": 8,
+      "weight": 58.779191443308704,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 7,
+      "target": 131,
+      "weight": 15.72153073546987,
+      "name": ""
+    },
+    {
+      "source": 8,
+      "target": 131,
+      "weight": 60.86030722164924,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 8,
+      "target": 117,
+      "weight": 402.2212225774623,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 9,
+      "target": 34,
+      "weight": 23.02877043004541,
+      "name": "Rua Ranulfo de Oliveira"
+    },
+    {
+      "source": 10,
+      "target": 64,
+      "weight": 107.1524398271871,
+      "name": "Avenida Centenário"
+    },
+    {
+      "source": 11,
+      "target": 10,
+      "weight": 68.56399145924618,
+      "name": "Avenida Centenário"
+    },
+    {
+      "source": 13,
+      "target": 6,
+      "weight": 41.76927374158126,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 13,
+      "target": 37,
+      "weight": 172.04788307408037,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 13,
+      "target": 109,
+      "weight": 58.93495695545166,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 14,
+      "target": 17,
+      "weight": 87.76820690391509,
+      "name": "Rua Morro do Escravo Miguel"
+    },
+    {
+      "source": 14,
+      "target": 20,
+      "weight": 72.58057866599998,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 15,
+      "target": 22,
+      "weight": 28.161043077740164,
+      "name": ""
+    },
+    {
+      "source": 15,
+      "target": 95,
+      "weight": 86.49818721905477,
+      "name": "Rua Roschild Moreira"
+    },
+    {
+      "source": 15,
+      "target": 94,
+      "weight": 70.6626773232765,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 16,
+      "target": 40,
+      "weight": 231.92815277063886,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 16,
+      "target": 127,
+      "weight": 144.2210558007463,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 17,
+      "target": 18,
+      "weight": 97.14481725131564,
+      "name": "Rua Morro do Escravo Miguel"
+    },
+    {
+      "source": 17,
+      "target": 14,
+      "weight": 87.76820690391507,
+      "name": "Rua Morro do Escravo Miguel"
+    },
+    {
+      "source": 17,
+      "target": 19,
+      "weight": 37.50135667369474,
+      "name": ""
+    },
+    {
+      "source": 18,
+      "target": 17,
+      "weight": 97.14481725131564,
+      "name": "Rua Morro do Escravo Miguel"
+    },
+    {
+      "source": 18,
+      "target": 128,
+      "weight": 118.61727781118975,
+      "name": "Rua Morro do Escravo Miguel"
+    },
+    {
+      "source": 19,
+      "target": 17,
+      "weight": 37.50135667369473,
+      "name": ""
+    },
+    {
+      "source": 19,
+      "target": 20,
+      "weight": 109.43391659389178,
+      "name": "Rua Morro do Escravo Miguel"
+    },
+    {
+      "source": 20,
+      "target": 15,
+      "weight": 37.03348241667706,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 21,
+      "target": 13,
+      "weight": 60.17767368261897,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 21,
+      "target": 135,
+      "weight": 93.0127176837277,
+      "name": "Rua Doutor Oswaldo Ribeiro"
+    },
+    {
+      "source": 22,
+      "target": 23,
+      "weight": 185.08081827468166,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 23,
+      "target": 145,
+      "weight": 74.88813851876537,
+      "name": "Rua José Mirabeau Sampaio"
+    },
+    {
+      "source": 23,
+      "target": 27,
+      "weight": 31.15097900608093,
+      "name": "Rua Professor Sabino Silva"
+    },
+    {
+      "source": 23,
+      "target": 160,
+      "weight": 32.50126201191674,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 24,
+      "target": 25,
+      "weight": 74.2987150807225,
+      "name": "Rua Professor Sabino Silva"
+    },
+    {
+      "source": 25,
+      "target": 121,
+      "weight": 16.662192738729683,
+      "name": "Rua Professor Sabino Silva"
+    },
+    {
+      "source": 25,
+      "target": 120,
+      "weight": 211.49707848303956,
+      "name": "Rua Professor Sabino Silva"
+    },
+    {
+      "source": 26,
+      "target": 0,
+      "weight": 104.52368538327885,
+      "name": "Avenida Anita Garibaldi"
+    },
+    {
+      "source": 27,
+      "target": 24,
+      "weight": 51.717387536852,
+      "name": "Rua Professor Sabino Silva"
+    },
+    {
+      "source": 27,
+      "target": 31,
+      "weight": 92.325882790605,
+      "name": "Rua Ranulfo Oliveira 695"
+    },
+    {
+      "source": 29,
+      "target": 167,
+      "weight": 34.33030140800056,
+      "name": "Rua Professor Amílcar Falcão"
+    },
+    {
+      "source": 29,
+      "target": 123,
+      "weight": 58.289585731531886,
+      "name": "Rua Guadalajara"
+    },
+    {
+      "source": 29,
+      "target": 46,
+      "weight": 37.10413656437073,
+      "name": "Rua Guadalajara"
+    },
+    {
+      "source": 30,
+      "target": 92,
+      "weight": 28.36584538445997,
+      "name": "Rua José Mirabeau Sampaio"
+    },
+    {
+      "source": 31,
+      "target": 32,
+      "weight": 34.38656195350755,
+      "name": "Rua Ranulfo Oliveira 695"
+    },
+    {
+      "source": 31,
+      "target": 85,
+      "weight": 174.49219457683924,
+      "name": "Rua Nova do Calabar"
+    },
+    {
+      "source": 32,
+      "target": 25,
+      "weight": 107.25023824434152,
+      "name": "Rua Ranulfo de Oliveira"
+    },
+    {
+      "source": 32,
+      "target": 33,
+      "weight": 185.04210166035801,
+      "name": "Rua Ranulfo de Oliveira"
+    },
+    {
+      "source": 33,
+      "target": 43,
+      "weight": 12.915886602153908,
+      "name": "Rua Desembargador Ezquiel Pond"
+    },
+    {
+      "source": 33,
+      "target": 168,
+      "weight": 37.57852540794868,
+      "name": "Rua Ranulfo de Oliveira"
+    },
+    {
+      "source": 33,
+      "target": 32,
+      "weight": 185.04210166035801,
+      "name": "Rua Ranulfo de Oliveira"
+    },
+    {
+      "source": 34,
+      "target": 151,
+      "weight": 48.249247684291596,
+      "name": "Rua Manoel Espinheira"
+    },
+    {
+      "source": 34,
+      "target": 9,
+      "weight": 23.02877043004541,
+      "name": "Rua Ranulfo de Oliveira"
+    },
+    {
+      "source": 34,
+      "target": 60,
+      "weight": 105.47063499181203,
+      "name": "Rua Ranulfo de Oliveira"
+    },
+    {
+      "source": 35,
+      "target": 36,
+      "weight": 34.015571478911276,
+      "name": "Rua Professor Sabino Silva"
+    },
+    {
+      "source": 35,
+      "target": 122,
+      "weight": 24.080994489371903,
+      "name": "Rua Professor Sabino Silva"
+    },
+    {
+      "source": 36,
+      "target": 122,
+      "weight": 36.17025649049192,
+      "name": "Rua Doutor Pedro de Souza Ponde"
+    },
+    {
+      "source": 36,
+      "target": 121,
+      "weight": 88.60790461259275,
+      "name": "Rua Professor Sabino Silva"
+    },
+    {
+      "source": 37,
+      "target": 156,
+      "weight": 73.02444612897428,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 37,
+      "target": 13,
+      "weight": 172.04788307408037,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 38,
+      "target": 12,
+      "weight": 123.14228044597418,
+      "name": "Rua Professor Sabino Silva"
+    },
+    {
+      "source": 38,
+      "target": 44,
+      "weight": 179.16291986786055,
+      "name": "Rua José Sátiro de Oliveira"
+    },
+    {
+      "source": 39,
+      "target": 148,
+      "weight": 39.96815299591245,
+      "name": "Rua José Sátiro de Oliveira"
+    },
+    {
+      "source": 40,
+      "target": 16,
+      "weight": 231.9281527706388,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 41,
+      "target": 171,
+      "weight": 58.37824494218491,
+      "name": "Travessa do Corte Grande"
+    },
+    {
+      "source": 41,
+      "target": 88,
+      "weight": 122.62256318251268,
+      "name": "Travessa do Corte Grande"
+    },
+    {
+      "source": 42,
+      "target": 171,
+      "weight": 29.146902930686373,
+      "name": "Rua Manoel Rangel"
+    },
+    {
+      "source": 43,
+      "target": 33,
+      "weight": 12.915886602153908,
+      "name": "Rua Desembargador Ezquiel Pond"
+    },
+    {
+      "source": 43,
+      "target": 51,
+      "weight": 198.84152573380786,
+      "name": "Rua Desembargador Ezquiel Pond"
+    },
+    {
+      "source": 44,
+      "target": 148,
+      "weight": 29.765863023823503,
+      "name": "Rua José Sátiro de Oliveira"
+    },
+    {
+      "source": 44,
+      "target": 38,
+      "weight": 179.16291986786058,
+      "name": "Rua José Sátiro de Oliveira"
+    },
+    {
+      "source": 45,
+      "target": 154,
+      "weight": 126.73899570360486,
+      "name": "Rua Guadalajara"
+    },
+    {
+      "source": 46,
+      "target": 45,
+      "weight": 245.24781132184023,
+      "name": "Rua Guadalajara"
+    },
+    {
+      "source": 46,
+      "target": 167,
+      "weight": 23.64215374152574,
+      "name": ""
+    },
+    {
+      "source": 47,
+      "target": 48,
+      "weight": 86.29117539347578,
+      "name": "Rua Doutor Américo Silva"
+    },
+    {
+      "source": 47,
+      "target": 45,
+      "weight": 203.99309301607073,
+      "name": "Rua Professor Amílcar Falcão"
+    },
+    {
+      "source": 48,
+      "target": 47,
+      "weight": 86.29117539347578,
+      "name": "Rua Doutor Américo Silva"
+    },
+    {
+      "source": 49,
+      "target": 50,
+      "weight": 128.658690100547,
+      "name": "Rua Doutor Rubens Chaves"
+    },
+    {
+      "source": 49,
+      "target": 122,
+      "weight": 174.01679781188867,
+      "name": "Rua Doutor Pedro de Souza Ponde"
+    },
+    {
+      "source": 50,
+      "target": 49,
+      "weight": 128.65869010054703,
+      "name": "Rua Doutor Rubens Chaves"
+    },
+    {
+      "source": 51,
+      "target": 52,
+      "weight": 160.49058554594063,
+      "name": "Rua Desembargador Ezquiel Pond"
+    },
+    {
+      "source": 51,
+      "target": 43,
+      "weight": 153.7061370196149,
+      "name": "Rua Desembargador Ezquiel Pond"
+    },
+    {
+      "source": 52,
+      "target": 51,
+      "weight": 160.49058554594066,
+      "name": "Rua Desembargador Ezquiel Pond"
+    },
+    {
+      "source": 53,
+      "target": 89,
+      "weight": 53.477518262556124,
+      "name": "Rua Manoel Dias de Morais"
+    },
+    {
+      "source": 53,
+      "target": 53,
+      "weight": 170.53902271971035,
+      "name": "Rua Manoel Dias de Morais"
+    },
+    {
+      "source": 54,
+      "target": 158,
+      "weight": 152.04863397655913,
+      "name": "Rua Guadalajara"
+    },
+    {
+      "source": 54,
+      "target": 123,
+      "weight": 39.720362772841455,
+      "name": "Rua Guadalajara"
+    },
+    {
+      "source": 55,
+      "target": 54,
+      "weight": 37.24006430928152,
+      "name": "Rua Guadalajara"
+    },
+    {
+      "source": 55,
+      "target": 123,
+      "weight": 24.786538508640124,
+      "name": "Rua Guadalajara"
+    },
+    {
+      "source": 56,
+      "target": 68,
+      "weight": 47.589717388704855,
+      "name": "Rua Nita Costa"
+    },
+    {
+      "source": 56,
+      "target": 57,
+      "weight": 37.09932013517704,
+      "name": "Rua Nita Costa"
+    },
+    {
+      "source": 57,
+      "target": 125,
+      "weight": 31.23716182410221,
+      "name": "Rua Pínio Moscoso"
+    },
+    {
+      "source": 57,
+      "target": 59,
+      "weight": 178.70110166545436,
+      "name": "Rua Engenheiro Armando Carneiro da Rocha"
+    },
+    {
+      "source": 57,
+      "target": 56,
+      "weight": 37.09932013517704,
+      "name": "Rua Nita Costa"
+    },
+    {
+      "source": 57,
+      "target": 28,
+      "weight": 249.46748701136065,
+      "name": "Rua Nita Costa"
+    },
+    {
+      "source": 58,
+      "target": 125,
+      "weight": 156.6654248515158,
+      "name": "Rua Plínio Moscoso"
+    },
+    {
+      "source": 58,
+      "target": 59,
+      "weight": 127.39454828670864,
+      "name": "Rua Christiano Ottoni"
+    },
+    {
+      "source": 59,
+      "target": 57,
+      "weight": 178.70110166545433,
+      "name": "Rua Engenheiro Armando Carneiro da Rocha"
+    },
+    {
+      "source": 59,
+      "target": 58,
+      "weight": 127.39454828670863,
+      "name": "Rua Christiano Ottoni"
+    },
+    {
+      "source": 60,
+      "target": 151,
+      "weight": 96.46373138778442,
+      "name": "Rua Desembargador Gilberto Andrade"
+    },
+    {
+      "source": 60,
+      "target": 34,
+      "weight": 105.47063499181203,
+      "name": "Rua Ranulfo de Oliveira"
+    },
+    {
+      "source": 60,
+      "target": 157,
+      "weight": 132.26002104804908,
+      "name": "Rua Ranulfo de Oliveira"
+    },
+    {
+      "source": 61,
+      "target": 63,
+      "weight": 254.46972180441446,
+      "name": "Rua Desembargador Baldoino Andrade"
+    },
+    {
+      "source": 61,
+      "target": 9,
+      "weight": 57.79042481143566,
+      "name": "Avenida Centenário"
+    },
+    {
+      "source": 62,
+      "target": 63,
+      "weight": 161.93146344273694,
+      "name": "Rua Desembargador Baldoino Andrade"
+    },
+    {
+      "source": 63,
+      "target": 61,
+      "weight": 254.4697218044144,
+      "name": "Rua Desembargador Baldoino Andrade"
+    },
+    {
+      "source": 63,
+      "target": 64,
+      "weight": 38.183363799745145,
+      "name": "Rua Desembargador Baldoino Andrade"
+    },
+    {
+      "source": 64,
+      "target": 61,
+      "weight": 217.43386275277274,
+      "name": "Avenida Centenário"
+    },
+    {
+      "source": 65,
+      "target": 151,
+      "weight": 240.3070897465968,
+      "name": "Rua Desembargador Gilberto Andrade"
+    },
+    {
+      "source": 66,
+      "target": 90,
+      "weight": 221.94361238472283,
+      "name": "Rua Demetrio Tourinho"
+    },
+    {
+      "source": 66,
+      "target": 173,
+      "weight": 80.31523856328177,
+      "name": "Rua Plínio Moscoso"
+    },
+    {
+      "source": 67,
+      "target": 68,
+      "weight": 167.99596342130718,
+      "name": "Rua Nita Costa"
+    },
+    {
+      "source": 67,
+      "target": 66,
+      "weight": 31.885652274307,
+      "name": "Rua Plínio Moscoso"
+    },
+    {
+      "source": 68,
+      "target": 56,
+      "weight": 47.589717388704855,
+      "name": "Rua Nita Costa"
+    },
+    {
+      "source": 68,
+      "target": 124,
+      "weight": 72.74737251947744,
+      "name": "Rua Desembargador Sálvio Martins"
+    },
+    {
+      "source": 68,
+      "target": 67,
+      "weight": 167.99596342130718,
+      "name": "Rua Nita Costa"
+    },
+    {
+      "source": 69,
+      "target": 104,
+      "weight": 70.87442024772152,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 69,
+      "target": 153,
+      "weight": 99.74053143248966,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 70,
+      "target": 71,
+      "weight": 112.57762982605963,
+      "name": "Rua Jardim Botânico"
+    },
+    {
+      "source": 71,
+      "target": 70,
+      "weight": 112.57762982605963,
+      "name": "Rua Jardim Botânico"
+    },
+    {
+      "source": 71,
+      "target": 72,
+      "weight": 18.773197733151864,
+      "name": "Rua Jardim Botânico"
+    },
+    {
+      "source": 72,
+      "target": 73,
+      "weight": 150.38251703168925,
+      "name": "Primeira Travessa Jardim Botanico"
+    },
+    {
+      "source": 72,
+      "target": 149,
+      "weight": 335.9537129723128,
+      "name": [
+        "Rua Jardim Botânico",
+        "Rua do Corte Grande"
+      ]
+    },
+    {
+      "source": 72,
+      "target": 71,
+      "weight": 18.773197733151864,
+      "name": "Rua Jardim Botânico"
+    },
+    {
+      "source": 73,
+      "target": 72,
+      "weight": 150.38251703168925,
+      "name": "Primeira Travessa Jardim Botanico"
+    },
+    {
+      "source": 74,
+      "target": 75,
+      "weight": 71.5715179523626,
+      "name": "Rua Baependi"
+    },
+    {
+      "source": 75,
+      "target": 77,
+      "weight": 92.31806389362012,
+      "name": "Travessia Baependi"
+    },
+    {
+      "source": 75,
+      "target": 76,
+      "weight": 31.983785624229352,
+      "name": "Rua Baependi"
+    },
+    {
+      "source": 75,
+      "target": 74,
+      "weight": 71.5715179523626,
+      "name": "Rua Baependi"
+    },
+    {
+      "source": 76,
+      "target": 75,
+      "weight": 31.983785624229352,
+      "name": "Rua Baependi"
+    },
+    {
+      "source": 76,
+      "target": 150,
+      "weight": 99.15161599260784,
+      "name": ""
+    },
+    {
+      "source": 77,
+      "target": 106,
+      "weight": 20.30932050535266,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 77,
+      "target": 75,
+      "weight": 92.31806389362012,
+      "name": "Travessia Baependi"
+    },
+    {
+      "source": 78,
+      "target": 103,
+      "weight": 16.512501921394037,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 78,
+      "target": 96,
+      "weight": 94.64822243110633,
+      "name": "Travessa Macapá"
+    },
+    {
+      "source": 79,
+      "target": 86,
+      "weight": 105.22513549810206,
+      "name": "Rua Macapá"
+    },
+    {
+      "source": 79,
+      "target": 108,
+      "weight": 93.82434815776756,
+      "name": "Rua Senta Púa"
+    },
+    {
+      "source": 79,
+      "target": 87,
+      "weight": 222.45285632719842,
+      "name": "Rua Senta Púa"
+    },
+    {
+      "source": 80,
+      "target": 87,
+      "weight": 28.80397147365444,
+      "name": "Rua Senta Púa"
+    },
+    {
+      "source": 80,
+      "target": 109,
+      "weight": 184.69635455196436,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 80,
+      "target": 127,
+      "weight": 540.4206754429134,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 81,
+      "target": 82,
+      "weight": 6.269852312939898,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 82,
+      "target": 5,
+      "weight": 23.898613516931732,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 82,
+      "target": 141,
+      "weight": 25.122129330919428,
+      "name": "Rua Raymundo Pereira de Magalhães"
+    },
+    {
+      "source": 83,
+      "target": 141,
+      "weight": 73.4564409515936,
+      "name": "Rua Raymundo Pereira de Magalhães"
+    },
+    {
+      "source": 83,
+      "target": 96,
+      "weight": 191.24651180563296,
+      "name": "Rua Macapá"
+    },
+    {
+      "source": 83,
+      "target": 126,
+      "weight": 458.05966645529566,
+      "name": "Rua Raymundo Pereira de Magalhães"
+    },
+    {
+      "source": 84,
+      "target": 144,
+      "weight": 35.034927180721205,
+      "name": "Rua Álvaro Augusto da Silva"
+    },
+    {
+      "source": 84,
+      "target": 98,
+      "weight": 49.87556083391847,
+      "name": "Rua José Mirabeau Sampaio"
+    },
+    {
+      "source": 84,
+      "target": 145,
+      "weight": 32.579681777656575,
+      "name": "Rua José Mirabeau Sampaio"
+    },
+    {
+      "source": 85,
+      "target": 31,
+      "weight": 174.4921945768392,
+      "name": "Rua Nova do Calabar"
+    },
+    {
+      "source": 86,
+      "target": 109,
+      "weight": 78.49216433581867,
+      "name": "Rua Nossa Senhora de Fátima"
+    },
+    {
+      "source": 87,
+      "target": 86,
+      "weight": 123.10362380147942,
+      "name": "Rua Nossa Senhora de Fátima"
+    },
+    {
+      "source": 87,
+      "target": 80,
+      "weight": 28.80397147365444,
+      "name": "Rua Senta Púa"
+    },
+    {
+      "source": 88,
+      "target": 41,
+      "weight": 122.62256318251268,
+      "name": "Travessa do Corte Grande"
+    },
+    {
+      "source": 88,
+      "target": 97,
+      "weight": 27.643518553932005,
+      "name": "Rua do Corte Grande"
+    },
+    {
+      "source": 88,
+      "target": 136,
+      "weight": 517.0834047131048,
+      "name": [
+        "Rua do Corte Grande",
+        "Ladeira do Zoológico"
+      ]
+    },
+    {
+      "source": 89,
+      "target": 53,
+      "weight": 53.477518262556124,
+      "name": "Rua Manoel Dias de Morais"
+    },
+    {
+      "source": 89,
+      "target": 91,
+      "weight": 73.73026033256939,
+      "name": "Rua Professor Sabino Silva"
+    },
+    {
+      "source": 90,
+      "target": 56,
+      "weight": 78.03530873176557,
+      "name": "Rua Quintinho de Carvalho"
+    },
+    {
+      "source": 90,
+      "target": 66,
+      "weight": 221.94361238472288,
+      "name": "Rua Demetrio Tourinho"
+    },
+    {
+      "source": 91,
+      "target": 28,
+      "weight": 120.93074883831216,
+      "name": "Rua Professor Sabino Silva"
+    },
+    {
+      "source": 91,
+      "target": 90,
+      "weight": 263.90436679609604,
+      "name": "Rua Quintinho de Carvalho"
+    },
+    {
+      "source": 92,
+      "target": 30,
+      "weight": 28.36584538445997,
+      "name": "Rua José Mirabeau Sampaio"
+    },
+    {
+      "source": 92,
+      "target": 93,
+      "weight": 202.5805150358134,
+      "name": "Rua Professor Clementino Fraga"
+    },
+    {
+      "source": 92,
+      "target": 98,
+      "weight": 102.39837295908333,
+      "name": "Rua José Mirabeau Sampaio"
+    },
+    {
+      "source": 93,
+      "target": 92,
+      "weight": 202.5805150358134,
+      "name": "Rua Professor Clementino Fraga"
+    },
+    {
+      "source": 94,
+      "target": 37,
+      "weight": 384.65233391209085,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 95,
+      "target": 15,
+      "weight": 86.49818721905478,
+      "name": "Rua Roschild Moreira"
+    },
+    {
+      "source": 96,
+      "target": 79,
+      "weight": 187.5866068266169,
+      "name": "Rua Macapá"
+    },
+    {
+      "source": 96,
+      "target": 78,
+      "weight": 94.64822243110633,
+      "name": "Travessa Macapá"
+    },
+    {
+      "source": 97,
+      "target": 149,
+      "weight": 19.452214548348326,
+      "name": "Rua do Corte Grande"
+    },
+    {
+      "source": 97,
+      "target": 88,
+      "weight": 27.643518553932005,
+      "name": "Rua do Corte Grande"
+    },
+    {
+      "source": 98,
+      "target": 84,
+      "weight": 49.87556083391847,
+      "name": "Rua José Mirabeau Sampaio"
+    },
+    {
+      "source": 98,
+      "target": 132,
+      "weight": 214.98627126049976,
+      "name": "Rua Doutor João Garcez Fróes"
+    },
+    {
+      "source": 98,
+      "target": 92,
+      "weight": 102.39837295908333,
+      "name": "Rua José Mirabeau Sampaio"
+    },
+    {
+      "source": 99,
+      "target": 26,
+      "weight": 50.41761679400442,
+      "name": "Avenida Anita Garibaldi"
+    },
+    {
+      "source": 100,
+      "target": 7,
+      "weight": 29.86970992360395,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 101,
+      "target": 140,
+      "weight": 53.127035053568065,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 101,
+      "target": 100,
+      "weight": 40.52453585901405,
+      "name": ""
+    },
+    {
+      "source": 102,
+      "target": 77,
+      "weight": 16.860739454217114,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 102,
+      "target": 103,
+      "weight": 29.009788260322722,
+      "name": ""
+    },
+    {
+      "source": 103,
+      "target": 81,
+      "weight": 198.28847746792727,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 104,
+      "target": 162,
+      "weight": 12.699241841140967,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 105,
+      "target": 78,
+      "weight": 22.00896327944181,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 105,
+      "target": 106,
+      "weight": 29.347082840509017,
+      "name": ""
+    },
+    {
+      "source": 106,
+      "target": 107,
+      "weight": 159.95046536365774,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 107,
+      "target": 21,
+      "weight": 35.6293719269957,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 107,
+      "target": 164,
+      "weight": 32.19693959374145,
+      "name": ""
+    },
+    {
+      "source": 108,
+      "target": 164,
+      "weight": 2.3910870494552685,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 109,
+      "target": 6,
+      "weight": 63.102256555482164,
+      "name": ""
+    },
+    {
+      "source": 109,
+      "target": 13,
+      "weight": 58.93495695545166,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 109,
+      "target": 80,
+      "weight": 184.69635455196436,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 110,
+      "target": 111,
+      "weight": 76.02444462876463,
+      "name": "Rua Professor Edgard Mafa"
+    },
+    {
+      "source": 110,
+      "target": 99,
+      "weight": 93.97070601080767,
+      "name": "Avenida Anita Garibaldi"
+    },
+    {
+      "source": 111,
+      "target": 113,
+      "weight": 26.450148029624938,
+      "name": "Rua Professor Edgard Mafa"
+    },
+    {
+      "source": 112,
+      "target": 111,
+      "weight": 24.425538945814615,
+      "name": "Rua Doutor Carlito Onefre"
+    },
+    {
+      "source": 112,
+      "target": 114,
+      "weight": 59.54683035132071,
+      "name": "Rua Doutor Carlito Onefre"
+    },
+    {
+      "source": 113,
+      "target": 112,
+      "weight": 17.18177976205572,
+      "name": "Rua Doutor Carlito Onefre"
+    },
+    {
+      "source": 113,
+      "target": 115,
+      "weight": 103.09042265343382,
+      "name": "Rua Professor Edgard Mafa"
+    },
+    {
+      "source": 114,
+      "target": 112,
+      "weight": 59.54683035132071,
+      "name": "Rua Doutor Carlito Onefre"
+    },
+    {
+      "source": 115,
+      "target": 116,
+      "weight": 147.4643911763493,
+      "name": "Rua Giuseppe Perrelli"
+    },
+    {
+      "source": 115,
+      "target": 116,
+      "weight": 106.10509286422376,
+      "name": "Rua Professor Edgard Mafa"
+    },
+    {
+      "source": 115,
+      "target": 113,
+      "weight": 103.09042265343382,
+      "name": "Rua Professor Edgard Mafa"
+    },
+    {
+      "source": 116,
+      "target": 115,
+      "weight": 147.46439117634927,
+      "name": "Rua Giuseppe Perrelli"
+    },
+    {
+      "source": 116,
+      "target": 115,
+      "weight": 106.10509286422376,
+      "name": "Rua Professor Edgard Mafa"
+    },
+    {
+      "source": 116,
+      "target": 117,
+      "weight": 71.3717683620799,
+      "name": "Rua Professor Edgard Mafa"
+    },
+    {
+      "source": 117,
+      "target": 1,
+      "weight": 72.38025413278018,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 117,
+      "target": 8,
+      "weight": 402.22122257746236,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 117,
+      "target": 118,
+      "weight": 135.08355491892831,
+      "name": "Rua Dom Basilio Mendes Ribeiro"
+    },
+    {
+      "source": 117,
+      "target": 116,
+      "weight": 71.37176836207989,
+      "name": "Rua Professor Edgard Mafa"
+    },
+    {
+      "source": 118,
+      "target": 117,
+      "weight": 135.08355491892831,
+      "name": "Rua Dom Basilio Mendes Ribeiro"
+    },
+    {
+      "source": 119,
+      "target": 120,
+      "weight": 13.985571738805463,
+      "name": "Rua Professor Sabino Silva"
+    },
+    {
+      "source": 119,
+      "target": 35,
+      "weight": 107.46828984378581,
+      "name": "Rua Professor Sabino Silva"
+    },
+    {
+      "source": 120,
+      "target": 119,
+      "weight": 13.985571738805463,
+      "name": "Rua Professor Sabino Silva"
+    },
+    {
+      "source": 120,
+      "target": 89,
+      "weight": 71.26808410706424,
+      "name": "Rua Professor Sabino Silva"
+    },
+    {
+      "source": 121,
+      "target": 146,
+      "weight": 64.18531990241283,
+      "name": "Rua Professor Sabino Silva"
+    },
+    {
+      "source": 122,
+      "target": 36,
+      "weight": 36.17025649049192,
+      "name": "Rua Doutor Pedro de Souza Ponde"
+    },
+    {
+      "source": 122,
+      "target": 49,
+      "weight": 174.0167978118887,
+      "name": "Rua Doutor Pedro de Souza Ponde"
+    },
+    {
+      "source": 123,
+      "target": 54,
+      "weight": 39.720362772841455,
+      "name": "Rua Guadalajara"
+    },
+    {
+      "source": 123,
+      "target": 29,
+      "weight": 58.289585731531886,
+      "name": "Rua Guadalajara"
+    },
+    {
+      "source": 124,
+      "target": 68,
+      "weight": 72.74737251947744,
+      "name": "Rua Desembargador Sálvio Martins"
+    },
+    {
+      "source": 124,
+      "target": 130,
+      "weight": 98.85877294527876,
+      "name": "Rua Plínio Moscoso"
+    },
+    {
+      "source": 124,
+      "target": 125,
+      "weight": 113.41846804063758,
+      "name": "Rua Plínio Moscoso"
+    },
+    {
+      "source": 125,
+      "target": 57,
+      "weight": 31.23716182410221,
+      "name": "Rua Pínio Moscoso"
+    },
+    {
+      "source": 125,
+      "target": 124,
+      "weight": 113.41846804063756,
+      "name": "Rua Plínio Moscoso"
+    },
+    {
+      "source": 125,
+      "target": 58,
+      "weight": 156.6654248515158,
+      "name": "Rua Plínio Moscoso"
+    },
+    {
+      "source": 126,
+      "target": 170,
+      "weight": 60.486018656239764,
+      "name": ""
+    },
+    {
+      "source": 126,
+      "target": 136,
+      "weight": 338.3012754643204,
+      "name": [
+        "Rua Raymundo Pereira de Magalhães",
+        "Ladeira do Zoológico"
+      ]
+    },
+    {
+      "source": 126,
+      "target": 83,
+      "weight": 458.0596664552956,
+      "name": "Rua Raymundo Pereira de Magalhães"
+    },
+    {
+      "source": 127,
+      "target": 155,
+      "weight": 55.88176854699773,
+      "name": "Rua Manoel Rangel"
+    },
+    {
+      "source": 127,
+      "target": 80,
+      "weight": 540.4206754429134,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 127,
+      "target": 16,
+      "weight": 144.2210558007463,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 128,
+      "target": 19,
+      "weight": 43.125695665563995,
+      "name": "Rua Morro do Escravo Miguel"
+    },
+    {
+      "source": 128,
+      "target": 177,
+      "weight": 109.29140068519634,
+      "name": "Rua da Casa de Pedra"
+    },
+    {
+      "source": 129,
+      "target": 178,
+      "weight": 58.52717101829015,
+      "name": "Rua do Cristo"
+    },
+    {
+      "source": 129,
+      "target": 153,
+      "weight": 369.0010440997069,
+      "name": "Rua do Cristo"
+    },
+    {
+      "source": 129,
+      "target": 179,
+      "weight": 148.12222958093776,
+      "name": "Rua do Cristo"
+    },
+    {
+      "source": 130,
+      "target": 157,
+      "weight": 15.084142388257606,
+      "name": ""
+    },
+    {
+      "source": 130,
+      "target": 124,
+      "weight": 98.85877294527876,
+      "name": "Rua Plínio Moscoso"
+    },
+    {
+      "source": 130,
+      "target": 67,
+      "weight": 107.33507897429209,
+      "name": "Rua Plínio Moscoso"
+    },
+    {
+      "source": 131,
+      "target": 101,
+      "weight": 32.97577539979618,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 132,
+      "target": 98,
+      "weight": 214.98627126049973,
+      "name": "Rua Doutor João Garcez Fróes"
+    },
+    {
+      "source": 133,
+      "target": 144,
+      "weight": 189.71913070065466,
+      "name": "Rua Álvaro Augusto da Silva"
+    },
+    {
+      "source": 134,
+      "target": 156,
+      "weight": 46.18581727722026,
+      "name": "Rua Doutor Oswaldo Ribeiro"
+    },
+    {
+      "source": 135,
+      "target": 134,
+      "weight": 98.36258324805296,
+      "name": "Rua Doutor Oswaldo Ribeiro"
+    },
+    {
+      "source": 135,
+      "target": 76,
+      "weight": 179.58885109317234,
+      "name": "Rua Baependi"
+    },
+    {
+      "source": 136,
+      "target": 88,
+      "weight": 517.0834047131048,
+      "name": [
+        "Rua do Corte Grande",
+        "Ladeira do Zoológico"
+      ]
+    },
+    {
+      "source": 136,
+      "target": 126,
+      "weight": 338.3012754643204,
+      "name": [
+        "Rua Raymundo Pereira de Magalhães",
+        "Ladeira do Zoológico"
+      ]
+    },
+    {
+      "source": 136,
+      "target": 169,
+      "weight": 100.56712060717,
+      "name": ""
+    },
+    {
+      "source": 137,
+      "target": 155,
+      "weight": 276.61707913050645,
+      "name": "Segunda Travessa Manoel Rangel"
+    },
+    {
+      "source": 138,
+      "target": 139,
+      "weight": 62.966356209541686,
+      "name": "Travessa Leopoldino Tantú"
+    },
+    {
+      "source": 139,
+      "target": 40,
+      "weight": 33.02576580126044,
+      "name": "Rua Vila Matos"
+    },
+    {
+      "source": 139,
+      "target": 138,
+      "weight": 62.96635620954169,
+      "name": "Travessa Leopoldino Tantú"
+    },
+    {
+      "source": 140,
+      "target": 142,
+      "weight": 29.268703127902533,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 141,
+      "target": 83,
+      "weight": 73.4564409515936,
+      "name": "Rua Raymundo Pereira de Magalhães"
+    },
+    {
+      "source": 141,
+      "target": 5,
+      "weight": 26.42701561856599,
+      "name": "Rua Raymundo Pereira de Magalhães"
+    },
+    {
+      "source": 142,
+      "target": 102,
+      "weight": 200.7994568785482,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 142,
+      "target": 81,
+      "weight": 70.47081256605395,
+      "name": ""
+    },
+    {
+      "source": 143,
+      "target": 11,
+      "weight": 33.935033653585506,
+      "name": "Avenida Centenário"
+    },
+    {
+      "source": 143,
+      "target": 62,
+      "weight": 15.554199085749453,
+      "name": "Rua Desembargador Baldoino Andrade"
+    },
+    {
+      "source": 144,
+      "target": 84,
+      "weight": 35.034927180721205,
+      "name": "Rua Álvaro Augusto da Silva"
+    },
+    {
+      "source": 144,
+      "target": 145,
+      "weight": 13.860191513135215,
+      "name": ""
+    },
+    {
+      "source": 144,
+      "target": 133,
+      "weight": 189.71913070065466,
+      "name": "Rua Álvaro Augusto da Silva"
+    },
+    {
+      "source": 145,
+      "target": 84,
+      "weight": 32.579681777656575,
+      "name": "Rua José Mirabeau Sampaio"
+    },
+    {
+      "source": 145,
+      "target": 23,
+      "weight": 74.88813851876537,
+      "name": "Rua José Mirabeau Sampaio"
+    },
+    {
+      "source": 145,
+      "target": 144,
+      "weight": 13.860191513135215,
+      "name": ""
+    },
+    {
+      "source": 146,
+      "target": 158,
+      "weight": 28.679758354175732,
+      "name": "Rua Professor Sabino Silva"
+    },
+    {
+      "source": 146,
+      "target": 24,
+      "weight": 31.495928362877144,
+      "name": ""
+    },
+    {
+      "source": 147,
+      "target": 175,
+      "weight": 96.68280567110462,
+      "name": "Rua José Sátiro de Oliveira"
+    },
+    {
+      "source": 148,
+      "target": 44,
+      "weight": 29.765863023823503,
+      "name": "Rua José Sátiro de Oliveira"
+    },
+    {
+      "source": 149,
+      "target": 72,
+      "weight": 335.9537129723127,
+      "name": [
+        "Rua Jardim Botânico",
+        "Rua do Corte Grande"
+      ]
+    },
+    {
+      "source": 149,
+      "target": 97,
+      "weight": 19.45221454834833,
+      "name": "Rua do Corte Grande"
+    },
+    {
+      "source": 150,
+      "target": 165,
+      "weight": 112.7346783407225,
+      "name": "Rua Pastor Helvécio Carneiro Ribeiro"
+    },
+    {
+      "source": 150,
+      "target": 76,
+      "weight": 99.15161599260784,
+      "name": ""
+    },
+    {
+      "source": 151,
+      "target": 60,
+      "weight": 96.46373138778442,
+      "name": "Rua Desembargador Gilberto Andrade"
+    },
+    {
+      "source": 151,
+      "target": 34,
+      "weight": 48.249247684291596,
+      "name": "Rua Manoel Espinheira"
+    },
+    {
+      "source": 151,
+      "target": 65,
+      "weight": 240.30708974659683,
+      "name": "Rua Desembargador Gilberto Andrade"
+    },
+    {
+      "source": 152,
+      "target": 147,
+      "weight": 35.84371040283043,
+      "name": "Rua José Sátiro de Oliveira"
+    },
+    {
+      "source": 152,
+      "target": 153,
+      "weight": 144.2810871030373,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 153,
+      "target": 129,
+      "weight": 369.00104409970686,
+      "name": "Rua do Cristo"
+    },
+    {
+      "source": 153,
+      "target": 152,
+      "weight": 144.28108710303732,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 153,
+      "target": 69,
+      "weight": 99.74053143248966,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 154,
+      "target": 39,
+      "weight": 9.838850853736334,
+      "name": ""
+    },
+    {
+      "source": 154,
+      "target": 176,
+      "weight": 19.725748512980626,
+      "name": "Rua Guadalajara"
+    },
+    {
+      "source": 155,
+      "target": 171,
+      "weight": 261.60285633768257,
+      "name": "Rua Manoel Rangel"
+    },
+    {
+      "source": 155,
+      "target": 127,
+      "weight": 55.881768546997726,
+      "name": "Rua Manoel Rangel"
+    },
+    {
+      "source": 155,
+      "target": 137,
+      "weight": 276.6170791305065,
+      "name": "Segunda Travessa Manoel Rangel"
+    },
+    {
+      "source": 156,
+      "target": 180,
+      "weight": 166.10678312592665,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 157,
+      "target": 130,
+      "weight": 15.084142388257606,
+      "name": ""
+    },
+    {
+      "source": 157,
+      "target": 60,
+      "weight": 132.2600210480491,
+      "name": "Rua Ranulfo de Oliveira"
+    },
+    {
+      "source": 158,
+      "target": 161,
+      "weight": 14.26369341285662,
+      "name": "Rua Professor Sabino Silva"
+    },
+    {
+      "source": 158,
+      "target": 54,
+      "weight": 152.04863397655913,
+      "name": "Rua Guadalajara"
+    },
+    {
+      "source": 159,
+      "target": 94,
+      "weight": 25.131864879822864,
+      "name": ""
+    },
+    {
+      "source": 159,
+      "target": 22,
+      "weight": 60.33288109602327,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 160,
+      "target": 161,
+      "weight": 18.966331539409424,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 160,
+      "target": 162,
+      "weight": 42.526131345937536,
+      "name": ""
+    },
+    {
+      "source": 161,
+      "target": 69,
+      "weight": 73.02861414414828,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 161,
+      "target": 104,
+      "weight": 26.49465000530244,
+      "name": "Rua Professor Sabino Silva"
+    },
+    {
+      "source": 162,
+      "target": 14,
+      "weight": 92.04497456411718,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 163,
+      "target": 108,
+      "weight": 52.6795666782486,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 163,
+      "target": 21,
+      "weight": 32.254614823821214,
+      "name": ""
+    },
+    {
+      "source": 164,
+      "target": 105,
+      "weight": 156.7284440648221,
+      "name": "Avenida Milton Santos"
+    },
+    {
+      "source": 165,
+      "target": 134,
+      "weight": 48.394342804849835,
+      "name": "Rua Pastor Helvécio Carneiro Ribeiro"
+    },
+    {
+      "source": 165,
+      "target": 166,
+      "weight": 44.23464221104684,
+      "name": ""
+    },
+    {
+      "source": 166,
+      "target": 165,
+      "weight": 44.23464221104684,
+      "name": ""
+    },
+    {
+      "source": 167,
+      "target": 47,
+      "weight": 23.1489123860001,
+      "name": "Rua Professor Amílcar Falcão"
+    },
+    {
+      "source": 168,
+      "target": 157,
+      "weight": 249.64870565581552,
+      "name": "Rua Ranulfo de Oliveira"
+    },
+    {
+      "source": 169,
+      "target": 136,
+      "weight": 100.56712060716997,
+      "name": ""
+    },
+    {
+      "source": 170,
+      "target": 126,
+      "weight": 60.48601865623977,
+      "name": ""
+    },
+    {
+      "source": 171,
+      "target": 42,
+      "weight": 29.146902930686373,
+      "name": "Rua Manoel Rangel"
+    },
+    {
+      "source": 171,
+      "target": 41,
+      "weight": 58.37824494218491,
+      "name": "Travessa do Corte Grande"
+    },
+    {
+      "source": 171,
+      "target": 155,
+      "weight": 261.6028563376825,
+      "name": "Rua Manoel Rangel"
+    },
+    {
+      "source": 172,
+      "target": 110,
+      "weight": 117.12115812672042,
+      "name": "Avenida Anita Garibaldi"
+    },
+    {
+      "source": 173,
+      "target": 33,
+      "weight": 40.681856952109115,
+      "name": "Rua Plínio Moscoso"
+    },
+    {
+      "source": 173,
+      "target": 168,
+      "weight": 18.95108706916629,
+      "name": ""
+    },
+    {
+      "source": 174,
+      "target": 39,
+      "weight": 16.58339349358106,
+      "name": "Rua José Sátiro de Oliveira"
+    },
+    {
+      "source": 175,
+      "target": 174,
+      "weight": 4.2397708353095895,
+      "name": "Rua José Sátiro de Oliveira"
+    },
+    {
+      "source": 175,
+      "target": 176,
+      "weight": 11.670868768984098,
+      "name": ""
+    },
+    {
+      "source": 176,
+      "target": 55,
+      "weight": 246.79729531990358,
+      "name": "Rua Guadalajara"
+    },
+    {
+      "source": 177,
+      "target": 128,
+      "weight": 109.29140068519635,
+      "name": "Rua da Casa de Pedra"
+    },
+    {
+      "source": 178,
+      "target": 179,
+      "weight": 13.134380476797444,
+      "name": "Rua do Cristo"
+    },
+    {
+      "source": 178,
+      "target": 179,
+      "weight": 30.85052806566989,
+      "name": "Rua do Cristo"
+    },
+    {
+      "source": 178,
+      "target": 129,
+      "weight": 58.52717101829015,
+      "name": "Rua do Cristo"
+    },
+    {
+      "source": 179,
+      "target": 178,
+      "weight": 13.134380476797444,
+      "name": "Rua do Cristo"
+    },
+    {
+      "source": 179,
+      "target": 178,
+      "weight": 30.85052806566989,
+      "name": "Rua do Cristo"
+    },
+    {
+      "source": 179,
+      "target": 129,
+      "weight": 148.12222958093776,
+      "name": "Rua do Cristo"
+    },
+    {
+      "source": 180,
+      "target": 159,
+      "weight": 145.26841102553306,
+      "name": "Avenida Oceânica"
+    },
+    {
+      "source": 180,
+      "target": 181,
+      "weight": 96.9323733829043,
+      "name": "R Dorilândia"
+    },
+    {
+      "source": 181,
+      "target": 180,
+      "weight": 96.9323733829043,
+      "name": "R Dorilândia"
+    }
+  ],
+  "metadata": {
+    "name": "Grafo de Ondina",
+    "description": "Grafo das ruas do bairro de Ondina, Salvador",
+    "source": "OpenStreetMap"
+  }
+}

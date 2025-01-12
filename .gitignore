@@ -1,0 +1,17 @@
+*.aux
+*.bbl
+*.blg
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.gz
+*.toc
+*.fls
+*.fdb_latexmk
+
+
+venv/
+.DS_Store
+cache/

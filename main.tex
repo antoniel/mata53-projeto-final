@@ -1,0 +1,208 @@
+%  #region preâmbulo
+\documentclass[12pt, a4paper]{report}
+\usepackage[top=3cm,left=3cm,right=2cm,bottom=2cm]{geometry}
+\linespread{1.3}
+\setlength{\parindent}{1.25cm}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{multicol}
+\usepackage[normalem]{ulem}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{fancybox}
+\usepackage[pdfstartview=FitH]{hyperref}
+\usepackage{subfigure}
+\bibliographystyle{plain}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{float}
+
+
+\graphicspath{{Figuras/}}
+
+\renewcommand{\theenumii}{\alph{enumii}}
+\DeclareMathOperator{\sen}{sen}
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\arctg}{arctg}
+\DeclareMathOperator{\cotg}{cotg}
+\DeclareMathOperator{\agm}{agm}
+
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{dfn}{Definição}[section]
+\newtheorem{prob}{Problema}[section]
+\newtheorem{cor}{Corolário}[section]
+\newtheorem{prop}{Proposição}[section]
+\newtheorem{lem}{Lema} [section]
+
+\newcounter{contar}
+%  #endregion preâmbulo
+
+% #region Variáveis 
+\newcommand{\nomeUniversidade}{Universidade Federal da Bahia}
+\newcommand{\nomeInstituto}{Instituto de Computação}
+\newcommand{\nomeCurso}{MATA53 - Teoria dos grafos}
+\newcommand{\nomeProfessor}{Islame Felipe da Costa Fernandes}
+\newcommand{\nomeGrupo}{\sc{\large{Antoniel Magalhães}} \\
+\sc{\large{João Leahy}} \\
+\sc{\large{Luis Felipe}}}
+\newcommand{\titulo}{\sc{\Large{Problema de Colocação Ótima de Câmeras de Segurança no bairro da Ondina}}}
+% #endregion Variáveis 
+
+\begin{document}
+
+% #region capa
+\pagestyle{empty}
+\begin{center}
+\includegraphics[height=2.5cm]{UFBA.jpg}
+\hspace{2cm}
+\end{center}
+
+\begin{center}
+\sc{\large{\nomeUniversidade}} \\
+\sc{\large{\nomeInstituto}} \\
+\sc{\small{\nomeCurso}} \\
+
+\vspace{4cm}
+
+\titulo
+
+\vspace{4.5cm}
+
+\nomeGrupo
+
+
+\vspace{5.5cm}
+
+\textbf{Salvador - Bahia} \\
+\today
+\end{center}
+% #endregion capa
+
+% #region folha de rosto
+\newpage
+\begin{center}
+\titulo
+
+\vspace{4cm}
+
+\nomeGrupo
+\end{center}
+
+\vspace{4cm}
+
+\begin{flushright}
+\begin{minipage}{8.6cm}
+Projeto final entregue ao professor \nomeProfessor\ 
+como método avaliativo da disciplina \nomeCurso
+
+
+\end{minipage}
+\end{flushright}
+ 
+\vspace{8cm}
+
+
+\begin{center}
+\textbf{Salvador - Bahia} \\
+\today
+\end{center}
+
+% #endregion folha de rosto
+
+% #region Índice
+\newpage
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+\setcounter{page}{1}
+\pagestyle{plain}
+% #endregion Índice
+
+
+\section*{Introdução}
+
+\subsection*{Contextualização e Motivação}
+A teoria dos grafos oferece um poderoso conjunto de ferramentas matemáticas para modelar e resolver problemas complexos de otimização em redes. No contexto da segurança pública, um problema particularmente relevante é a otimização do posicionamento de câmeras de vigilância. O bairro de Ondina, em Salvador, apresenta um cenário ideal para aplicação desses conceitos, por concentrar pontos estratégicos como a Universidade Federal da Bahia, estabelecimentos comerciais, hotéis e áreas residenciais, além de um intenso fluxo turístico devido às suas praias. A modelagem deste cenário através de grafos permite uma abordagem sistemática para maximizar a cobertura de vigilância com recursos limitados.
+
+\subsection*{Justificativa}
+A aplicação de conceitos fundamentais da teoria dos grafos, como cobertura de vértices, dominação e problemas de localização de facilidades, fornece uma base teórica sólida para abordar o problema de posicionamento de câmeras. Este trabalho permite explorar na prática diversos algoritmos e técnicas estudados na disciplina MATA53 - Teoria dos Grafos, como algoritmos gulosos, programação dinâmica e métodos de otimização em grafos. A escolha do bairro de Ondina como objeto de estudo possibilita uma aplicação real desses conceitos, contribuindo tanto para o aprendizado acadêmico quanto para uma possível solução prática de segurança pública.
+
+\subsection*{Objetivo Geral e Específicos}
+O objetivo geral deste trabalho é aplicar conceitos e algoritmos da teoria dos grafos para desenvolver uma solução que otimize o posicionamento de câmeras de segurança no bairro de Ondina, Salvador.
+
+Os objetivos específicos incluem:
+\begin{itemize}
+    \item Modelar a região de Ondina como um grafo, onde vértices representam possíveis localizações de câmeras e arestas representam conexões visuais ou físicas entre pontos;
+    \item Implementar e comparar diferentes algoritmos estudados na disciplina para resolver o problema de cobertura mínima;
+    \item Desenvolver uma solução que considere restrições práticas como orçamento e áreas prioritárias;
+    \item Analisar a complexidade computacional e eficiência dos algoritmos implementados;
+    \item Avaliar a aplicabilidade das soluções teóricas em um cenário real de implementação.
+\end{itemize}
+
+\subsection*{Metodologia}
+TODO
+
+\subsection*{Organização do Trabalho}
+TODO
+
+\chapter{Trabalhos Correlatos}
+TODO - Analisar artigos relacionados ao problema de cobertura ótima, localização de facilidades e câmeras de segurança.
+
+\chapter{Descrição Formal do Problema}
+
+\section{Formalização}
+TODO - Definir o problema matematicamente, considerando um grafo \(G = (V, E)\), onde os vértices representam locais possíveis para câmeras e as arestas representam conexões entre pontos.
+
+\section{Restrições do Problema}
+TODO - Descrever as restrições, como orçamento limitado, número máximo de câmeras, áreas prioritárias, etc.
+
+\section{Função Objetivo}
+TODO - Definir a função que deve ser otimizada, como maximizar a cobertura de áreas críticas ou minimizar o custo total.
+
+\section{Modelagem em Grafos}
+TODO - Explicar como o problema pode ser representado como um problema em teoria dos grafos, como problemas de cobertura de vértices ou problemas de localização de facilidades.
+
+\chapter{Solução Algorítmica}
+
+\section{Pseudo-Código}
+TODO - Apresentar um algoritmo de alto nível, como um GRASP ou uma abordagem baseada em programação linear.
+
+\section{Detalhes de Implementação}
+\subsection{Classes, Diagramas, Estruturas}
+TODO - Detalhar a estrutura do código, como organização das classes e métodos.
+
+\chapter{Experimentos}
+
+\section{Metodologia}
+\subsection{Instâncias}
+TODO - Descrever os dados utilizados, como mapas do bairro da Ondina e pontos potenciais para câmeras.
+
+\subsection{Parâmetros}
+TODO - Explicar os parâmetros ajustados nos experimentos, como alcance das câmeras, custo, etc.
+
+\subsection{Testes e Critérios de Análise}
+TODO - Detalhar como os resultados serão avaliados (tempo de execução, cobertura alcançada, etc.).
+
+\section{Resultados}
+TODO - Apresentar os resultados dos experimentos em gráficos ou tabelas.
+
+\chapter{Considerações Finais}
+
+\section{Conclusão}
+TODO - Resumir as contribuições e os resultados obtidos.
+
+%-------------Bibliografia------------------
+\newpage
+\renewcommand{\refname}{Referências Bibliográficas}
+\addcontentsline{toc}{chapter}{Referências Bibliográficas}
+\bibliography{Bibliografia}
+\nocite{lopesfilho2019, carvalho2022, carnielli}
+
+\end{document}
