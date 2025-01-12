@@ -204,6 +204,53 @@ TODO - Definir a função que deve ser otimizada, como maximizar a cobertura de 
 
 A modelagem da malha viária do bairro de Ondina, em Salvador, foi realizada utilizando grafos extraídos do OpenStreetMap. O grafo representa as ruas do bairro, onde os nós correspondem a pontos geográficos (latitude e longitude), e as arestas conectam esses pontos, representando as ruas ou caminhos disponíveis.
 
+\section{Extração, Processamento e Modelagem do Grafo}
+
+A construção do grafo que modela a malha viária do bairro de Ondina em Salvador foi realizada a partir de dados extraídos do OpenStreetMap (OSM). Este processo envolveu múltiplas etapas, desde a coleta dos dados geográficos até a simplificação e ajuste do grafo para adequação ao problema em análise.
+
+\subsection{Extração de Dados}
+
+Os dados do OSM, uma base colaborativa que fornece informações detalhadas sobre vias. Passaram por algumas transformações para obtermos apenas as informações necessárias.
+
+
+A Figura~\ref{fig:ondina_ruas} apresenta a visualização inicial das ruas do bairro de Ondina, com base nos dados brutos extraídos do OSM.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{visualizacao_inicial}
+    \caption{Visualização inicial das ruas do bairro de Ondina.}
+    \label{fig:ondina_ruas}
+\end{figure}
+
+\subsection{Processamento e Construção do Grafo}
+
+Após a extração dos dados, foi realizado o mapeamento para um grafo. Nesta etapa, os nós foram associados aos pontos geográficos, enquanto as arestas representaram as conexões entre eles, sendo atribuído um peso correspondente à distância entre os pontos. A Figura~\ref{fig:ondina_grafo_bruto} mostra a visualização das ruas com os vértices associados.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{ondina_grafo_bruto}
+    \caption{Visualização das ruas do bairro de Ondina com os vértices associados.}
+    \label{fig:ondina_grafo_bruto}
+\end{figure}
+
+\subsection{Simplificação do Grafo}
+
+Para adequar o grafo ao problema em análise, foi realizada uma simplificação que assumiu a existência de um campo de visão claro entre os nós conectados por uma aresta. Esta suposição eliminou obstáculos visuais e permitiu modelar de forma idealizada o problema, mantendo apenas os elementos essenciais para a análise.
+
+O resultado do grafo simplificado é apresentado na Figura~\ref{fig:ondina_grafo_simplificado}, mostrando a estrutura final com as simplificações implementadas.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{ondina_grafo_simplificado}
+    \caption{Visualização do grafo simplificado do bairro de Ondina.}
+    \label{fig:ondina_grafo_simplificado}
+\end{figure}
+
+\subsection{Discussão}
+
+A simplificação realizada, ao assumir a existência de campo de visão claro entre os nós, possibilitou o uso do grafo para aplicações práticas no problema em análise. Essa abordagem é particularmente útil em cenários que envolvem monitoramento ou comunicação direta, como a análise de cobertura por câmeras, onde barreiras visuais poderiam ser tratadas como elementos externos ao modelo principal.
+
+O processo de extração, construção e simplificação do grafo demonstra como é possível transformar dados geográficos brutos em representações abstratas otimizadas para resolver problemas específicos. A estrutura final do grafo oferece um modelo compacto e eficiente, adequado para o estudo da cobertura de vértices no contexto urbano de Ondina.
 \subsection{Estrutura do Grafo}
 
 O grafo é definido como um conjunto de \textbf{nós} e \textbf{arestas}, organizados da seguinte forma:
