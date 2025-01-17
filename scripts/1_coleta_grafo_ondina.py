@@ -1,53 +1,76 @@
 import osmnx as ox
 import networkx as nx
 import pickle
+import pandas as pd
+from shapely.geometry import Point
 
 # Nome do bairro ou área de interesse
 bairro = "Ondina, Salvador, Brazil"
 
-# Baixar o grafo do bairro da Ondina
+def collect_points_of_interest(place):
+    """Coleta pontos de interesse do OpenStreetMap"""
+    tags = {
+        'tourism': True,  # Pontos turísticos
+        'amenity': ['restaurant', 'cafe', 'bank', 'atm', 'school', 'university'],  # Serviços
+        'shop': True,  # Comércio
+        'leisure': True  # Lazer
+    }
+    
+    # Usar geometries_from_place em vez de features_from_place
+    pois = ox.geometries_from_place(place, tags=tags)
+    return pois
+
+# Configurar o grafo para usar projeção UTM
 print("Baixando dados do OpenStreetMap...")
-grafo = ox.graph_from_place(bairro, network_type='drive')
+grafo = ox.graph_from_place(bairro, network_type='drive', simplify=True)
+grafo = ox.project_graph(grafo)
 
-# Criar uma figura maior para melhor visualização
-# plt.figure(figsize=(20, 20))
+# Coletar pontos de interesse
+print("Coletando pontos de interesse...")
+pois = collect_points_of_interest(bairro)
 
-# Plotar o grafo base com cores personalizadas
-# ox.plot_graph(grafo, 
-#               node_size=20,
-#               node_color='black',
-#               edge_color='black',
-#               edge_linewidth=1,
-#               bgcolor='white',
-#               show=False)
+# Projetar os POIs para o mesmo sistema de coordenadas do grafo
+pois = ox.project_gdf(pois)
 
-# Adicionar os nomes das ruas nas arestas
-# for u, v, data in grafo.edges(data=True):
-#     if 'name' in data:
-#         # Pegar o ponto médio da aresta para posicionar o texto
-#         mid_point = [
-#             (grafo.nodes[u]['y'] + grafo.nodes[v]['y']) / 2,
-#             (grafo.nodes[u]['x'] + grafo.nodes[v]['x']) / 2
-#         ]
-#         # Simplificar o nome da rua
-#         nome = data['name']
-#         if isinstance(nome, list):
-#             nome = nome[0]  # Pega o primeiro nome se for uma lista
-#         if nome.lower().startswith(('rua ', 'avenida ')):
-#             nome = nome.split(' ', 1)[1]  # Remove 'Rua' ou 'Avenida' do início
-#         plt.text(mid_point[1], mid_point[0], nome, 
-#                 fontsize=6,  # Fonte menor
-#                 ha='center',
-#                 va='center',
-#                 bbox=dict(facecolor='white', 
-#                          edgecolor='none',
-#                          alpha=0.8,
-#                          pad=0.5),
-#                 rotation=45,
-#                 zorder=3)
+# Adicionar informações dos POIs ao grafo
+print("Processando pontos de interesse...")
+for idx, poi in pois.iterrows():
+    try:
+        # Usar o centro do polígono se for uma área
+        if poi.geometry.geom_type == 'Polygon':
+            point = poi.geometry.centroid
+        else:
+            point = poi.geometry
+        
+        # Encontrar o nó mais próximo no grafo
+        nearest_node = ox.distance.nearest_nodes(grafo, point.x, point.y)
+        
+        # Adicionar atributos ao nó
+        grafo.nodes[nearest_node]['is_poi'] = True
+        grafo.nodes[nearest_node]['poi_type'] = poi.get('amenity') or poi.get('tourism') or poi.get('shop') or poi.get('leisure')
+        grafo.nodes[nearest_node]['poi_name'] = poi.get('name', 'Unknown')
+        grafo.nodes[nearest_node]['bonus_value'] = 10  # Valor padrão de bônus para POIs
+    except Exception as e:
+        print(f"Erro ao processar POI: {e}")
+        continue
 
-# plt.tight_layout()
-# plt.show()
+# Adicionar pontos de ônibus como possíveis locais de coleta de passageiros
+print("Coletando pontos de ônibus...")
+try:
+    bus_stops = ox.geometries_from_place(bairro, tags={'highway': 'bus_stop'})
+    bus_stops = ox.project_gdf(bus_stops)
+    
+    for idx, stop in bus_stops.iterrows():
+        try:
+            point = stop.geometry.centroid if stop.geometry.geom_type == 'Polygon' else stop.geometry
+            nearest_node = ox.distance.nearest_nodes(grafo, point.x, point.y)
+            grafo.nodes[nearest_node]['is_bus_stop'] = True
+            grafo.nodes[nearest_node]['passenger_pickup'] = True
+        except Exception as e:
+            print(f"Erro ao processar ponto de ônibus: {e}")
+            continue
+except Exception as e:
+    print(f"Erro ao coletar pontos de ônibus: {e}")
 
 # Exportar o grafo para análise posterior
 print("Salvando o grafo...")
