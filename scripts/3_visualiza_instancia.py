@@ -24,8 +24,7 @@ def visualiza_grafo(json_path):
         G.add_edge(
             edge['source'], 
             edge['target'], 
-            weight=edge['weight'],
-            # name=edge['name']
+            weight=edge['weight']
         )
     
     # Configurar o plot
@@ -43,36 +42,26 @@ def visualiza_grafo(json_path):
         with_labels=False
     )
     
-    # Adicionar os nomes das ruas
-    print("Adicionando nomes das ruas...")
-    edge_labels = {}
-    # for edge in data['edges']:
-    #     if edge['name']:  # Se tiver nome
-    #         # Pegar o ponto médio da aresta para o texto
-    #         source_pos = pos[edge['source']]
-    #         target_pos = pos[edge['target']]
-    #         mid_x = (source_pos[0] + target_pos[0]) / 2
-    #         mid_y = (source_pos[1] + target_pos[1]) / 2
-            
-    #         # Simplificar o nome da rua
-    #         nome = edge['name']
-    #         if isinstance(nome, list):
-    #             nome = nome[0]
-    #         if nome.lower().startswith(('rua ', 'avenida ')):
-    #             nome = nome.split(' ', 1)[1]
-            
-    #         # Adicionar o texto
-    #         plt.text(
-    #             mid_x, mid_y, 
-    #             nome,
-    #             fontsize=6,
-    #             ha='center',
-    #             va='center',
-    #             bbox=dict(facecolor='white', alpha=0.7, edgecolor='none', pad=0.5),
-    #             rotation=45
-    #         )
+    # Highlight vertex cover nodes
+    vertex_cover = data.get("vertex_cover", [])
+    nx.draw_networkx_nodes(
+        G, 
+        pos, 
+        nodelist=vertex_cover, 
+        node_color='red', 
+        node_size=50,
+        label='Vertex Cover Nodes'
+    )
     
-    plt.title("Grafo de Ondina")
+    # Add labels for edges with names
+    for edge in data['edges']:
+        if edge['name']:
+            mid_x = (pos[edge['source']][0] + pos[edge['target']][0]) / 2
+            mid_y = (pos[edge['source']][1] + pos[edge['target']][1]) / 2
+            plt.text(mid_x, mid_y, edge['name'], fontsize=6, ha='center', va='center', bbox=dict(facecolor='white', alpha=0.7, edgecolor='none', pad=0.5))
+    
+    plt.title("Grafo de Ondina com Cobertura de Vértices")
+    plt.legend(loc='upper right')
     plt.tight_layout()
     plt.show()
 

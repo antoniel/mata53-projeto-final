@@ -40,6 +40,8 @@ def analisa_instancia(json_path):
     lon_min = min(node['lon'] for node in data['nodes'])
     lon_max = max(node['lon'] for node in data['nodes'])
     
+    vertex_cover = data.get("vertex_cover", [])
+    
     # Gerar relatório
     print("\n=== ANÁLISE DA INSTÂNCIA DO GRAFO DE ONDINA ===\n")
     
@@ -61,6 +63,10 @@ def analisa_instancia(json_path):
     print(f"- Densidade do grafo: {nx.density(G):.4f}")
     print(f"- Diâmetro do grafo: {nx.diameter(G)}")
     print(f"- Grau médio dos nós: {sum(dict(G.degree()).values())/num_nos:.2f}")
+    
+    print("\nCOBERTURA DE VÉRTICES:")
+    print(f"- Número de nós na cobertura de vértices: {len(vertex_cover)}")
+    print(f"- Nós na cobertura de vértices: {vertex_cover}")
 
 if __name__ == "__main__":
     # Caminho para o arquivo JSON
