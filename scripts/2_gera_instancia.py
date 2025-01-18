@@ -9,13 +9,12 @@ def cria_instancia_do_grafo(grafo_path, output_dir):
         G = pickle.load(f)
     
     # Criar dicionário de mapeamento de nós
-    # Mapear os IDs originais do OSM para números sequenciais
     mapeamento_nos = {node: idx for idx, node in enumerate(G.nodes())}
     
     # Criar a estrutura da instância
     instancia = {
-        "nodes": [],  # Lista de nós com suas coordenadas
-        "edges": [],  # Lista de arestas com seus pesos
+        "nodes": [],
+        "edges": [],
         "metadata": {
             "name": "Grafo de Ondina",
             "description": "Grafo das ruas do bairro de Ondina, Salvador",
@@ -27,28 +26,29 @@ def cria_instancia_do_grafo(grafo_path, output_dir):
     for node_id, data in G.nodes(data=True):
         instancia["nodes"].append({
             "id": mapeamento_nos[node_id],
-            "lat": data['y'],  # Latitude
-            "lon": data['x']   # Longitude
+            "lat": data['y'],
+            "lon": data['x']
         })
     
     # Adicionar arestas
     for u, v, data in G.edges(data=True):
-        # Calcular o peso da aresta (comprimento em metros)
         if 'length' in data:
             peso = data['length']
         else:
-            # Se não tiver comprimento, usar distância euclidiana
             peso = ((G.nodes[u]['y'] - G.nodes[v]['y'])**2 + 
-                   (G.nodes[u]['x'] - G.nodes[v]['x'])**2)**0.5 * 111000  # Aproximação em metros
+                   (G.nodes[u]['x'] - G.nodes[v]['x'])**2)**0.5 * 111000
         
-        # Adicionar a aresta com seu peso
         edge = {
             "source": mapeamento_nos[u],
             "target": mapeamento_nos[v],
-            "weight": float(peso),  # Peso em metros
-            "name": data.get('name', '')  # Nome da rua se disponível
+            "weight": float(peso),
+            "name": data.get('name', '')
         }
         instancia["edges"].append(edge)
+    
+    # Calcular cobertura de vértices
+    vertex_cover = nx.approximation.min_weighted_vertex_cover(G)
+    instancia["vertex_cover"] = [mapeamento_nos[node] for node in vertex_cover]
     
     # Criar diretório de saída se não existir
     os.makedirs(output_dir, exist_ok=True)
@@ -64,10 +64,7 @@ def cria_instancia_do_grafo(grafo_path, output_dir):
     print(f"Arquivo salvo em: {output_path}")
 
 if __name__ == "__main__":
-    # Caminho do grafo pickle gerado pelo script anterior
     grafo_path = "grafo_ondina.gpickle"
-    
-    # Diretório onde a instância será salva
     output_dir = "../instancias"
     
     cria_instancia_do_grafo(grafo_path, output_dir) 
