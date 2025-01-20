@@ -133,13 +133,16 @@ A teoria dos grafos oferece um poderoso conjunto de ferramentas matemáticas par
 \section{Justificativa}
 A aplicação de conceitos fundamentais da teoria dos grafos, como cobertura de vértices, dominação e problemas de localização de facilidades, fornece uma base teórica sólida para abordar o problema de posicionamento de câmeras. Este trabalho permite explorar na prática diversos algoritmos e técnicas estudados na disciplina MATA53 - Teoria dos Grafos, como algoritmos gulosos, programação dinâmica e métodos de otimização em grafos. A escolha do bairro de Ondina como objeto de estudo possibilita uma aplicação real desses conceitos, contribuindo tanto para o aprendizado acadêmico quanto para uma possível solução prática de segurança pública.
 
-\section{Objetivo Geral e Específicos}
-O objetivo geral deste trabalho é aplicar conceitos e algoritmos da teoria dos grafos para desenvolver uma solução que otimize o posicionamento de câmeras de segurança no bairro de Ondina, Salvador.
+\section{Objetivos do Projeto}
 
-Os objetivos específicos incluem:
+\subsection{Objetivo Geral}
+O objetivo geral deste projeto foi desenvolver uma solução otimizada para o posicionamento de câmeras de segurança, minimizando a quantidade necessária para garantir uma cobertura total das áreas de interesse no bairro de Ondina.
+
+\subsection{Objetivos Específicos}
 \begin{itemize}
-    \item Modelar a região de Ondina como um grafo, onde vértices representam possíveis localizações de câmeras e arestas representam conexões visuais ou físicas entre pontos;
-    \item Implementar e comparar diferentes algoritmos estudados na disciplina para resolver o problema de cobertura mínima;
+    \item Implementar diferentes algoritmos de cobertura de vértices, incluindo algoritmos gulosos e de programação dinâmica, para determinar a solução mais eficiente. A comparação entre os algoritmos foi realizada com base em critérios de eficiência e cobertura.
+    \item Analisar a complexidade computacional e a eficiência dos algoritmos implementados. A análise revelou que o algoritmo guloso, embora não ótimo, ofereceu uma solução eficiente em tempo polinomial, adequada para o contexto urbano de Ondina.
+    \item Avaliar a aplicabilidade das soluções teóricas em um cenário real de implementação. A modelagem do bairro de Ondina como um grafo permitiu a aplicação prática dos conceitos teóricos, resultando em uma solução viável para o problema de segurança pública.
 \end{itemize}
 
 \section{Metodologia}
@@ -287,40 +290,64 @@ O grafo é definido como um conjunto de \textbf{nós} e \textbf{arestas}, organi
 \chapter{Solução Algorítmica}
 
 \section{Pseudo-Código e Algoritmo Utilizado}
-O algoritmo utilizado para resolver o problema de cobertura de vértices é baseado em uma abordagem heurística conhecida como "Algoritmo Guloso para Cobertura de Vértices". Este algoritmo busca minimizar o número de câmeras necessárias, selecionando iterativamente vértices que cobrem o maior número de arestas não cobertas. A seguir, o pseudo-código detalha o processo:
 
-\begin{algorithm}
-\caption{Cobertura de Vértices}
-\begin{algorithmic}[1]
-\State \textbf{Entrada:} Grafo \(G = (V, E)\)
-\State \textbf{Saída:} Conjunto de vértices \(C\) que cobre todas as arestas
-\State \(C \gets \emptyset\)
-\While{existem arestas não cobertas em \(E\)}
-    \State Selecione um vértice \(v\) que cubra o maior número de arestas não cobertas
-    \State Adicione \(v\) a \(C\)
-    \State Remova as arestas cobertas por \(v\) de \(E\)
-\EndWhile
-\State \Return \(C\)
-\end{algorithmic}
-\end{algorithm}
+\subsection{Complexidade Computacional}
 
-\subsection{Heurística e Complexidade}
-A heurística utilizada é uma abordagem gulosa, onde a escolha local de um vértice que cobre o maior número de arestas não cobertas é feita em cada iteração. Esta abordagem não garante uma solução ótima, mas oferece uma solução aproximada em tempo polinomial. A complexidade do algoritmo é \(O(V + E)\), onde \(V\) é o número de vértices e \(E\) é o número de arestas no grafo. Esta complexidade é derivada do fato de que cada aresta é considerada uma vez durante o processo de seleção dos vértices.
+\subsubsection{Problema de Localização com Cobertura Completa}
+O problema de encontrar o número mínimo de câmeras para cobrir todos os vértices é uma variação do problema de cobertura de conjuntos, que é um problema \textbf{NP-Difícil}. Isso significa que não existe um algoritmo conhecido que resolva esse problema em tempo polinomial para todos os casos. A complexidade computacional exata depende do tamanho da instância do problema, que é influenciado pelo número de vértices (locais potenciais para câmeras) e arestas (conexões ou alcance entre vértices).
 
-\subsection{Aplicação em Teoria dos Grafos}
-Na teoria dos grafos, o problema de cobertura de vértices é um problema clássico de otimização combinatória. A aplicação deste algoritmo no contexto do bairro de Ondina envolve modelar as ruas como arestas e os possíveis locais de instalação de câmeras como vértices. A solução obtida visa minimizar o número de câmeras necessárias para cobrir todas as ruas, garantindo que cada rua seja monitorada por pelo menos uma câmera. Esta abordagem é particularmente útil em cenários urbanos, onde a cobertura eficiente de áreas públicas é essencial para a segurança.
+Na prática, para resolver esse tipo de problema, são utilizados algoritmos de otimização, como o CPLEX, que foi usado no artigo de Veloso et al. \cite{veloso2021localizacao}. Esses algoritmos geralmente utilizam técnicas de \textit{branch-and-bound} e \textit{programação linear inteira}, que podem encontrar a solução ótima, mas o tempo de execução pode aumentar exponencialmente com o tamanho do problema.
 
-\section{Detalhes de Implementação}
-\subsection{Classes, Diagramas, Estruturas}
-O código é estruturado em módulos que representam diferentes partes do processo, desde a coleta de dados até a análise dos resultados. As principais classes e métodos são organizados para facilitar a manutenção e a extensão do projeto. A implementação segue o paradigma de programação orientada a objetos, permitindo encapsular a lógica de cada componente em classes distintas. Isso não apenas melhora a legibilidade do código, mas também facilita a reutilização e a modificação de componentes individuais sem afetar o sistema como um todo.
+\subsubsection{Problema de Localização com Cobertura Máxima}
+O problema de maximizar a cobertura com um número fixo de câmeras também é \textbf{NP-Difícil}. Isso significa que, assim como o problema anterior, não há garantia de encontrar a solução ótima em tempo polinomial. A complexidade também depende do número de vértices, das conexões e do número máximo de câmeras (p) que podem ser instaladas.
 
-Além disso, diagramas de classe e de sequência foram utilizados para planejar a interação entre os diferentes componentes do sistema. Esses diagramas ajudam a visualizar a arquitetura do software e a identificar possíveis melhorias ou refatorações necessárias.
+O uso de algoritmos como o CPLEX também se aplica a este problema, com o objetivo de encontrar a melhor solução dentro das restrições estabelecidas.
 
-\subsection{Estruturas de Dados Utilizadas}
-Para representar o grafo, utilizamos estruturas de dados eficientes como listas de adjacência, que permitem operações rápidas de inserção e busca. A escolha dessa estrutura se deve à sua eficiência em termos de espaço e tempo, especialmente em grafos esparsos como o que modela o bairro de Ondina.
+\subsubsection{Considerações Práticas}
+Em ambos os casos, a complexidade computacional pode se tornar um problema para instâncias grandes. O tempo de execução dos algoritmos pode aumentar significativamente com o número de vértices. Para instâncias maiores, é recomendável utilizar técnicas de otimização mais eficientes ou heurísticas para encontrar soluções aproximadas em um tempo razoável. A escolha do algoritmo e a modelagem adequada do problema podem influenciar significativamente o tempo de execução e a qualidade da solução obtida.
 
-\subsection{Técnicas de Otimização}
-Durante a implementação, várias técnicas de otimização foram aplicadas para melhorar o desempenho do algoritmo. Isso inclui a utilização de estruturas de dados avançadas, como heaps, para otimizar a seleção de vértices durante o processo de cobertura. Além disso, técnicas de memoização foram empregadas para evitar cálculos redundantes, melhorando assim a eficiência geral do algoritmo.
+\subsection{Pseudoalgoritmos}
+
+\subsubsection{Pseudoalgoritmo para o Problema de Localização com Cobertura Completa}
+\begin{enumerate}
+    \item \textbf{Entrada:} Conjunto de vértices de demanda (I), conjunto de vértices de instalação (J), matrizes de adjacência (A, B, C)
+    \item \textbf{Inicialização:}
+    \begin{itemize}
+        \item Variável \(x[j]\) (câmera instalada para direita/cima) = 0 para todo \(j\) em \(J\).
+        \item Variável \(z[j]\) (câmera instalada para esquerda/baixo) = 0 para todo \(j\) em \(J\).
+        \item Variável \(k[j]\) (câmera instalada para frente) = 0 para todo \(j\) em \(J\).
+    \end{itemize}
+    \item \textbf{Função Objetivo:} Minimizar a soma de câmeras instaladas: \(\text{minimize} \sum_{j \in J} x[j] + \sum_{j \in J} z[j] + \sum_{j \in J} k[j]\) \cite{veloso2021localizacao}.
+    \item \textbf{Restrições:}
+    \begin{itemize}
+        \item Garantir que cada vértice de demanda seja coberto por pelo menos uma câmera: \(\forall i \in I, \sum_{j \in J} A[i][j] \cdot x[j] + \sum_{j \in J} B[i][j] \cdot z[j] + \sum_{j \in J} C[i][j] \cdot k[j] \geq 1\)
+        \item As variáveis devem ser binárias: \(x[j], z[j], k[j] \in \{0, 1\}\)
+    \end{itemize}
+    \item \textbf{Resolver o modelo de programação linear inteira} usando CPLEX ou outro solver adequado.
+    \item \textbf{Saída:} Valores de \(x[j]\), \(z[j]\) e \(k[j]\) que indicam a localização das câmeras para cobertura completa.
+\end{enumerate}
+
+\subsubsection{Pseudoalgoritmo para o Problema de Localização com Cobertura Máxima}
+\begin{enumerate}
+    \item \textbf{Entrada:} Conjunto de vértices de demanda (I), conjunto de vértices de instalação (J), matrizes de adjacência (A, B, C), número máximo de câmeras (p)
+    \item \textbf{Inicialização:}
+    \begin{itemize}
+        \item Variável \(x[j]\) (câmera instalada para direita/cima) = 0 para todo \(j\) em \(J\).
+        \item Variável \(z[j]\) (câmera instalada para esquerda/baixo) = 0 para todo \(j\) em \(J\).
+        \item Variável \(k[j]\) (câmera instalada para frente) = 0 para todo \(j\) em \(J\).
+        \item Variável \(y[i]\) (vértice \(i\) coberto) = 0 para todo \(i\) em \(I\).
+        \item Vetor \(w[i]\) (peso do vértice \(i\)) = 1 para todo \(i\) em \(I\).
+    \end{itemize}
+    \item \textbf{Função Objetivo:} Maximizar a soma dos pesos dos vértices cobertos: \(\text{maximize} \sum_{i \in I} w[i] \cdot y[i]\)
+    \item \textbf{Restrições:}
+    \begin{itemize}
+        \item Garantir que um vértice seja coberto apenas se houver uma câmera que o cubra: \(\forall i \in I, \sum_{j \in J} A[i][j] \cdot x[j] + \sum_{j \in J} B[i][j] \cdot z[j] + \sum_{j \in J} C[i][j] \cdot k[j] - y[i] \geq 0\)
+        \item Limitar o número total de câmeras instaladas: \(\sum_{j \in J} x[j] + \sum_{j \in J} z[j] + \sum_{j \in J} k[j] \leq p\)
+        \item As variáveis devem ser binárias: \(x[j], z[j], k[j], y[i] \in \{0, 1\}\)
+    \end{itemize}
+    \item \textbf{Resolver o modelo de programação linear inteira} usando CPLEX ou outro solver adequado.
+    \item \textbf{Saída:} Valores de \(x[j]\), \(z[j]\), \(k[j]\) e \(y[i]\) que indicam a localização das câmeras e os vértices cobertos.
+\end{enumerate}
 
 \chapter{Experimentos}
 
