@@ -45,11 +45,12 @@ def visualiza_comparacao(json_path, resultados_dir, figuras_dir):
             edge_color='gray', width=1, with_labels=False, ax=ax1)
     
     cameras_completa = cobertura_completa.get('vertices_selecionados', [])
+    vertices_cobertos_completa = cobertura_completa.get('vertices_cobertos', [])
     nx.draw_networkx_nodes(G, pos, nodelist=cameras_completa, 
                           node_color='red', node_size=100, 
                           label='Câmeras', ax=ax1)
     
-    ax1.set_title(f"Cobertura Completa (Guloso)\n{len(cameras_completa)} câmeras cobrindo todos os vértices")
+    ax1.set_title(f"Cobertura Completa (Guloso)\n{len(cameras_completa)} câmeras cobrindo {len(vertices_cobertos_completa)} vértices")
     ax1.legend()
     
     # Cobertura Máxima (Guloso)
@@ -85,7 +86,7 @@ def visualiza_comparacao(json_path, resultados_dir, figuras_dir):
                           node_color='blue', node_size=50, 
                           label='Vértices Cobertos', ax=ax3)
     
-    ax3.set_title(f"Cobertura Genética\n{len(cameras_genetica)} câmeras cobrindo {len(vertices_cobertos_genetica)} vértices\nFitness: {cobertura_genetica.get('fitness', 0):.6f}")
+    ax3.set_title(f"Cobertura Máxima (Genético)\n{len(cameras_genetica)} câmeras cobrindo {len(vertices_cobertos_genetica)} vértices")
     ax3.legend()
     
     plt.tight_layout()

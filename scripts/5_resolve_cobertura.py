@@ -102,22 +102,21 @@ class CoberturaVertices:
             
         return cobertura
 
-    def resolve_cobertura_maxima(self, p: int) -> Tuple[Set[int], Set[int]]:
+    def resolve_cobertura_maxima(self, max_cameras: int = 40) -> Tuple[List[int], Set[int]]:
         """
-        Implementa o algoritmo para cobertura máxima com número limitado de câmeras.
-        Uma câmera instalada em um vértice cobre todos os vértices adjacentes
-        e o próprio vértice.
+        Resolve o problema de cobertura máxima, onde queremos cobrir o máximo
+        de vértices possível usando no máximo max_cameras câmeras.
         
         Args:
-            p (int): Número máximo de câmeras permitidas
+            max_cameras: Número máximo de câmeras que podem ser usadas.
             
         Returns:
-            Tuple[Set[int], Set[int]]: (conjunto de vértices selecionados, conjunto de vértices cobertos)
+            Tupla com (lista de vértices selecionados, conjunto de vértices cobertos)
         """
         cobertura = set()
         vertices_cobertos = set()
         
-        for _ in range(p):
+        for _ in range(max_cameras):
             melhor_vertice = None
             max_novos_cobertos = 0
             
@@ -141,20 +140,25 @@ class CoberturaVertices:
             vertices_cobertos.update(self.grafo.neighbors(melhor_vertice))
             vertices_cobertos.add(melhor_vertice)
             
-        return cobertura, vertices_cobertos
+        return list(cobertura), vertices_cobertos
 
-    def salvar_resultado(self, cobertura: Set[int], arquivo_saida: str):
+    def salvar_resultado(self, cobertura: Set[int], arquivo_saida: str, vertices_cobertos: Set[int] = None):
         """
         Salva o resultado da cobertura em um arquivo JSON.
         
         Args:
             cobertura (Set[int]): Conjunto de vértices selecionados
             arquivo_saida (str): Caminho do arquivo de saída
+            vertices_cobertos (Set[int], optional): Conjunto de vértices cobertos
         """
+        if vertices_cobertos is None:
+            vertices_cobertos = set().union(*[set(self.grafo.neighbors(v)) | {v} for v in cobertura])
+            
         resultado = {
             "vertices_selecionados": list(cobertura),
+            "vertices_cobertos": list(vertices_cobertos),
             "num_cameras": len(cobertura),
-            "cobertura_total": len(set().union(*[set(self.grafo.neighbors(v)) | {v} for v in cobertura])),
+            "total_cobertura": len(vertices_cobertos),
             "total_vertices": len(self.grafo)
         }
         
@@ -185,9 +189,9 @@ def main():
     solver.salvar_resultado(cobertura_completa, "resultados/cobertura_completa.json")
     
     # Resolve cobertura máxima com limite de câmeras
-    p = 10  # número máximo de câmeras
+    p = 40  # número máximo de câmeras
     cobertura_maxima, vertices_cobertos = solver.resolve_cobertura_maxima(p)
-    solver.salvar_resultado(cobertura_maxima, "resultados/cobertura_maxima.json")
+    solver.salvar_resultado(cobertura_maxima, "resultados/cobertura_maxima.json", vertices_cobertos)
     
     # Log dos resultados em formato similar ao README
     logger.info(f"\nResultados da execução:")

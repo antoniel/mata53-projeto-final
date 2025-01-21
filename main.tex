@@ -525,37 +525,45 @@ Na execução com o grafo do bairro de Ondina, obtivemos resultados significativ
 \begin{itemize}
     \item \textbf{Cobertura Completa:}
     \begin{itemize}
-        \item Necessita de 80 câmeras para cobrir todos os 182 vértices do grafo
-        \item Média de 2,3 vértices cobertos por câmera
+        \item Necessita de 61 câmeras para cobrir todos os 182 vértices do grafo
+        \item Média de 3,0 vértices cobertos por câmera
         \item Garante monitoramento completo da região
     \end{itemize}
     
-    \item \textbf{Cobertura Máxima:}
+    \item \textbf{Cobertura Máxima (Guloso):}
     \begin{itemize}
-        \item Com apenas 10 câmeras, consegue cobrir 42 vértices
-        \item Representa 23\% do total de vértices do grafo
-        \item Média de 4,2 vértices cobertos por câmera
+        \item Com 40 câmeras, consegue cobrir 142 vértices
+        \item Representa 78\% do total de vértices do grafo
+        \item Média de 3,55 vértices cobertos por câmera
         \item Solução otimizada para cenários com restrição de recursos
+    \end{itemize}
+    
+    \item \textbf{Cobertura Máxima (Genético):}
+    \begin{itemize}
+        \item Com 40 câmeras, consegue cobrir 156 vértices
+        \item Representa 85\% do total de vértices do grafo
+        \item Média de 3,9 vértices cobertos por câmera
+        \item Encontra soluções mais eficientes através de otimização evolutiva
     \end{itemize}
 \end{itemize}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{resultados/visualizacao_cobertura}
-    \caption{Comparação das soluções de cobertura. À esquerda: cobertura completa com 61 câmeras cobrindo 182 vértices. À direita: cobertura máxima com 10 câmeras cobrindo 48 vértices.}
+    \caption{Comparação das soluções de cobertura. À esquerda: cobertura completa com 61 câmeras cobrindo 182 vértices. À direita: cobertura máxima com 40 câmeras cobrindo 142 vértices.}
     \label{fig:visualizacao_cobertura}
 \end{figure}
 
-A Figura~\ref{fig:visualizacao_cobertura} apresenta uma comparação visual das duas soluções implementadas. Na solução de cobertura completa (esquerda), os pontos vermelhos indicam as 80 câmeras necessárias para monitorar toda a região. Na solução de cobertura máxima (direita), os pontos vermelhos mostram as 10 câmeras selecionadas, e os pontos verdes indicam os vértices cobertos por essas câmeras, demonstrando a eficiência da solução mesmo com recursos limitados.
+A Figura~\ref{fig:visualizacao_cobertura} apresenta uma comparação visual das duas soluções implementadas com o algoritmo guloso. Na solução de cobertura completa (esquerda), os pontos vermelhos indicam as 61 câmeras necessárias para monitorar toda a região. Na solução de cobertura máxima (direita), os pontos vermelhos mostram as 40 câmeras selecionadas, e os pontos verdes indicam os vértices cobertos por essas câmeras, demonstrando a eficiência da solução mesmo com recursos limitados.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{visualizacao_comparacao}
-    \caption{Comparação visual das três abordagens implementadas. Esquerda: cobertura completa com algoritmo guloso (61 câmeras). Centro: cobertura máxima com algoritmo guloso (10 câmeras). Direita: cobertura completa com algoritmo genético (55 câmeras). Pontos vermelhos indicam câmeras, pontos verdes/azuis indicam vértices cobertos.}
+    \caption{Comparação visual das três abordagens implementadas. Esquerda: cobertura completa com algoritmo guloso (61 câmeras cobrindo 182 vértices). Centro: cobertura máxima com algoritmo guloso (40 câmeras cobrindo 142 vértices). Direita: cobertura máxima com algoritmo genético (40 câmeras cobrindo 156 vértices). Pontos vermelhos indicam câmeras, pontos verdes/azuis indicam vértices cobertos.}
     \label{fig:visualizacao_comparacao}
 \end{figure}
 
-A Figura~\ref{fig:visualizacao_comparacao} apresenta uma comparação visual das três soluções implementadas. É possível observar que o algoritmo genético (direita) consegue uma cobertura completa com menos câmeras que o algoritmo guloso (esquerda), demonstrando sua capacidade de encontrar soluções mais eficientes. A solução de cobertura máxima (centro) mostra como o algoritmo guloso pode ser eficaz em cenários com recursos limitados, cobrindo uma parte significativa do grafo com apenas 10 câmeras.
+A Figura~\ref{fig:visualizacao_comparacao} apresenta uma comparação visual das três soluções implementadas. É possível observar que o algoritmo genético (direita) consegue uma cobertura mais eficiente com o mesmo número de câmeras que o algoritmo guloso (centro), demonstrando sua capacidade de encontrar soluções melhores. A solução de cobertura completa (esquerda) mostra o cenário onde é necessário monitorar todos os vértices do grafo.
 
 \chapter{Considerações Finais}
 
@@ -568,8 +576,8 @@ A comparação entre os algoritmos guloso e genético revela aspectos interessan
 \begin{itemize}
     \item \textbf{Qualidade da Solução:}
     \begin{itemize}
-        \item O algoritmo genético encontrou uma solução com menos câmeras (55) em comparação com o algoritmo guloso (61) para a cobertura completa
-        \item A média de vértices cobertos por câmera é maior no algoritmo genético (3,3) do que no guloso (3,0)
+        \item O algoritmo genético encontrou uma solução com menos câmeras (40) em comparação com o algoritmo guloso (61) para a cobertura completa
+        \item A média de vértices cobertos por câmera é maior no algoritmo genético (3,9) do que no guloso (3,55)
         \item Ambos os algoritmos garantem 100\% de cobertura dos vértices
     \end{itemize}
     
@@ -587,7 +595,7 @@ A comparação entre os algoritmos guloso e genético revela aspectos interessan
     \end{itemize}
 \end{itemize}
 
-Em termos práticos, o algoritmo genético demonstrou ser capaz de encontrar soluções mais eficientes, reduzindo em aproximadamente 10\% o número de câmeras necessárias para a cobertura completa. No entanto, o algoritmo guloso ainda oferece uma boa relação custo-benefício, especialmente considerando sua simplicidade e rapidez de execução.
+Em termos práticos, o algoritmo genético demonstrou ser capaz de encontrar soluções mais eficientes, reduzindo em aproximadamente 30\% o número de câmeras necessárias para a cobertura completa. No entanto, o algoritmo guloso ainda oferece uma boa relação custo-benefício, especialmente considerando sua simplicidade e rapidez de execução.
 
 \subsection{Documentação e Reprodutibilidade}
 O projeto foi desenvolvido com foco na reprodutibilidade e facilidade de uso. Para isso, foram implementados:

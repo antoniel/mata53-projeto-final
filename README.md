@@ -1,6 +1,8 @@
-# Projeto de Cobertura de Vértices em Ondina
+# Projeto Final - MATA53 Teoria dos Grafos
 
-Este projeto visa identificar locais ótimos para a instalação de câmeras no bairro de Ondina, Salvador, utilizando a técnica de cobertura de vértices em grafos. O objetivo é garantir que todas as ruas sejam monitoradas com o menor número possível de câmeras.
+## Problema de Colocação Ótima de Câmeras de Segurança no bairro da Ondina
+
+Este projeto implementa diferentes algoritmos para resolver o problema de cobertura de vértices aplicado à colocação de câmeras de segurança no bairro de Ondina, Salvador.
 
 ## Estrutura do Projeto
 
@@ -10,6 +12,8 @@ Este projeto visa identificar locais ótimos para a instalação de câmeras no 
 - **scripts/4_analisa_instancia.py**: Analisa a instância do grafo, fornecendo estatísticas e informações sobre a cobertura de vértices.
 - **scripts/5_resolve_cobertura.py**: Implementa os algoritmos de cobertura completa e máxima para otimizar o posicionamento das câmeras.
 - **scripts/6_visualiza_cobertura.py**: Gera visualizações comparativas das soluções de cobertura completa e máxima, destacando o posicionamento das câmeras e os vértices cobertos.
+- **scripts/7_resolve_cobertura_genetico.py**: Implementa um algoritmo genético para otimizar a cobertura.
+- **scripts/8_visualiza_comparacao.py**: Gera visualizações comparativas das três abordagens.
 
 ## Requisitos e Instalação
 
@@ -34,9 +38,9 @@ As principais bibliotecas utilizadas são:
 
 ## Como Executar
 
-Todos os comandos devem ser executados a partir da pasta raiz do projeto:
+Execute os scripts na seguinte ordem:
 
-1. Coleta do grafo:
+1. Coleta do grafo de Ondina:
 ```bash
 python scripts/1_coleta_grafo_ondina.py
 ```
@@ -46,7 +50,7 @@ python scripts/1_coleta_grafo_ondina.py
 python scripts/2_gera_instancia.py
 ```
 
-3. Visualização do grafo:
+3. Visualização da instância:
 ```bash
 python scripts/3_visualiza_instancia.py
 ```
@@ -56,46 +60,48 @@ python scripts/3_visualiza_instancia.py
 python scripts/4_analisa_instancia.py
 ```
 
-5. Resolução da cobertura:
+5. Resolução do problema de cobertura:
 ```bash
 python scripts/5_resolve_cobertura.py
 ```
 
-6. Visualização dos resultados:
+6. Resolução usando algoritmo genético:
 ```bash
-python scripts/6_visualiza_cobertura.py
+python scripts/7_resolve_cobertura_genetico.py
+```
+
+7. Visualização comparativa das soluções:
+```bash
+python scripts/8_visualiza_comparacao.py
 ```
 
 ## Algoritmos de Cobertura
 
-O script `5_resolve_cobertura.py` implementa dois algoritmos principais:
+### Cobertura Completa (Guloso)
+- Implementa um algoritmo guloso que busca cobrir todos os vértices do grafo
+- Seleciona iterativamente os vértices que cobrem o maior número de vértices ainda não cobertos
+- Resultado: 61 câmeras para cobrir todos os 182 vértices
+- Média de 3,0 vértices cobertos por câmera
 
-1. **Cobertura Completa**: Busca o número mínimo de câmeras necessário para cobrir todos os vértices do grafo. Utiliza uma abordagem gulosa que seleciona iterativamente os vértices que cobrem o maior número de vértices ainda não cobertos.
+### Cobertura Máxima (Guloso)
+- Implementa um algoritmo guloso com limite de câmeras
+- Busca maximizar a cobertura usando no máximo 40 câmeras
+- Resultado: 142 vértices cobertos (78% do total)
+- Média de 3,55 vértices cobertos por câmera
 
-2. **Cobertura Máxima**: Dado um número limitado de câmeras (p), busca maximizar o número de vértices cobertos. Também utiliza uma abordagem gulosa, selecionando os vértices que proporcionam a maior cobertura adicional.
+### Cobertura Máxima (Genético)
+- Implementa um algoritmo genético para otimizar a cobertura
+- Usa população de 100 indivíduos e 200 gerações
+- Resultado: 156 vértices cobertos (85% do total) com 40 câmeras
+- Média de 3,9 vértices cobertos por câmera
 
 ## Resultados
 
-Os resultados da execução dos algoritmos são salvos no diretório `resultados/`:
-- `cobertura_completa.json`: Contém a solução para cobertura completa do grafo, incluindo:
-  - Lista de vértices selecionados para instalação de câmeras
-  - Número total de câmeras necessárias
-  - Cobertura total alcançada
-  - Total de vértices no grafo
+Os resultados são salvos em arquivos JSON na pasta `resultados/`:
+- `cobertura_completa.json`: Solução de cobertura completa
+- `cobertura_maxima.json`: Solução de cobertura máxima com algoritmo guloso
+- `ga_cobertura_ondina.json`: Solução de cobertura máxima com algoritmo genético
 
-- `cobertura_maxima.json`: Contém a solução para cobertura máxima com número limitado de câmeras, incluindo:
-  - Lista de vértices selecionados (limitada a p câmeras)
-  - Número de câmeras utilizadas
-  - Número de vértices cobertos
-  - Total de vértices no grafo
-
-- `visualizacao_cobertura.png`: Imagem comparativa mostrando:
-  - Solução de cobertura completa com todas as câmeras posicionadas
-  - Solução de cobertura máxima destacando câmeras e vértices cobertos
-  - Estatísticas de cobertura para cada solução
-
-## Exemplo de Resultados
-
-Na execução com o grafo de Ondina:
-- Cobertura Completa: Necessita de 80 câmeras para cobrir todos os 182 vértices
-- Cobertura Máxima: Com 10 câmeras, consegue cobrir 42 vértices (23% do total)
+Visualizações são geradas em:
+- `resultados/visualizacao_cobertura.png`: Comparação das soluções gulosas
+- `resultados/visualizacao_comparacao.png`: Comparação das três abordagens
