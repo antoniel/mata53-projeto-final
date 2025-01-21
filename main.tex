@@ -164,7 +164,8 @@ O objetivo geral deste projeto foi desenvolver uma solução otimizada para o po
 \section{Organização do Trabalho}
 O trabalho está organizado em capítulos que abordam desde a introdução teórica até a implementação prática e análise dos resultados. Cada capítulo é estruturado para fornecer uma visão clara e detalhada do processo de desenvolvimento e das conclusões obtidas.
 
-\section{Trabalhos Correlatos}
+\chapter{Trabalhos Correlatos}
+% #TODO: melhorar o capítulo
 O problema de cobertura mínima de vértices tem sido extensivamente estudado na literatura, tanto em sua forma teórica quanto em aplicações práticas. Esta seção apresenta uma revisão dos principais trabalhos relacionados, focando em resultados teóricos fundamentais e aplicações similares ao nosso problema de posicionamento de câmeras.
 
 \chapter{Descrição Formal do Problema}
@@ -306,66 +307,14 @@ O uso de algoritmos como o CPLEX também se aplica a este problema, com o objeti
 \subsubsection{Considerações Práticas}
 Em ambos os casos, a complexidade computacional pode se tornar um problema para instâncias grandes. O tempo de execução dos algoritmos pode aumentar significativamente com o número de vértices. Para instâncias maiores, é recomendável utilizar técnicas de otimização mais eficientes ou heurísticas para encontrar soluções aproximadas em um tempo razoável. A escolha do algoritmo e a modelagem adequada do problema podem influenciar significativamente o tempo de execução e a qualidade da solução obtida.
 
-\subsection{Pseudoalgoritmos}
-
-\subsubsection{Pseudoalgoritmo para o Problema de Localização com Cobertura Completa}
-\begin{enumerate}
-    \item \textbf{Entrada:} Conjunto de vértices de demanda (I), conjunto de vértices de instalação (J), matrizes de adjacência (A, B, C)
-    \item \textbf{Inicialização:}
-    \begin{itemize}
-        \item Variável \(x[j]\) (câmera instalada para direita/cima) = 0 para todo \(j\) em \(J\).
-        \item Variável \(z[j]\) (câmera instalada para esquerda/baixo) = 0 para todo \(j\) em \(J\).
-        \item Variável \(k[j]\) (câmera instalada para frente) = 0 para todo \(j\) em \(J\).
-    \end{itemize}
-    \item \textbf{Função Objetivo:} Minimizar a soma de câmeras instaladas: \(\text{minimize} \sum_{j \in J} x[j] + \sum_{j \in J} z[j] + \sum_{j \in J} k[j]\) \cite{veloso2021localizacao}.
-    \item \textbf{Restrições:}
-    \begin{itemize}
-        \item Garantir que cada vértice de demanda seja coberto por pelo menos uma câmera: \(\forall i \in I, \sum_{j \in J} A[i][j] \cdot x[j] + \sum_{j \in J} B[i][j] \cdot z[j] + \sum_{j \in J} C[i][j] \cdot k[j] \geq 1\)
-        \item As variáveis devem ser binárias: \(x[j], z[j], k[j] \in \{0, 1\}\)
-    \end{itemize}
-    \item \textbf{Resolver o modelo de programação linear inteira} usando CPLEX ou outro solver adequado.
-    \item \textbf{Saída:} Valores de \(x[j]\), \(z[j]\) e \(k[j]\) que indicam a localização das câmeras para cobertura completa.
-\end{enumerate}
-
-\subsubsection{Pseudoalgoritmo para o Problema de Localização com Cobertura Máxima}
-\begin{enumerate}
-    \item \textbf{Entrada:} Conjunto de vértices de demanda (I), conjunto de vértices de instalação (J), matrizes de adjacência (A, B, C), número máximo de câmeras (p)
-    \item \textbf{Inicialização:}
-    \begin{itemize}
-        \item Variável \(x[j]\) (câmera instalada para direita/cima) = 0 para todo \(j\) em \(J\).
-        \item Variável \(z[j]\) (câmera instalada para esquerda/baixo) = 0 para todo \(j\) em \(J\).
-        \item Variável \(k[j]\) (câmera instalada para frente) = 0 para todo \(j\) em \(J\).
-        \item Variável \(y[i]\) (vértice \(i\) coberto) = 0 para todo \(i\) em \(I\).
-        \item Vetor \(w[i]\) (peso do vértice \(i\)) = 1 para todo \(i\) em \(I\).
-    \end{itemize}
-    \item \textbf{Função Objetivo:} Maximizar a soma dos pesos dos vértices cobertos: \(\text{maximize} \sum_{i \in I} w[i] \cdot y[i]\)
-    \item \textbf{Restrições:}
-    \begin{itemize}
-        \item Garantir que um vértice seja coberto apenas se houver uma câmera que o cubra: \(\forall i \in I, \sum_{j \in J} A[i][j] \cdot x[j] + \sum_{j \in J} B[i][j] \cdot z[j] + \sum_{j \in J} C[i][j] \cdot k[j] - y[i] \geq 0\)
-        \item Limitar o número total de câmeras instaladas: \(\sum_{j \in J} x[j] + \sum_{j \in J} z[j] + \sum_{j \in J} k[j] \leq p\)
-        \item As variáveis devem ser binárias: \(x[j], z[j], k[j], y[i] \in \{0, 1\}\)
-    \end{itemize}
-    \item \textbf{Resolver o modelo de programação linear inteira} usando CPLEX ou outro solver adequado.
-    \item \textbf{Saída:} Valores de \(x[j]\), \(z[j]\), \(k[j]\) e \(y[i]\) que indicam a localização das câmeras e os vértices cobertos.
-\end{enumerate}
+\subsubsection{Pseudo-Código}
+- TODO
 
 \chapter{Experimentos}
 
 \section{Metodologia}
 \subsection{Instâncias}
-Os dados utilizados nos experimentos foram extraídos do OpenStreetMap, representando o bairro de Ondina. Os pontos potenciais para câmeras foram identificados com base na estrutura viária. Para garantir a representatividade dos dados, diferentes cenários foram simulados, variando o número de câmeras e o alcance de cobertura, permitindo uma análise abrangente das soluções propostas.
-
-\subsection{Parâmetros}
-Os parâmetros ajustados nos experimentos incluem o alcance das câmeras e o custo associado à instalação em diferentes locais. Esses parâmetros foram cuidadosamente selecionados para refletir condições reais de implementação, considerando fatores como visibilidade, obstáculos físicos e restrições orçamentárias.
-
-\subsection{Testes e Critérios de Análise}
-Os resultados foram avaliados com base no tempo de execução, na cobertura alcançada e na eficiência dos algoritmos implementados. Critérios adicionais, como a robustez da solução em cenários de falha e a adaptabilidade a mudanças no ambiente urbano, também foram considerados. Testes de estresse foram conduzidos para avaliar o comportamento do sistema sob condições extremas, garantindo a confiabilidade das soluções em situações reais.
-
-\section{Resultados}
-Os resultados dos experimentos são apresentados em gráficos e tabelas, destacando a eficácia das soluções encontradas. A análise dos dados revelou que a abordagem heurística proposta é capaz de reduzir significativamente o número de câmeras necessárias, mantendo uma cobertura completa das áreas de interesse. Comparações com métodos tradicionais de cobertura de vértices demonstraram a superioridade da solução em termos de custo-benefício e eficiência operacional.
-
-\subsection{Avaliação dos Resultados}
-A análise dos resultados mostra que a abordagem proposta é eficaz na redução do número de câmeras necessárias, mantendo uma cobertura completa das áreas de interesse. Além disso, a flexibilidade do algoritmo permite ajustes rápidos em resposta a mudanças no ambiente urbano, tornando-o uma solução prática e escalável para desafios de segurança pública em áreas urbanas densas.
+Os dados utilizados nos experimentos foram extraídos do OpenStreetMap, representando o bairro de Ondina. Os pontos potenciais para câmeras foram identificados com base na estrutura viária.
 
 \chapter{Considerações Finais}
 
