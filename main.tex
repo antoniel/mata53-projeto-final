@@ -371,16 +371,16 @@ A análise de complexidade dos algoritmos implementados é a seguinte:
 \begin{itemize}
     \item \textbf{Cobertura Completa:}
     \begin{itemize}
-        \item Tempo: O(|V|²), onde |V| é o número de vértices no grafo
-        \item Espaço: O(|V|) para armazenar os conjuntos de vértices
-        \item O loop principal executa no máximo |V| vezes
+        \item Tempo: O($\lvert V \rvert^2$), onde $\lvert V \rvert$ é o número de vértices no grafo
+        \item Espaço: O($\lvert V \rvert$) para armazenar os conjuntos de vértices
+        \item O loop principal executa no máximo $\lvert V \rvert$ vezes
         \item Para cada iteração, visitamos todos os vértices não cobertos
     \end{itemize}
     
     \item \textbf{Cobertura Máxima:}
     \begin{itemize}
-        \item Tempo: O(p|V|), onde p é o número máximo de câmeras
-        \item Espaço: O(|V|) para armazenar os conjuntos de vértices
+        \item Tempo: O(p$\lvert V \rvert$), onde p é o número máximo de câmeras
+        \item Espaço: O($\lvert V \rvert$) para armazenar os conjuntos de vértices
         \item O loop principal executa exatamente p vezes
         \item Para cada iteração, visitamos todos os vértices não selecionados
     \end{itemize}
