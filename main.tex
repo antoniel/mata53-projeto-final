@@ -164,7 +164,8 @@ O objetivo geral deste projeto foi desenvolver uma solução otimizada para o po
 \section{Organização do Trabalho}
 O trabalho está organizado em capítulos que abordam desde a introdução teórica até a implementação prática e análise dos resultados. Cada capítulo é estruturado para fornecer uma visão clara e detalhada do processo de desenvolvimento e das conclusões obtidas.
 
-\section{Trabalhos Correlatos}
+\chapter{Trabalhos Correlatos}
+% #TODO: melhorar o capítulo
 O problema de cobertura mínima de vértices tem sido extensivamente estudado na literatura, tanto em sua forma teórica quanto em aplicações práticas. Esta seção apresenta uma revisão dos principais trabalhos relacionados, focando em resultados teóricos fundamentais e aplicações similares ao nosso problema de posicionamento de câmeras.
 
 \chapter{Descrição Formal do Problema}
@@ -290,76 +291,132 @@ O grafo é definido como um conjunto de \textbf{nós} e \textbf{arestas}, organi
 \chapter{Solução Algorítmica}
 
 \section{Pseudo-Código e Algoritmo Utilizado}
+O algoritmo implementado para resolver o problema de cobertura de vértices utiliza duas abordagens principais: cobertura completa e cobertura máxima. Ambas são baseadas em uma estratégia gulosa (greedy) que seleciona iterativamente os vértices mais promissores.
+
+\subsection{Algoritmo de Cobertura Completa}
+O algoritmo de cobertura completa visa encontrar o menor conjunto de vértices que cubra todo o grafo. Abaixo está o pseudocódigo detalhado:
+
+\begin{algorithm}[H]
+\caption{Algoritmo de Cobertura Completa}
+\begin{algorithmic}[1]
+\State \textbf{Entrada:} Grafo G = (V, E)
+\State \textbf{Saída:} Conjunto C de vértices selecionados para instalação de câmeras
+\Statex
+\State \textbf{Inicialização:}
+\State vertices\_nao\_cobertos $\gets$ V
+\State cobertura $\gets \emptyset$
+\Statex
+\While{vertices\_nao\_cobertos $\neq \emptyset$}
+    \State melhor\_vertice $\gets$ null
+    \State max\_cobertura $\gets$ 0
+    \ForAll{v $\in$ V}
+        \If{v $\notin$ cobertura}
+            \State vizinhos $\gets$ N(v) $\cup$ \{v\} \Comment{N(v) são os vizinhos de v}
+            \State cobertura\_atual $\gets$ |vizinhos $\cap$ vertices\_nao\_cobertos|
+            \If{cobertura\_atual > max\_cobertura}
+                \State max\_cobertura $\gets$ cobertura\_atual
+                \State melhor\_vertice $\gets$ v
+            \EndIf
+        \EndIf
+    \EndFor
+    \If{melhor\_vertice = null}
+        \State \textbf{break}
+    \EndIf
+    \State cobertura $\gets$ cobertura $\cup$ \{melhor\_vertice\}
+    \State vertices\_nao\_cobertos $\gets$ vertices\_nao\_cobertos $\setminus$ (N(melhor\_vertice) $\cup$ \{melhor\_vertice\})
+\EndWhile
+\State \Return cobertura
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Algoritmo de Cobertura Máxima}
+O algoritmo de cobertura máxima busca maximizar a cobertura com um número limitado de câmeras:
+
+\begin{algorithm}[H]
+\caption{Algoritmo de Cobertura Máxima}
+\begin{algorithmic}[1]
+\State \textbf{Entrada:} Grafo G = (V, E), número máximo de câmeras p
+\State \textbf{Saída:} Conjunto C de vértices selecionados e conjunto de vértices cobertos
+\Statex
+\State \textbf{Inicialização:}
+\State cobertura $\gets \emptyset$
+\State vertices\_cobertos $\gets \emptyset$
+\Statex
+\For{i = 1 \textbf{to} p}
+    \State melhor\_vertice $\gets$ null
+    \State max\_novos\_cobertos $\gets$ 0
+    \ForAll{v $\in$ V}
+        \If{v $\notin$ cobertura}
+            \State vizinhos $\gets$ N(v) $\cup$ \{v\}
+            \State novos\_cobertos $\gets$ |vizinhos $\setminus$ vertices\_cobertos|
+            \If{novos\_cobertos > max\_novos\_cobertos}
+                \State max\_novos\_cobertos $\gets$ novos\_cobertos
+                \State melhor\_vertice $\gets$ v
+            \EndIf
+        \EndIf
+    \EndFor
+    \If{melhor\_vertice = null \textbf{or} max\_novos\_cobertos = 0}
+        \State \textbf{break}
+    \EndIf
+    \State cobertura $\gets$ cobertura $\cup$ \{melhor\_vertice\}
+    \State vertices\_cobertos $\gets$ vertices\_cobertos $\cup$ N(melhor\_vertice) $\cup$ \{melhor\_vertice\}
+\EndFor
+\State \Return (cobertura, vertices\_cobertos)
+\end{algorithmic}
+\end{algorithm}
 
 \subsection{Complexidade Computacional}
-
-\subsubsection{Problema de Localização com Cobertura Completa}
-O problema de encontrar o número mínimo de câmeras para cobrir todos os vértices é uma variação do problema de cobertura de conjuntos, que é um problema \textbf{NP-Difícil}. Isso significa que não existe um algoritmo conhecido que resolva esse problema em tempo polinomial para todos os casos. A complexidade computacional exata depende do tamanho da instância do problema, que é influenciado pelo número de vértices (locais potenciais para câmeras) e arestas (conexões ou alcance entre vértices).
-
-Na prática, para resolver esse tipo de problema, são utilizados algoritmos de otimização, como o CPLEX, que foi usado no artigo de Veloso et al. \cite{veloso2021localizacao}. Esses algoritmos geralmente utilizam técnicas de \textit{branch-and-bound} e \textit{programação linear inteira}, que podem encontrar a solução ótima, mas o tempo de execução pode aumentar exponencialmente com o tamanho do problema.
-
-\subsubsection{Problema de Localização com Cobertura Máxima}
-O problema de maximizar a cobertura com um número fixo de câmeras também é \textbf{NP-Difícil}. Isso significa que, assim como o problema anterior, não há garantia de encontrar a solução ótima em tempo polinomial. A complexidade também depende do número de vértices, das conexões e do número máximo de câmeras (p) que podem ser instaladas.
-
-O uso de algoritmos como o CPLEX também se aplica a este problema, com o objetivo de encontrar a melhor solução dentro das restrições estabelecidas.
-
-\subsubsection{Considerações Práticas}
-Em ambos os casos, a complexidade computacional pode se tornar um problema para instâncias grandes. O tempo de execução dos algoritmos pode aumentar significativamente com o número de vértices. Para instâncias maiores, é recomendável utilizar técnicas de otimização mais eficientes ou heurísticas para encontrar soluções aproximadas em um tempo razoável. A escolha do algoritmo e a modelagem adequada do problema podem influenciar significativamente o tempo de execução e a qualidade da solução obtida.
-
-\subsection{Pseudoalgoritmos}
-
-\subsubsection{Pseudoalgoritmo para o Problema de Localização com Cobertura Completa}
-\begin{enumerate}
-    \item \textbf{Entrada:} Conjunto de vértices de demanda (I), conjunto de vértices de instalação (J), matriz de adjacência (M)
-    \item \textbf{Inicialização:}
-    \begin{itemize}
-        \item Variável \(x[j]\) (câmera instalada) = 0 para todo \(j\) em \(J\)
-    \end{itemize}
-    \item \textbf{Função Objetivo:} Minimizar o número total de câmeras instaladas: \(\text{minimize} \sum_{j \in J} x[j]\) \cite{veloso2021localizacao}
-    \item \textbf{Restrições:}
-    \begin{itemize}
-        \item Garantir que cada vértice de demanda seja coberto por pelo menos uma câmera: \(\forall i \in I, \sum_{j \in J} (M[i][j] + \delta_{ij}) \cdot x[j] \geq 1\), onde \(\delta_{ij} = 1\) se \(i = j\), e 0 caso contrário
-        \item As variáveis devem ser binárias: \(x[j] \in \{0, 1\}\)
-    \end{itemize}
-    \item \textbf{Resolver o modelo de programação linear inteira} usando CPLEX ou outro solver adequado
-    \item \textbf{Saída:} Valores de \(x[j]\) que indicam a localização das câmeras para cobertura completa
-\end{enumerate}
-
-\subsubsection{Pseudoalgoritmo para o Problema de Localização com Cobertura Máxima}
-\begin{enumerate}
-    \item \textbf{Entrada:} Conjunto de vértices de demanda (I), conjunto de vértices de instalação (J), matriz de adjacência (M), número máximo de câmeras (p)
-    \item \textbf{Inicialização:}
-    \begin{itemize}
-        \item Variável \(x[j]\) (câmera instalada) = 0 para todo \(j\) em \(J\)
-        \item Variável \(y[i]\) (vértice \(i\) coberto) = 0 para todo \(i\) em \(I\)
-        \item Vetor \(w[i]\) (peso do vértice \(i\)) = 1 para todo \(i\) em \(I\)
-    \end{itemize}
-    \item \textbf{Função Objetivo:} Maximizar a soma dos pesos dos vértices cobertos: \(\text{maximize} \sum_{i \in I} w[i] \cdot y[i]\)
-    \item \textbf{Restrições:}
-    \begin{itemize}
-        \item Garantir que um vértice seja coberto apenas se houver uma câmera que o cubra: \(\forall i \in I, \sum_{j \in J} (M[i][j] + \delta_{ij}) \cdot x[j] - y[i] \geq 0\)
-        \item Limitar o número total de câmeras instaladas: \(\sum_{j \in J} x[j] \leq p\)
-        \item As variáveis devem ser binárias: \(x[j], y[i] \in \{0, 1\}\)
-    \end{itemize}
-    \item \textbf{Resolver o modelo de programação linear inteira} usando CPLEX ou outro solver adequado
-    \item \textbf{Saída:} Valores de \(x[j]\) e \(y[i]\) que indicam a localização das câmeras e os vértices cobertos
-\end{enumerate}
-
-\subsection{Implementação}
-A implementação do algoritmo foi realizada em Python, utilizando a biblioteca NetworkX para manipulação de grafos. Duas abordagens foram implementadas:
+A análise de complexidade dos algoritmos implementados é a seguinte:
 
 \begin{itemize}
-    \item \textbf{Algoritmo de Cobertura Completa:} Implementa uma solução gulosa que seleciona iterativamente os vértices que cobrem o maior número de vértices ainda não cobertos, até que todos os vértices estejam cobertos. Esta implementação é baseada no pseudocódigo apresentado anteriormente e adaptada para utilizar as estruturas de dados do NetworkX.
+    \item \textbf{Cobertura Completa:}
+    \begin{itemize}
+        \item Tempo: O(|V|²), onde |V| é o número de vértices no grafo
+        \item Espaço: O(|V|) para armazenar os conjuntos de vértices
+        \item O loop principal executa no máximo |V| vezes
+        \item Para cada iteração, visitamos todos os vértices não cobertos
+    \end{itemize}
     
-    \item \textbf{Algoritmo de Cobertura Máxima:} Implementa uma solução que maximiza a cobertura com um número limitado de câmeras, selecionando os vértices que proporcionam a maior cobertura adicional a cada iteração. Esta implementação considera restrições práticas como o número máximo de câmeras disponíveis.
+    \item \textbf{Cobertura Máxima:}
+    \begin{itemize}
+        \item Tempo: O(p|V|), onde p é o número máximo de câmeras
+        \item Espaço: O(|V|) para armazenar os conjuntos de vértices
+        \item O loop principal executa exatamente p vezes
+        \item Para cada iteração, visitamos todos os vértices não selecionados
+    \end{itemize}
 \end{itemize}
 
-A implementação considera as restrições práticas do problema e utiliza estruturas de dados eficientes para manipulação dos conjuntos de vértices e cálculo das coberturas. Os resultados são salvos em formato JSON para posterior análise e visualização, incluindo informações como:
+\subsection{Implementação}
+A implementação foi realizada em Python utilizando a biblioteca NetworkX para manipulação de grafos. A classe \texttt{CoberturaVertices} encapsula toda a lógica dos algoritmos:
 
 \begin{itemize}
-    \item Vértices selecionados para instalação de câmeras
-    \item Número total de câmeras necessárias
-    \item Cobertura total alcançada
+    \item \textbf{Estruturas de Dados:}
+    \begin{itemize}
+        \item Grafo representado como objeto \texttt{nx.Graph}
+        \item Matriz de adjacência para acesso rápido às conexões
+        \item Conjuntos para rastreamento de vértices cobertos/não cobertos
+    \end{itemize}
+    
+    \item \textbf{Principais Métodos:}
+    \begin{itemize}
+        \item \texttt{resolve\_cobertura\_completa()}: Implementa o algoritmo de cobertura completa
+        \item \texttt{resolve\_cobertura\_maxima(p)}: Implementa o algoritmo de cobertura máxima
+        \item \texttt{salvar\_resultado()}: Persiste os resultados em formato JSON
+    \end{itemize}
+    
+    \item \textbf{Otimizações:}
+    \begin{itemize}
+        \item Uso de estruturas de dados eficientes (sets) para operações de união e interseção
+        \item Cálculo incremental de coberturas para evitar recomputação
+        \item Armazenamento em cache da matriz de adjacência
+    \end{itemize}
+\end{itemize}
+
+Os resultados são salvos em arquivos JSON contendo:
+\begin{itemize}
+    \item Lista de vértices selecionados para instalação de câmeras
+    \item Número total de câmeras utilizadas
+    \item Cobertura total alcançada (número de vértices cobertos)
     \item Total de vértices no grafo
 \end{itemize}
 
@@ -369,19 +426,7 @@ Esta implementação está disponível no arquivo \texttt{5\_resolve\_cobertura.
 
 \section{Metodologia}
 \subsection{Instâncias}
-Os dados utilizados nos experimentos foram extraídos do OpenStreetMap, representando o bairro de Ondina. Os pontos potenciais para câmeras foram identificados com base na estrutura viária. Para garantir a representatividade dos dados, diferentes cenários foram simulados, variando o número de câmeras e o alcance de cobertura, permitindo uma análise abrangente das soluções propostas.
-
-\subsection{Parâmetros}
-Os parâmetros ajustados nos experimentos incluem o alcance das câmeras e o custo associado à instalação em diferentes locais. Esses parâmetros foram cuidadosamente selecionados para refletir condições reais de implementação, considerando fatores como visibilidade, obstáculos físicos e restrições orçamentárias.
-
-\subsection{Testes e Critérios de Análise}
-Os resultados foram avaliados com base no tempo de execução, na cobertura alcançada e na eficiência dos algoritmos implementados. Critérios adicionais, como a robustez da solução em cenários de falha e a adaptabilidade a mudanças no ambiente urbano, também foram considerados. Testes de estresse foram conduzidos para avaliar o comportamento do sistema sob condições extremas, garantindo a confiabilidade das soluções em situações reais.
-
-\section{Resultados}
-Os resultados dos experimentos são apresentados em gráficos e tabelas, destacando a eficácia das soluções encontradas. A análise dos dados revelou que a abordagem heurística proposta é capaz de reduzir significativamente o número de câmeras necessárias, mantendo uma cobertura completa das áreas de interesse. Comparações com métodos tradicionais de cobertura de vértices demonstraram a superioridade da solução em termos de custo-benefício e eficiência operacional.
-
-\subsection{Avaliação dos Resultados}
-A análise dos resultados mostra que a abordagem proposta é eficaz na redução do número de câmeras necessárias, mantendo uma cobertura completa das áreas de interesse. Além disso, a flexibilidade do algoritmo permite ajustes rápidos em resposta a mudanças no ambiente urbano, tornando-o uma solução prática e escalável para desafios de segurança pública em áreas urbanas densas.
+Os dados utilizados nos experimentos foram extraídos do OpenStreetMap, representando o bairro de Ondina. Os pontos potenciais para câmeras foram identificados com base na estrutura viária.
 
 \chapter{Considerações Finais}
 
