@@ -246,32 +246,27 @@ O grafo é definido como um conjunto de \textbf{nós} e \textbf{arestas}, organi
 \end{itemize}
 
 \chapter{Trabalhos Correlatos}
-O problema de cobertura mínima de vértices tem sido extensivamente estudado na literatura, tanto em sua forma teórica quanto em aplicações práticas. Esta seção apresenta uma revisão dos principais trabalhos relacionados, focando em resultados teóricos fundamentais e aplicações similares ao nosso problema de posicionamento de câmeras.
+A cobertura mínima de vértices (ou \emph{Minimum Vertex Cover}) tem sido amplamente estudada, tanto do ponto de vista teórico quanto prático, dada sua relevância em diversos cenários que envolvem problemas de localização, cobertura e vigilância. Nesta seção, revisamos trabalhos que discutem resultados fundamentais acerca de problemas de cobertura, bem como aplicações relacionadas à alocação de facilidades e dispositivos de monitoramento.
 
 \section{Problemas de Localização de Facilidades e Cobertura}
+Os \emph{Problemas de Localização de Facilidades} (PLF) visam determinar a melhor forma de posicionar unidades de serviço (facilidades) para atender a um conjunto de clientes, otimizando algum critério. Exemplos incluem a instalação de escolas, postos de saúde ou supermercados, tendo como clientes, respectivamente, estudantes, pacientes ou compradores \cite{Pizzolato2012}. No contexto deste trabalho, as câmeras de segurança configuram-se como as “facilidades”, e os pontos mapeados (vértices do grafo) constituem os “clientes” a serem atendidos. 
 
-Problemas de Localização de Facilidades (PLF): De maneira geral, os PLFs buscam a melhor forma de instalar unidades de serviço (facilidades) para atender clientes, otimizando algum objetivo. As facilidades podem ser escolas, postos de saúde ou supermercados, e os clientes, respectivamente, estudantes, pacientes ou compradores \cite{Pizzolato2012}. No nosso caso, as câmeras de segurança são as facilidades e os vértices mapeados são os clientes.
-
-Variações de PLF: Existem diversas variações de PLFs, incluindo a alocação de drones para distribuição de recursos \cite{Chuan2019} e estações de carregamento de veículos elétricos \cite{Silva2019}.
-
-\section{Aplicações em Segurança e Vigilância}
-
-\subsection{Segurança em Campi Universitários}
-A segurança em campi universitários é uma preocupação crescente, devido a problemas como roubos, furtos e outros crimes \cite{Costa2011}. Modelos de otimização podem ser usados para melhorar a alocação de recursos de segurança, como a instalação de câmeras de vigilância \cite{Cubas2013}.
-
-\subsection{Modelos de Otimização para Segurança}
-Vários trabalhos têm aplicado modelos de otimização para problemas de segurança \cite{Mello2015}. O estudo apresentado no seu artigo, que aplica o Problema de Localização de Facilidades para alocação de câmeras de segurança, já é um trabalho correlato importante \cite{Canuto2017}.
-
-\section{Outras Aplicações Relevantes}
-
-\subsection{Alocação de Drones}
-Um estudo correlato notável é o de Chuan et al. \cite{Chuan2019}, que busca localizar um número pré-especificado de facilidades capacitadas e atribuir drones a estas facilidades para atender às demandas, usando essas localizações como pontos de lançamento dos drones para distribuição de recursos.
+Há múltiplas variações de PLF, como aquelas que buscam localizar unidades em cenários mais complexos, por exemplo, na alocação de drones para distribuição de recursos \cite{Chuan2019} ou na definição de estações de carregamento de veículos elétricos \cite{Silva2019}. Nessas variações, embora a natureza das “facilidades” varie — drones, câmeras ou pontos de carregamento —, o problema central de onde alocar esses recursos de forma a otimizar alcance, custo ou cobertura permanece análogo.
 
 \subsection{Saúde}
-Ahmadi-Javid et al. \cite{AhmadiJavid2017} exploram a aplicação de Problemas de Localização de Facilidades na área da saúde, destacando a importância dessas estratégias para sistemas de saúde.
+Com foco na área da saúde, Ahmadi-Javid et al. \cite{AhmadiJavid2017} destacam que a localização adequada de facilidades médicas, como hospitais e clínicas, impacta diretamente o acesso da população aos serviços de saúde. Estudos assim ilustram como técnicas de localização podem influenciar áreas críticas de interesse público, o que inclui a prevenção de riscos e a gestão de segurança, ainda que em outro contexto.
 
 \subsection{Veículos Elétricos}
-Silva e Maestria \cite{Silva2019} abordam a localização de estações de carregamento para veículos elétricos, demonstrando a versatilidade do problema de localização.
+A pesquisa de Silva e Maestria \cite{Silva2019} acerca da localização de estações de recarga para veículos elétricos demonstra a versatilidade dos problemas de localização, evidenciando que tais modelos são aplicáveis a cenários de infraestrutura urbana que necessitam de posicionamento ótimo de pontos de atendimento.
+
+\section{Outras Aplicações Relevantes}
+Além de aplicações diretas em saúde e infraestrutura de transportes, problemas de cobertura e localização também se fazem presentes em contextos inovadores, como mostrado a seguir.
+
+\subsection{Alocação de Drones}
+Chuan et al. \cite{Chuan2019} apresentam um problema correlato em que se busca posicionar um número pré-definido de facilidades “capacitadas” e alocar drones para atender às demandas de transporte ou de entregas. Essa abordagem relaciona-se intimamente à cobertura, pois a alocação dos drones depende de pontos estratégicos que cubram o maior número possível de destinos, de forma semelhante à seleção de câmeras para cobrir a maior área ou número de vias.
+
+\section{Relação com o Problema de Posicionamento de Câmeras}
+No âmbito da segurança pública, o problema de cobertura mínima de vértices se encaixa em uma classe mais ampla de problemas de localização, em que as “facilidades” — aqui representadas pelas câmeras — precisam ser definidas de modo a abarcar o maior número de pontos ou ruas de interesse. Esse tipo de modelagem se mostra essencial na elaboração de estratégias de vigilância em ambientes urbanos, permitindo a aplicação direta de resultados teóricos em cenários reais. Assim, a revisão dos trabalhos apresentados reforça a importância e a aplicabilidade de técnicas de cobertura e localização de facilidades para a concepção de soluções eficientes e escaláveis nos mais variados contextos. 
 
 \chapter{Fundamentação Teórica}
 
