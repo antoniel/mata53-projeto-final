@@ -291,21 +291,10 @@ O grafo é definido como um conjunto de \textbf{nós} e \textbf{arestas}, organi
 \chapter{Solução Algorítmica}
 
 \section{Pseudo-Código e Algoritmo Utilizado}
+% TODO: adicionar o pseudo-código
 
 \subsection{Complexidade Computacional}
-
-\subsubsection{Problema de Localização com Cobertura Completa}
-O problema de encontrar o número mínimo de câmeras para cobrir todos os vértices é uma variação do problema de cobertura de conjuntos, que é um problema \textbf{NP-Difícil}. Isso significa que não existe um algoritmo conhecido que resolva esse problema em tempo polinomial para todos os casos. A complexidade computacional exata depende do tamanho da instância do problema, que é influenciado pelo número de vértices (locais potenciais para câmeras) e arestas (conexões ou alcance entre vértices).
-
-Na prática, para resolver esse tipo de problema, são utilizados algoritmos de otimização, como o CPLEX, que foi usado no artigo de Veloso et al. \cite{veloso2021localizacao}. Esses algoritmos geralmente utilizam técnicas de \textit{branch-and-bound} e \textit{programação linear inteira}, que podem encontrar a solução ótima, mas o tempo de execução pode aumentar exponencialmente com o tamanho do problema.
-
-\subsubsection{Problema de Localização com Cobertura Máxima}
-O problema de maximizar a cobertura com um número fixo de câmeras também é \textbf{NP-Difícil}. Isso significa que, assim como o problema anterior, não há garantia de encontrar a solução ótima em tempo polinomial. A complexidade também depende do número de vértices, das conexões e do número máximo de câmeras (p) que podem ser instaladas.
-
-O uso de algoritmos como o CPLEX também se aplica a este problema, com o objetivo de encontrar a melhor solução dentro das restrições estabelecidas.
-
-\subsubsection{Considerações Práticas}
-Em ambos os casos, a complexidade computacional pode se tornar um problema para instâncias grandes. O tempo de execução dos algoritmos pode aumentar significativamente com o número de vértices. Para instâncias maiores, é recomendável utilizar técnicas de otimização mais eficientes ou heurísticas para encontrar soluções aproximadas em um tempo razoável. A escolha do algoritmo e a modelagem adequada do problema podem influenciar significativamente o tempo de execução e a qualidade da solução obtida.
+% TODO: Falar sobre a complexidade computacional
 
 \subsubsection{Pseudo-Código}
 - TODO
