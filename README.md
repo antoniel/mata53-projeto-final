@@ -9,6 +9,7 @@ Este projeto visa identificar locais ótimos para a instalação de câmeras no 
 - **scripts/3_visualiza_instancia.py**: Visualiza o grafo e destaca os nós que fazem parte da cobertura de vértices.
 - **scripts/4_analisa_instancia.py**: Analisa a instância do grafo, fornecendo estatísticas e informações sobre a cobertura de vértices.
 - **scripts/5_resolve_cobertura.py**: Implementa os algoritmos de cobertura completa e máxima para otimizar o posicionamento das câmeras.
+- **scripts/6_visualiza_cobertura.py**: Gera visualizações comparativas das soluções de cobertura completa e máxima, destacando o posicionamento das câmeras e os vértices cobertos.
 
 ## Requisitos e Instalação
 
@@ -60,6 +61,11 @@ python scripts/4_analisa_instancia.py
 python scripts/5_resolve_cobertura.py
 ```
 
+6. Visualização dos resultados:
+```bash
+python scripts/6_visualiza_cobertura.py
+```
+
 ## Algoritmos de Cobertura
 
 O script `5_resolve_cobertura.py` implementa dois algoritmos principais:
@@ -70,7 +76,7 @@ O script `5_resolve_cobertura.py` implementa dois algoritmos principais:
 
 ## Resultados
 
-Os resultados da execução do algoritmo de cobertura são salvos no diretório `resultados/`:
+Os resultados da execução dos algoritmos são salvos no diretório `resultados/`:
 - `cobertura_completa.json`: Contém a solução para cobertura completa do grafo, incluindo:
   - Lista de vértices selecionados para instalação de câmeras
   - Número total de câmeras necessárias
@@ -82,6 +88,11 @@ Os resultados da execução do algoritmo de cobertura são salvos no diretório 
   - Número de câmeras utilizadas
   - Número de vértices cobertos
   - Total de vértices no grafo
+
+- `visualizacao_cobertura.png`: Imagem comparativa mostrando:
+  - Solução de cobertura completa com todas as câmeras posicionadas
+  - Solução de cobertura máxima destacando câmeras e vértices cobertos
+  - Estatísticas de cobertura para cada solução
 
 ## Exemplo de Resultados
 

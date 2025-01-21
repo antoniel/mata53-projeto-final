@@ -24,7 +24,7 @@
 \usepackage{float}
 
 
-\graphicspath{{Figuras/}}
+\graphicspath{{Figuras/}{resultados/}}
 
 \renewcommand{\theenumii}{\alph{enumii}}
 \DeclareMathOperator{\sen}{sen}
@@ -162,7 +162,74 @@ O objetivo geral deste projeto foi desenvolver uma solução otimizada para o po
 
 
 \section{Organização do Trabalho}
-O trabalho está organizado em capítulos que abordam desde a introdução teórica até a implementação prática e análise dos resultados. Cada capítulo é estruturado para fornecer uma visão clara e detalhada do processo de desenvolvimento e das conclusões obtidas.
+O projeto está estruturado de forma modular e organizada, com todo o código-fonte disponível publicamente no repositório GitHub (\url{https://github.com/antoniel/mata53-projeto-final}). A organização do trabalho segue uma abordagem sistemática, dividida em etapas bem definidas:
+
+\subsection{Estrutura do Repositório}
+O projeto está organizado em diretórios específicos, cada um com uma responsabilidade bem definida:
+\begin{itemize}
+    \item \texttt{scripts/}: Contém os scripts Python responsáveis pela extração, processamento e análise dos dados:
+    \begin{itemize}
+        \item \texttt{5\_resolve\_cobertura.py}: Implementa os algoritmos de cobertura completa e máxima
+        \item \texttt{6\_visualiza\_cobertura.py}: Gera visualizações comparativas das soluções
+        \item Scripts auxiliares para extração e processamento dos dados do OpenStreetMap
+    \end{itemize}
+    
+    \item \texttt{instancias/}: Armazena os dados de entrada do problema:
+    \begin{itemize}
+        \item \texttt{ondina.json}: Grafo do bairro de Ondina em formato JSON, contendo nós (vértices) com coordenadas geográficas e arestas com pesos e nomes das ruas
+    \end{itemize}
+    
+    \item \texttt{resultados/}: Contém os arquivos de saída gerados pelos algoritmos:
+    \begin{itemize}
+        \item \texttt{cobertura\_completa.json}: Resultado da solução de cobertura completa
+        \item \texttt{cobertura\_maxima.json}: Resultado da solução de cobertura máxima
+        \item \texttt{visualizacao\_cobertura.png}: Visualização comparativa das soluções
+        \item \texttt{README.md}: Documentação detalhada dos resultados obtidos
+    \end{itemize}
+\end{itemize}
+
+\subsection{Resultados Obtidos}
+Na execução com o grafo do bairro de Ondina, obtivemos resultados significativos que demonstram a eficácia dos algoritmos implementados:
+
+\begin{itemize}
+    \item \textbf{Cobertura Completa:}
+    \begin{itemize}
+        \item Necessita de 80 câmeras para cobrir todos os 182 vértices do grafo
+        \item Média de 2,3 vértices cobertos por câmera
+        \item Garante monitoramento completo da região
+    \end{itemize}
+    
+    \item \textbf{Cobertura Máxima:}
+    \begin{itemize}
+        \item Com apenas 10 câmeras, consegue cobrir 42 vértices
+        \item Representa 23\% do total de vértices do grafo
+        \item Média de 4,2 vértices cobertos por câmera
+        \item Solução otimizada para cenários com restrição de recursos
+    \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{resultados/visualizacao_cobertura}
+    \caption{Comparação das soluções de cobertura. À esquerda: cobertura completa com 61 câmeras cobrindo 182 vértices. À direita: cobertura máxima com 10 câmeras cobrindo 48 vértices.}
+    \label{fig:visualizacao_cobertura}
+\end{figure}
+
+A Figura~\ref{fig:visualizacao_cobertura} apresenta uma comparação visual das duas soluções implementadas. Na solução de cobertura completa (esquerda), os pontos vermelhos indicam as 80 câmeras necessárias para monitorar toda a região. Na solução de cobertura máxima (direita), os pontos vermelhos mostram as 10 câmeras selecionadas, e os pontos verdes indicam os vértices cobertos por essas câmeras, demonstrando a eficiência da solução mesmo com recursos limitados.
+
+\subsection{Documentação e Reprodutibilidade}
+O projeto foi desenvolvido com foco na reprodutibilidade e facilidade de uso. Para isso, foram implementados:
+
+\begin{itemize}
+    \item Documentação detalhada no README do repositório
+    \item Instruções claras para instalação de dependências via \texttt{requirements.txt}
+    \item Scripts bem documentados com docstrings e comentários explicativos
+    \item Geração automática de relatórios de resultados em formato markdown
+    \item Logs informativos durante a execução dos algoritmos
+    \item Visualizações comparativas das soluções para análise dos resultados
+\end{itemize}
+
+Os capítulos seguintes detalham cada aspecto do trabalho, desde a fundamentação teórica até a análise dos resultados obtidos, apresentando uma visão completa do desenvolvimento e das conclusões alcançadas.
 
 \chapter{Trabalhos Correlatos}
 % #TODO: melhorar o capítulo
