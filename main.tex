@@ -360,6 +360,40 @@ No contexto específico do bairro de Ondina, o algoritmo genético foi implement
     \end{itemize}
 \end{itemize}
 
+\section{Fundamentação Teórica de Algoritmos Gulosos}
+
+A monografia de Victor de Oliveira Colombo \cite{Colombo2018} aborda detalhadamente os algoritmos gulosos, que são uma classe de algoritmos muito importantes para a resolução de problemas de otimização. A característica principal desses algoritmos é a busca pela \textbf{solução ótima global} através de \textbf{escolhas localmente ótimas}, conhecidas como \textbf{escolhas gulosas} \cite{Colombo2018}.
+
+\subsection*{Conceitos Chave}
+\begin{itemize}
+    \item \textbf{Escolhas Gulosas:} A ideia central é que, em cada passo do algoritmo, a escolha que parece ser a melhor naquele momento é feita, sem considerar o impacto futuro dessas escolhas em subproblemas \cite{Colombo2018}.
+    \item \textbf{Propriedade da Escolha Gulosa:} Para que um algoritmo guloso funcione corretamente, é necessário que ele possua a propriedade da escolha gulosa, ou seja, que uma sequência de escolhas localmente ótimas leve à solução globalmente ótima \cite{Colombo2018}.
+   \item \textbf{Decisões Irreversíveis:} Uma vez que uma decisão é tomada em um algoritmo guloso, ela não é alterada posteriormente. Isso contrasta com outras abordagens como a programação dinâmica, onde as decisões podem ser revistas com base em subproblemas \cite{Colombo2018}.
+   \item \textbf{Eficiência e Limitações:} Algoritmos gulosos são geralmente mais eficientes em termos de complexidade computacional quando comparados com outras técnicas como programação dinâmica ou força bruta, mas eles não garantem encontrar a solução ótima para todos os tipos de problemas \cite{Colombo2018}.
+\end{itemize}
+
+\subsection*{Formalização e Definição}
+Uma das dificuldades no estudo de algoritmos gulosos é a falta de uma definição precisa e formal que abranja todos os problemas que podem ser resolvidos por essa técnica \cite{Colombo2018}. A monografia cita trabalhos de autores como Edmonds e Lawler na teoria dos matroides, e de Borodin, Nielsen e Rackoff, que tentam formalizar a classe de problemas considerados "gulosos" \cite{Colombo2018}.
+
+\subsection*{O Papel da Intuição}
+A intuição e o raciocínio por trás das técnicas gulosas são tão importantes quanto a aplicação dos algoritmos. É essencial entender quando e como usar algoritmos gulosos, em vez de outras técnicas, e como adaptar a estratégia para cada problema específico. A monografia de Colombo \cite{Colombo2018} foca no desenvolvimento dessa intuição e capacidade de identificar problemas que podem ser resolvidos com uma abordagem gulosa.
+
+\subsection*{Importância da Análise}
+Apesar de sua simplicidade, a aplicação de algoritmos gulosos exige uma análise cuidadosa. É preciso demonstrar que o algoritmo guloso específico está correto, e para isso são usados argumentos como o "argumento de troca", onde se compara a solução gulosa com uma solução ótima para provar sua corretude.
+
+\subsection*{Aplicações e Exemplos}
+A monografia \cite{Colombo2018} explora diversos problemas onde algoritmos gulosos são aplicados, como:
+
+\begin{itemize}
+    \item \textbf{Problema do Salto do Sapo:} Utilizado para demonstrar a técnica do argumento de troca, onde a melhor escolha é ir o mais longe possível a cada salto.
+    \item \textbf{Escalonamento de tarefas:} A ordenação gulosa é aplicada para minimizar a multa total ao processar tarefas, demonstrando a importância da ordem de processamento para atingir a solução ótima.
+    \item \textbf{Operações em Vetor:} Ilustra como transformar um problema de otimização em um problema de decisão que pode ser resolvido com um algoritmo guloso, usando a técnica de fixar um valor H.
+    \item \textbf{Variação do Problema da Mochila:} Mostra a combinação de algoritmos gulosos e programação dinâmica, onde a ordenação dos itens por um critério guloso é crucial antes de aplicar a programação dinâmica.
+    \item \textbf{Problema da Partição:} Demonstra como restrições específicas na entrada de um problema podem permitir o uso de abordagens gulosas.
+\end{itemize}
+
+Em resumo, a fundamentação teórica de algoritmos gulosos reside em sua simplicidade, eficiência e na capacidade de fazer escolhas ótimas localmente, com a condição de que essas escolhas levem a uma solução global ótima. No entanto, é crucial analisar cuidadosamente cada problema para garantir que a abordagem gulosa seja adequada e, se necessário, combinar a abordagem gulosa com outras técnicas para alcançar soluções eficazes.
+
 \chapter{Descrição Formal do Problema}
 
 \section{Formalização}
