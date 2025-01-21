@@ -188,20 +188,69 @@ O projeto está organizado em diretórios específicos, cada um com uma responsa
     \end{itemize}
 \end{itemize}
 
+\subsection{Discussão}
 
-\subsection{Documentação e Reprodutibilidade}
-O projeto foi desenvolvido com foco na reprodutibilidade e facilidade de uso. Para isso, foram implementados:
+A simplificação realizada, ao assumir a existência de campo de visão claro entre os nós, possibilitou o uso do grafo para aplicações práticas no problema em análise. Essa abordagem é particularmente útil em cenários que envolvem monitoramento ou comunicação direta, como a análise de cobertura por câmeras, onde barreiras visuais poderiam ser tratadas como elementos externos ao modelo principal.
+
+O processo de extração, construção e simplificação do grafo demonstra como é possível transformar dados geográficos brutos em representações abstratas otimizadas para resolver problemas específicos. A estrutura final do grafo oferece um modelo compacto e eficiente, adequado para o estudo da cobertura de vértices no contexto urbano de Ondina.
+
+\subsection{Estrutura do Grafo}
+
+O grafo é definido como um conjunto de \textbf{nós} e \textbf{arestas}, organizados da seguinte forma:
 
 \begin{itemize}
-    \item Documentação detalhada no README do repositório
-    \item Instruções claras para instalação de dependências via \texttt{requirements.txt}
-    \item Scripts bem documentados com docstrings e comentários explicativos
-    \item Geração automática de relatórios de resultados em formato markdown
-    \item Logs informativos durante a execução dos algoritmos
-    \item Visualizações comparativas das soluções para análise dos resultados
-\end{itemize}
+    \item \textbf{Nós (Nodes):}
+    Cada nó representa um ponto no mapa, definido por suas coordenadas geográficas:
+    \begin{itemize}
+        \item \texttt{id}: Identificador único do nó.
+        \item \texttt{lat}: Latitude do ponto.
+        \item \texttt{lon}: Longitude do ponto.
+    \end{itemize}
+    Exemplo de definição de nós:
+\begin{verbatim}
+{
+  "id": 0,
+  "lat": -13.000871,
+  "lon": -38.5054976
+},
+{
+  "id": 1,
+  "lat": -13.0016275,
+  "lon": -38.5057271
+}
+\end{verbatim}
 
-Os capítulos seguintes detalham cada aspecto do trabalho, desde a fundamentação teórica até a análise dos resultados obtidos, apresentando uma visão completa do desenvolvimento e das conclusões alcançadas.
+    \item \textbf{Arestas (Edges):}
+    As arestas conectam dois nós, representando ruas ou trechos que ligam os pontos geográficos. Cada aresta é caracterizada por:
+    \begin{itemize}
+        \item \texttt{source}: Identificador do nó de origem.
+        \item \texttt{target}: Identificador do nó de destino.
+        \item \texttt{weight}: Peso da aresta, que pode ser interpretado como a distância entre os dois pontos.
+        \item \texttt{name}: Nome da rua ou caminho.
+    \end{itemize}
+    Exemplo de definição de arestas:
+\begin{verbatim}
+{
+  "source": 0,
+  "target": 3,
+  "weight": 99.5182593770244,
+  "name": "Avenida Anita Garibaldi"
+},
+{
+  "source": 1,
+  "target": 3,
+  "weight": 96.76899596360965,
+  "name": "Avenida Milton Santos"
+}
+\end{verbatim}
+    \item \textbf{Metadados:}
+    O grafo também inclui informações descritivas adicionais, como:
+    \begin{itemize}
+        \item \texttt{name}: Nome do grafo, neste caso, "Grafo de Ondina".
+        \item \texttt{description}: Descrição geral, como "Grafo das ruas do bairro de Ondina, Salvador".
+        \item \texttt{source}: Fonte dos dados, como "OpenStreetMap".
+    \end{itemize}
+\end{itemize}
 
 \chapter{Trabalhos Correlatos}
 % #TODO: melhorar o capítulo
@@ -499,11 +548,60 @@ Na execução com o grafo do bairro de Ondina, obtivemos resultados significativ
 
 A Figura~\ref{fig:visualizacao_cobertura} apresenta uma comparação visual das duas soluções implementadas. Na solução de cobertura completa (esquerda), os pontos vermelhos indicam as 80 câmeras necessárias para monitorar toda a região. Na solução de cobertura máxima (direita), os pontos vermelhos mostram as 10 câmeras selecionadas, e os pontos verdes indicam os vértices cobertos por essas câmeras, demonstrando a eficiência da solução mesmo com recursos limitados.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{visualizacao_comparacao}
+    \caption{Comparação visual das três abordagens implementadas. Esquerda: cobertura completa com algoritmo guloso (61 câmeras). Centro: cobertura máxima com algoritmo guloso (10 câmeras). Direita: cobertura completa com algoritmo genético (55 câmeras). Pontos vermelhos indicam câmeras, pontos verdes/azuis indicam vértices cobertos.}
+    \label{fig:visualizacao_comparacao}
+\end{figure}
+
+A Figura~\ref{fig:visualizacao_comparacao} apresenta uma comparação visual das três soluções implementadas. É possível observar que o algoritmo genético (direita) consegue uma cobertura completa com menos câmeras que o algoritmo guloso (esquerda), demonstrando sua capacidade de encontrar soluções mais eficientes. A solução de cobertura máxima (centro) mostra como o algoritmo guloso pode ser eficaz em cenários com recursos limitados, cobrindo uma parte significativa do grafo com apenas 10 câmeras.
 
 \chapter{Considerações Finais}
 
 \section{Conclusão}
 O projeto demonstrou a aplicabilidade da teoria dos grafos na solução de problemas reais de segurança pública. A abordagem de cobertura de vértices mostrou-se eficiente e prática, oferecendo uma solução otimizada para o posicionamento de câmeras no bairro de Ondina.
+
+\subsection{Comparação dos Algoritmos}
+A comparação entre os algoritmos guloso e genético revela aspectos interessantes:
+
+\begin{itemize}
+    \item \textbf{Qualidade da Solução:}
+    \begin{itemize}
+        \item O algoritmo genético encontrou uma solução com menos câmeras (55) em comparação com o algoritmo guloso (61) para a cobertura completa
+        \item A média de vértices cobertos por câmera é maior no algoritmo genético (3,3) do que no guloso (3,0)
+        \item Ambos os algoritmos garantem 100\% de cobertura dos vértices
+    \end{itemize}
+    
+    \item \textbf{Tempo de Execução:}
+    \begin{itemize}
+        \item O algoritmo guloso é mais rápido, encontrando uma solução em uma única passagem
+        \item O algoritmo genético requer múltiplas gerações (200) para convergir, mas encontra uma solução de melhor qualidade
+    \end{itemize}
+    
+    \item \textbf{Flexibilidade:}
+    \begin{itemize}
+        \item O algoritmo guloso é determinístico, sempre produzindo a mesma solução
+        \item O algoritmo genético pode encontrar diferentes soluções em diferentes execuções
+        \item O GA permite ajuste fino através de seus parâmetros (população, taxas de crossover/mutação)
+    \end{itemize}
+\end{itemize}
+
+Em termos práticos, o algoritmo genético demonstrou ser capaz de encontrar soluções mais eficientes, reduzindo em aproximadamente 10\% o número de câmeras necessárias para a cobertura completa. No entanto, o algoritmo guloso ainda oferece uma boa relação custo-benefício, especialmente considerando sua simplicidade e rapidez de execução.
+
+\subsection{Documentação e Reprodutibilidade}
+O projeto foi desenvolvido com foco na reprodutibilidade e facilidade de uso. Para isso, foram implementados:
+
+\begin{itemize}
+    \item Documentação detalhada no README do repositório
+    \item Instruções claras para instalação de dependências via \texttt{requirements.txt}
+    \item Scripts bem documentados com docstrings e comentários explicativos
+    \item Geração automática de relatórios de resultados em formato markdown
+    \item Logs informativos durante a execução dos algoritmos
+    \item Visualizações comparativas das soluções para análise dos resultados
+\end{itemize}
+
+Os capítulos seguintes detalham cada aspecto do trabalho, desde a fundamentação teórica até a análise dos resultados obtidos, apresentando uma visão completa do desenvolvimento e das conclusões alcançadas.
 
 %-------------Bibliografia------------------
 \newpage
