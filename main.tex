@@ -302,7 +302,7 @@ O algoritmo genético para o problema de cobertura de vértices opera através d
 \end{enumerate}
 
 \subsection{Características Principais}
-Como destacado por \cite{Holland1975} e \cite{Linden2006}, os GAs possuem características que os tornam particularmente adequados para o problema de cobertura de vértices:
+Os GAs possuem características que os tornam particularmente adequados para o problema de cobertura de vértices:
 
 \begin{itemize}
     \item \textbf{Probabilístico:} A natureza probabilística permite explorar diferentes configurações de câmeras, evitando mínimos locais.
@@ -320,7 +320,7 @@ Como destacado por \cite{Holland1975} e \cite{Linden2006}, os GAs possuem caract
 \begin{itemize}
     \item \textbf{Representação Cromossomial:}
     \begin{itemize}
-        \item Cada cromossomo é um vetor binário de tamanho |V|, onde V é o conjunto de vértices do grafo
+        \item Cada cromossomo é um vetor binário de tamanho \(\lvert V \rvert\), onde \(V\) é o conjunto de vértices do grafo
         \item Um bit 1 indica a instalação de uma câmera naquele vértice
         \item A soma dos bits deve respeitar o limite máximo de câmeras disponíveis
     \end{itemize}
@@ -400,10 +400,48 @@ Em resumo, a fundamentação teórica de algoritmos gulosos reside em sua simpli
 O problema é formalizado como um grafo \(G = (V, E)\), onde os vértices \(V\) representam locais possíveis para câmeras e as arestas \(E\) representam conexões entre pontos que precisam ser monitorados. O objetivo é encontrar o menor subconjunto de vértices \(C \subseteq V\) tal que cada aresta em \(E\) é incidente a pelo menos um vértice em \(C\).
 
 \section{Restrições do Problema}
-As restrições incluem orçamento limitado, número máximo de câmeras, e a necessidade de cobrir áreas prioritárias.
+O problema apresenta dois casos com diferentes conjuntos de restrições:
+
+\subsection{Caso 1: Cobertura Máxima}
+\begin{itemize}
+    \item Número máximo fixo de 40 câmeras disponíveis
+    \item Necessidade de maximizar a cobertura com os recursos limitados
+    \item Priorização de áreas estratégicas e de maior fluxo
+    \item Restrições orçamentárias fixas
+\end{itemize}
+
+\subsection{Caso 2: Cobertura Completa}
+\begin{itemize}
+    \item Necessidade de cobrir 100\% dos vértices do grafo
+    \item Minimização do número total de câmeras necessárias
+    \item Garantia de monitoramento de todas as áreas
+    \item Sem restrição prévia do número de câmeras
+\end{itemize}
 
 \section{Função Objetivo}
-A função objetivo é minimizar o número de câmeras necessárias para cobrir todas as ruas, garantindo que cada rua seja monitorada por pelo menos uma câmera.
+O problema apresenta funções objetivo distintas para cada caso:
+
+\subsection{Caso 1: Cobertura Máxima}
+Dado um número fixo de 40 câmeras, a função objetivo é:
+\[ \text{maximizar } f(C) = \lvert \{v \in V : v \text{ é coberto por alguma câmera em } C\} \rvert \]
+onde:
+\begin{itemize}
+    \item \(C\) é o conjunto de vértices selecionados para instalação de câmeras
+    \item \(\lvert C \rvert \leq 40\) (restrição do número máximo de câmeras)
+    \item Um vértice \(v\) é considerado coberto se existe uma câmera em \(v\) ou em algum vértice adjacente a \(v\)
+\end{itemize}
+
+\subsection{Caso 2: Cobertura Completa}
+Para o caso de cobertura completa, a função objetivo é:
+\[ \text{minimizar } f(C) = \lvert C \rvert \]
+sujeito a:
+\[ \forall v \in V, \exists c \in C : (v = c) \text{ ou } (v,c) \in E \]
+onde:
+\begin{itemize}
+    \item \(C \subseteq V\) é o conjunto de vértices selecionados para instalação de câmeras
+    \item Todo vértice \(v \in V\) deve ser coberto por pelo menos uma câmera
+    \item Não há restrição prévia para o tamanho de \(\lvert C \rvert\)
+\end{itemize}
 
 \section{Modelagem em Grafos}
 
@@ -514,10 +552,38 @@ O grafo é definido como um conjunto de \textbf{nós} e \textbf{arestas}, organi
     \end{itemize}
 \end{itemize}
 
+\section{Redução e Complexidade do Problema}
+
+\section*{Redução de Vertex Cover para Set Cover}
+
+O problema Cobertura de Vértices é um problema clássico em teoria dos grafos, onde dado um grafo \(G = (V, E)\), busca-se um conjunto de vértices \(S \subseteq V\) tal que toda aresta \(e \in E\) tenha pelo menos uma extremidade em \(S\) 
+\cite{kleinberg2006algorithm}. Já o problema Cobertura de Conjuntos é um problema mais geral, onde dado um conjunto universo \(U\) e uma coleção de subconjuntos \(S_1, S_2, \dots, S_m\) de \(U\), busca-se uma subcoleção de conjuntos cuja união cubra todo o conjunto \(U\) \cite{kleinberg2006algorithm}.
+
+A redução de cobertura de vértices para Set Cover demonstra que o problema cobertura de vértices é um caso especial do problema Set Cover. A ideia chave desta redução é transformar uma instância do problema cobertura de vértices em uma instância do problema Set Cover, de tal forma que a solução de uma corresponde à solução da outra \cite{kleinberg2006algorithm}.
+
+\subsection*{Construção da Instância de Set Cover}
+Dada uma instância do problema cobertura de vértices, definida por um grafo \(G = (V, E)\) e um número \(k\), construímos uma instância do problema Set Cover da seguinte forma:
+\begin{itemize}
+    \item O conjunto universo \(U\) da instância de Set Cover é o conjunto de arestas \(E\) do grafo \(G\).
+    \item Para cada vértice \(i \in V\) do grafo \(G\), criamos um conjunto \(S_i\) que contém todas as arestas incidentes a \(i\).
+\end{itemize}
+
+\subsection*{Equivalência entre as Instâncias}
+Afirmamos que existe uma cobertura de vértices de tamanho no máximo \(k\) em \(G\) se e somente se existe uma cobertura de conjuntos de tamanho no máximo \(k\) em \(U\) 
+\cite{kleinberg2006algorithm}.
+\begin{itemize}
+    \item \textbf{Se} \( \{i_1, i_2, \dots, i_l\} \) com \(l \leq k\) é uma cobertura de vértices em \(G\), \textbf{então} os conjuntos \(S_{i_1}, S_{i_2}, \dots, S_{i_l}\) formam uma cobertura de conjuntos em \(U\) (pois toda aresta é coberta por pelo menos um dos vértices \(i_1, i_2, \dots, i_l\), e portanto, está em pelo menos um dos conjuntos correspondentes) 
+    \cite{kleinberg2006algorithm}.
+    \item \textbf{Se} \( \{S_{i_1}, S_{i_2}, \dots, S_{i_l}\} \) com \(l \leq k\) é uma cobertura de conjuntos em \(U\), \textbf{então} os vértices \( \{i_1, i_2, \dots, i_l\} \) formam uma cobertura de vértices em \(G\) (pois toda aresta em \(E\) está em pelo menos um dos conjuntos \(S_{i_1}, S_{i_2}, \dots, S_{i_l}\), e portanto, é coberta por pelo menos um dos vértices correspondentes) 
+    \cite{kleinberg2006algorithm}.
+\end{itemize}
+
+Esta redução estabelece que o problema cobertura de vértices é um caso especial do problema Set Cover, e que qualquer algoritmo que resolva o problema Set Cover pode ser usado para resolver o problema cobertura de vértices. No entanto, é importante notar que essa redução não necessariamente preserva a qualidade de aproximação das soluções. Por exemplo, apesar de termos um algoritmo de aproximação para Set Cover, isso não implica diretamente em um algoritmo com a mesma garantia de aproximação para o problema cobertura de vértices, especialmente quando se busca soluções ótimas. Uma análise mais cuidadosa é necessária para entender como as garantias de aproximação são preservadas ou perdidas durante reduções. \cite{kleinberg2006algorithm}
+
 \chapter{Solução Algorítmica}
 
 \section{Pseudo-Código e Algoritmo Utilizado}
-O problema de cobertura de vértices foi abordado utilizando três algoritmos principais: dois algoritmos gulosos (para cobertura completa e máxima) e um algoritmo genético. Cada abordagem foi implementada visando diferentes objetivos de otimização.
+O problema de cobertura de vértices foi abordado utilizando três algoritmos principais: dois algoritmos gulosos (para cobertura completa e máxima) e um algoritmo genético. 
 
 \subsection{Algoritmo de Cobertura Completa (Guloso)}
 O algoritmo de cobertura completa utiliza uma estratégia gulosa que seleciona iterativamente o vértice que cobre o maior número de vértices ainda não cobertos. Abaixo está o pseudocódigo detalhado:
@@ -538,8 +604,8 @@ O algoritmo de cobertura completa utiliza uma estratégia gulosa que seleciona i
     \ForAll{v $\in$ V}
         \If{v $\notin$ cobertura}
             \State vizinhos $\gets$ N(v) $\cup$ \{v\} \Comment{N(v) são os vizinhos de v}
-            \State cobertura\_atual $\gets$ |vizinhos $\cap$ vertices\_nao\_cobertos|
-            \If{cobertura\_atual > max\_cobertura}
+            \State cobertura\_atual $\gets$ $\lvert$vizinhos $\cap$ vertices\_nao\_cobertos$\rvert$
+            \If{cobertura\_atual $>$ max\_cobertura}
                 \State max\_cobertura $\gets$ cobertura\_atual
                 \State melhor\_vertice $\gets$ v
             \EndIf
@@ -574,8 +640,8 @@ O algoritmo de cobertura máxima também utiliza uma estratégia gulosa, mas com
     \ForAll{v $\in$ V}
         \If{v $\notin$ cobertura}
             \State vizinhos $\gets$ N(v) $\cup$ \{v\}
-            \State novos\_cobertos $\gets$ |vizinhos $\setminus$ vertices\_cobertos|
-            \If{novos\_cobertos > max\_novos\_cobertos}
+            \State novos\_cobertos $\gets$ $\lvert$vizinhos $\setminus$ vertices\_cobertos$\rvert$
+            \If{novos\_cobertos $>$ max\_novos\_cobertos}
                 \State max\_novos\_cobertos $\gets$ novos\_cobertos
                 \State melhor\_vertice $\gets$ v
             \EndIf
@@ -595,76 +661,83 @@ O algoritmo de cobertura máxima também utiliza uma estratégia gulosa, mas com
 O algoritmo genético implementa uma abordagem evolutiva para otimizar a cobertura com um número fixo de câmeras:
 
 \begin{algorithm}[H]
-\caption{Algoritmo de Cobertura Máxima (Genético)}
+\caption{Algoritmo Genético para Cobertura Máxima}
 \begin{algorithmic}[1]
-\State \textbf{Entrada:} Grafo G = (V, E), tamanho\_população, gerações, taxa\_crossover, taxa\_mutação
-\State \textbf{Saída:} Melhor solução encontrada
+\Require Grafo $G$, \texttt{tamanhoPop}, \texttt{gerações}, \texttt{taxaCrossover}, \texttt{taxaMutação}, \texttt{maxCameras}
+\Ensure Melhor indivíduo encontrado (lista binária indicando posições de câmeras)
 \Statex
-\State \textbf{Inicialização:}
-\State população $\gets$ inicializa\_população(tamanho\_população)
-\State melhor\_solução $\gets$ null
-\State melhor\_fitness $\gets$ -$\infty$
+
+\State \textbf{1. Inicialização:}
+\State população $\leftarrow$ \textsc{gerarPopulação}(\texttt{tamanhoPop}, \texttt{maxCameras})
+\State melhorSol $\leftarrow \emptyset$
+\State melhorFitness $\leftarrow -\infty$
+
 \Statex
-\For{g = 1 \textbf{to} gerações}
-    \State fitness\_scores $\gets$ avalia\_população(população)
-    \State melhor\_atual $\gets$ obtém\_melhor(população, fitness\_scores)
-    \If{fitness(melhor\_atual) > melhor\_fitness}
-        \State melhor\_solução $\gets$ melhor\_atual
-        \State melhor\_fitness $\gets$ fitness(melhor\_atual)
+\State \textbf{2. Evolução:}
+\For{$g$ de $1$ até \texttt{gerações}}
+    \State \textsc{avaliarPopulação}(população, $G$, \texttt{maxCameras}) 
+    \Comment{calcula \textit{fitness} de cada indivíduo}
+    \State indMelhor $\leftarrow$ \textsc{obterMelhor}(população)
+    \If{\textsc{fitness}(indMelhor) $>$ melhorFitness}
+        \State melhorFitness $\leftarrow$ \textsc{fitness}(indMelhor)
+        \State melhorSol $\leftarrow$ \textsc{copiar}(indMelhor)
     \EndIf
-    \State nova\_população $\gets$ seleciona\_elite(população, fitness\_scores)
-    \While{|nova\_população| < tamanho\_população}
-        \State pai1, pai2 $\gets$ seleciona\_pais(população, fitness\_scores)
-        \If{random() < taxa\_crossover}
-            \State filho1, filho2 $\gets$ crossover(pai1, pai2)
-        \Else
-            \State filho1, filho2 $\gets$ pai1, pai2
-        \EndIf
-        \State filho1 $\gets$ mutação(filho1, taxa\_mutação)
-        \State filho2 $\gets$ mutação(filho2, taxa\_mutação)
-        \State nova\_população $\gets$ nova\_população $\cup$ \{filho1, filho2\}
+    
+    \State novaPop $\leftarrow$ \textsc{selecionarElite}(população) 
+    \Comment{mantém os melhores indivíduos}
+    
+    \While{$\lvert\text{novaPop}\rvert $<$ \texttt{tamanhoPop}$}
+        \State pai1, pai2 $\leftarrow$ \textsc{selecionarPais}(população)
+        \State filho1, filho2 $\leftarrow$ \textsc{crossover}(pai1, pai2, \texttt{taxaCrossover}, \texttt{maxCameras})
+        \State filho1 $\leftarrow$ \textsc{mutar}(filho1, \texttt{taxaMutação})
+        \State filho2 $\leftarrow$ \textsc{mutar}(filho2, \texttt{taxaMutação})
+        \State novaPop $\leftarrow$ novaPop $\cup \{filho1, filho2\}$
     \EndWhile
-    \State população $\gets$ nova\_população
+    
+    \State população $\leftarrow$ \textsc{copiar}(novaPop)
 \EndFor
-\State \Return melhor\_solução
+
+\Statex
+\State \textbf{3. Resultado:}
+\State \Return melhorSol
 \end{algorithmic}
 \end{algorithm}
 
 \subsection{Complexidade Computacional}
-A análise de complexidade dos algoritmos implementados é a seguinte:
+
+A seguir, apresentamos a análise de complexidade dos algoritmos implementados:
 
 \begin{itemize}
     \item \textbf{Cobertura Completa (Guloso):}
     \begin{itemize}
-        \item Tempo: O($\lvert V \rvert^2$), onde $\lvert V \rvert$ é o número de vértices no grafo
-        \item Espaço: O($\lvert V \rvert$) para armazenar os conjuntos de vértices
-        \item O loop principal executa no máximo $\lvert V \rvert$ vezes
-        \item Para cada iteração, visitamos todos os vértices não cobertos
+        \item \textbf{Tempo:} \(O(\lvert V \rvert^2)\), onde \(\lvert V \rvert\) é o número de vértices no grafo.
+        \item \textbf{Espaço:} \(O(\lvert V \rvert)\) para armazenar os conjuntos de vértices.
+        \item O loop principal executa, no máximo, \(\lvert V \rvert\) vezes.
+        \item Em cada iteração, são visitados todos os vértices ainda não cobertos.
     \end{itemize}
     
     \item \textbf{Cobertura Máxima (Guloso):}
     \begin{itemize}
-        \item Tempo: O(p$\lvert V \rvert$), onde p é o número máximo de câmeras
-        \item Espaço: O($\lvert V \rvert$) para armazenar os conjuntos de vértices
-        \item O loop principal executa exatamente p vezes
-        \item Para cada iteração, visitamos todos os vértices não selecionados
+        \item \textbf{Tempo:} \(O(p \cdot \lvert V \rvert)\), onde \(p\) é o número máximo de câmeras.
+        \item \textbf{Espaço:} \(O(\lvert V \rvert)\) para armazenar os conjuntos de vértices.
+        \item O loop principal executa exatamente \(p\) vezes.
+        \item Em cada iteração, são visitados todos os vértices ainda não selecionados.
     \end{itemize}
 
     \item \textbf{Cobertura Máxima (Genético):}
     \begin{itemize}
-        \item Tempo: O(G × P × $\lvert V \rvert$), onde:
+        \item \textbf{Tempo:} \(O(G \times P \times \lvert V \rvert)\), onde:
         \begin{itemize}
-            \item G é o número de gerações
-            \item P é o tamanho da população
-            \item $\lvert V \rvert$ é o número de vértices no grafo
+            \item \(G\) é o número de gerações;
+            \item \(P\) é o tamanho da população;
+            \item \(\lvert V \rvert\) é o número de vértices no grafo.
         \end{itemize}
-        \item Espaço: O(P × $\lvert V \rvert$) para armazenar a população
-        \item O algoritmo executa G gerações
-        \item Em cada geração:
+        \item \textbf{Espaço:} \(O(P \times \lvert V \rvert)\) para armazenar a população.
+        \item O algoritmo executa \(G\) gerações. Em cada geração:
         \begin{itemize}
-            \item Avalia P indivíduos
-            \item Realiza operações de crossover e mutação em O($\lvert V \rvert$)
-            \item Calcula fitness para cada indivíduo em O($\lvert V \rvert$)
+            \item Avaliam-se \(P\) indivíduos;
+            \item Realizam-se operações de crossover e mutação em \(O(\lvert V \rvert)\);
+            \item Calcula-se o valor de fitness para cada indivíduo em \(O(\lvert V \rvert)\).
         \end{itemize}
     \end{itemize}
 \end{itemize}
@@ -699,7 +772,7 @@ O algoritmo genético apresenta características específicas para otimização 
 \begin{itemize}
     \item \textbf{Representação:}
     \begin{itemize}
-        \item Cromossomo binário de tamanho |V| (número de vértices)
+        \item Cromossomo binário de tamanho \(\lvert V \rvert\) (número de vértices)
         \item Cada gene representa a presença (1) ou ausência (0) de uma câmera
         \item Mantém exatamente 40 genes com valor 1 em cada indivíduo
     \end{itemize}
@@ -737,39 +810,6 @@ O script de visualização oferece uma comparação visual das diferentes soluç
         \item Implementa transparência nas arestas para melhor visualização
         \item Ajusta tamanhos dos nós para destacar câmeras
         \item Salva resultados em alta resolução (300 DPI)
-    \end{itemize}
-\end{itemize}
-
-\subsubsection{Aspectos Interessantes da Implementação}
-Alguns pontos notáveis da implementação incluem:
-
-\begin{itemize}
-    \item \textbf{Eficiência:}
-    \begin{itemize}
-        \item Uso de estruturas de dados otimizadas para operações frequentes
-        \item Implementação de cache para cálculos repetitivos
-        \item Otimização de loops e condições de parada
-    \end{itemize}
-    
-    \item \textbf{Modularidade:}
-    \begin{itemize}
-        \item Separação clara de responsabilidades entre os scripts
-        \item Interfaces bem definidas para entrada e saída de dados
-        \item Reutilização de código entre diferentes algoritmos
-    \end{itemize}
-    
-    \item \textbf{Extensibilidade:}
-    \begin{itemize}
-        \item Fácil adição de novos algoritmos de cobertura
-        \item Parâmetros configuráveis para experimentação
-        \item Estrutura preparada para diferentes métricas de avaliação
-    \end{itemize}
-    
-    \item \textbf{Documentação:}
-    \begin{itemize}
-        \item Código comentado com explicações detalhadas
-        \item Geração automática de relatórios de resultados
-        \item Visualizações informativas para análise dos resultados
     \end{itemize}
 \end{itemize}
 
@@ -874,45 +914,12 @@ O projeto foi desenvolvido com foco na reprodutibilidade e facilidade de uso. Pa
 
 Os capítulos seguintes detalham cada aspecto do trabalho, desde a fundamentação teórica até a análise dos resultados obtidos, apresentando uma visão completa do desenvolvimento e das conclusões alcançadas.
 
-\section{Redução e Complexidade do Problema}
-
-\section*{Redução de Vertex Cover para Set Cover}
-
-O problema \textbf{Vertex Cover} (Cobertura de Vértices) é um problema clássico em teoria dos grafos, onde dado um grafo \(G = (V, E)\), busca-se um conjunto de vértices \(S \subseteq V\) tal que toda aresta \(e \in E\) tenha pelo menos uma extremidade em \(S\) 
-\cite{kleinberg2006algorithm}. Já o problema \textbf{Set Cover} (Cobertura de Conjuntos) é um problema mais geral, onde dado um conjunto universo \(U\) e uma coleção de subconjuntos \(S_1, S_2, \dots, S_m\) de \(U\), busca-se uma subcoleção de conjuntos cuja união cubra todo o conjunto \(U\) 
-
-\cite{kleinberg2006algorithm}.
-
-A redução de Vertex Cover para Set Cover demonstra que o problema Vertex Cover é um caso especial do problema Set Cover. A ideia chave desta redução é transformar uma instância do problema Vertex Cover em uma instância do problema Set Cover, de tal forma que a solução de uma corresponde à solução da outra 
-\cite{kleinberg2006algorithm}.
-
-\subsection*{Construção da Instância de Set Cover}
-Dada uma instância do problema Vertex Cover, definida por um grafo \(G = (V, E)\) e um número \(k\), construímos uma instância do problema Set Cover da seguinte forma:
-\begin{itemize}
-    \item O conjunto universo \(U\) da instância de Set Cover é o conjunto de arestas \(E\) do grafo \(G\).
-    \item Para cada vértice \(i \in V\) do grafo \(G\), criamos um conjunto \(S_i\) que contém todas as arestas incidentes a \(i\).
-\end{itemize}
-
-\subsection*{Equivalência entre as Instâncias}
-Afirmamos que existe uma cobertura de vértices de tamanho no máximo \(k\) em \(G\) se e somente se existe uma cobertura de conjuntos de tamanho no máximo \(k\) em \(U\) 
-\cite{kleinberg2006algorithm}.
-\begin{itemize}
-    \item \textbf{Se} \( \{i_1, i_2, \dots, i_l\} \) com \(l \leq k\) é uma cobertura de vértices em \(G\), \textbf{então} os conjuntos \(S_{i_1}, S_{i_2}, \dots, S_{i_l}\) formam uma cobertura de conjuntos em \(U\) (pois toda aresta é coberta por pelo menos um dos vértices \(i_1, i_2, \dots, i_l\), e portanto, está em pelo menos um dos conjuntos correspondentes) 
-    \cite{kleinberg2006algorithm}.
-    \item \textbf{Se} \( \{S_{i_1}, S_{i_2}, \dots, S_{i_l}\} \) com \(l \leq k\) é uma cobertura de conjuntos em \(U\), \textbf{então} os vértices \( \{i_1, i_2, \dots, i_l\} \) formam uma cobertura de vértices em \(G\) (pois toda aresta em \(E\) está em pelo menos um dos conjuntos \(S_{i_1}, S_{i_2}, \dots, S_{i_l}\), e portanto, é coberta por pelo menos um dos vértices correspondentes) 
-    \cite{kleinberg2006algorithm}.
-\end{itemize}
-
-\subsection*{Conclusão}
-Esta redução estabelece que o problema Vertex Cover é um caso especial do problema Set Cover, e que qualquer algoritmo que resolva o problema Set Cover pode ser usado para resolver o problema Vertex Cover. No entanto, é importante notar que essa redução não necessariamente preserva a qualidade de aproximação das soluções.
-Por exemplo, apesar de termos um algoritmo de aproximação para Set Cover, isso não implica diretamente em um algoritmo com a mesma garantia de aproximação para o problema Vertex Cover, especialmente quando se busca soluções ótimas. Uma análise mais cuidadosa é necessária para entender como as garantias de aproximação são preservadas ou perdidas durante reduções.
-\cite{kleinberg2006algorithm}
-
 %-------------Bibliografia------------------
 \newpage
 \renewcommand{\refname}{Referências Bibliográficas}
 \addcontentsline{toc}{chapter}{Referências Bibliográficas}
 \bibliography{Bibliografia}
 \nocite{*}
+
 
 \end{document}
