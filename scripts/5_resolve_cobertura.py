@@ -8,10 +8,44 @@ import json
 import os
 from pathlib import Path
 import logging
-import pickle
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+def load_graph_from_json(json_path: str) -> nx.Graph:
+    """
+    Carrega o grafo a partir do arquivo JSON.
+    
+    Args:
+        json_path (str): Caminho para o arquivo JSON
+        
+    Returns:
+        nx.Graph: Grafo do NetworkX
+    """
+    with open(json_path, 'r') as f:
+        data = json.load(f)
+    
+    # Cria um grafo não direcionado
+    G = nx.Graph()
+    
+    # Adiciona os nós com seus atributos
+    for node in data['nodes']:
+        G.add_node(
+            node['id'],
+            lat=node['lat'],
+            lon=node['lon']
+        )
+    
+    # Adiciona as arestas com seus atributos
+    for edge in data['edges']:
+        G.add_edge(
+            edge['source'],
+            edge['target'],
+            weight=edge['weight'],
+            name=edge.get('name', '')  # Alguns podem não ter nome
+        )
+    
+    return G
 
 class CoberturaVertices:
     def __init__(self, grafo: nx.Graph):
@@ -129,15 +163,16 @@ class CoberturaVertices:
             json.dump(resultado, f, indent=2)
             
 def main():
-    # Carrega o grafo
-    script_dir = Path(__file__).parent
-    grafo_path = script_dir / "grafo_ondina.gpickle"
-    if not grafo_path.exists():
-        logger.error(f"Arquivo do grafo não encontrado em {grafo_path}")
+    # Carrega o grafo do arquivo JSON
+    script_dir = Path(__file__).parent.parent  # Sobe um nível para a raiz do projeto
+    json_path = script_dir / "instancias" / "ondina.json"
+    
+    if not json_path.exists():
+        logger.error(f"Arquivo do grafo não encontrado em {json_path}")
         return
         
-    with open(grafo_path, 'rb') as f:
-        grafo = pickle.load(f)
+    grafo = load_graph_from_json(str(json_path))
+    logger.info(f"Grafo carregado com {len(grafo.nodes())} vértices e {len(grafo.edges())} arestas")
         
     solver = CoberturaVertices(grafo)
     
