@@ -1,46 +1,47 @@
 # Projeto Final - MATA53 Teoria dos Grafos
 
-## Problema de Colocação Ótima de Câmeras de Segurança no bairro da Ondina
-
-Este projeto implementa diferentes algoritmos para resolver o problema de cobertura de vértices aplicado à colocação de câmeras de segurança no bairro de Ondina, Salvador.
+Projeto para otimização da colocação de câmeras de segurança no bairro da Ondina utilizando técnicas de cobertura de vértices.
 
 ## Estrutura do Projeto
 
-- **scripts/1_coleta_grafo_ondina.py**: Coleta dados do OpenStreetMap para o bairro de Ondina e salva o grafo em um arquivo.
-- **scripts/2_gera_instancia.py**: Gera uma instância do grafo e calcula a cobertura de vértices.
-- **scripts/3_visualiza_instancia.py**: Visualiza o grafo e destaca os nós que fazem parte da cobertura de vértices.
-- **scripts/4_analisa_instancia.py**: Analisa a instância do grafo, fornecendo estatísticas e informações sobre a cobertura de vértices.
-- **scripts/5_resolve_cobertura.py**: Implementa os algoritmos de cobertura completa e máxima para otimizar o posicionamento das câmeras.
-- **scripts/6_visualiza_cobertura.py**: Gera visualizações comparativas das soluções de cobertura completa e máxima, destacando o posicionamento das câmeras e os vértices cobertos.
-- **scripts/7_resolve_cobertura_genetico.py**: Implementa um algoritmo genético para otimizar a cobertura.
-- **scripts/8_visualiza_comparacao.py**: Gera visualizações comparativas das três abordagens.
+O projeto está organizado nos seguintes diretórios:
+
+- `scripts/`: Scripts Python para processamento e análise
+  - `1_coleta_grafo_ondina.py`: Coleta dados do OpenStreetMap
+  - `2_gera_instancia.py`: Gera grafo e calcula cobertura de vértices
+  - `3_visualiza_instancia.py`: Visualiza o grafo e destaca vértices cobertos
+  - `4_analisa_instancia.py`: Analisa a instância gerada
+  - `5_resolve_cobertura.py`: Implementa algoritmos de cobertura completa e máxima
+  - `6_visualiza_cobertura.py`: Gera visualizações das soluções
+  - `7_resolve_cobertura_genetico.py`: Implementa algoritmo genético para cobertura
+  - `8_visualiza_comparacao.py`: Gera visualização comparativa das três abordagens
+
+- `instancias/`: Dados de entrada
+  - `ondina.json`: Grafo do bairro de Ondina
+
+- `resultados/`: Arquivos de saída
+  - `cobertura_completa.json`: Resultado da cobertura completa
+  - `cobertura_maxima.json`: Resultado da cobertura máxima
+  - `ga_cobertura_ondina.json`: Resultado do algoritmo genético
+  - Visualizações em PNG das soluções
 
 ## Requisitos e Instalação
 
-1. Python 3.x
-2. Navegue até a pasta do projeto:
+1. Navegue até a pasta do projeto:
 ```bash
 cd mata53-projeto-final
 ```
 
-3. Instale as dependências:
+2. Instale as dependências:
 ```bash
 pip install -r requirements.txt
 ```
-
-As principais bibliotecas utilizadas são:
-- networkx: Manipulação e análise de grafos
-- osmnx: Coleta de dados do OpenStreetMap
-- scipy: Computação científica
-- matplotlib: Visualização de dados
-- numpy, pandas: Processamento de dados
-- geopandas, shapely: Manipulação de dados geográficos
 
 ## Como Executar
 
 Execute os scripts na seguinte ordem:
 
-1. Coleta do grafo de Ondina:
+1. Coleta do grafo:
 ```bash
 python scripts/1_coleta_grafo_ondina.py
 ```
@@ -60,17 +61,22 @@ python scripts/3_visualiza_instancia.py
 python scripts/4_analisa_instancia.py
 ```
 
-5. Resolução do problema de cobertura:
+5. Resolução da cobertura:
 ```bash
 python scripts/5_resolve_cobertura.py
 ```
 
-6. Resolução usando algoritmo genético:
+6. Visualização da cobertura:
+```bash
+python scripts/6_visualiza_cobertura.py
+```
+
+7. Resolução com algoritmo genético:
 ```bash
 python scripts/7_resolve_cobertura_genetico.py
 ```
 
-7. Visualização comparativa das soluções:
+8. Visualização comparativa:
 ```bash
 python scripts/8_visualiza_comparacao.py
 ```
@@ -78,30 +84,28 @@ python scripts/8_visualiza_comparacao.py
 ## Algoritmos de Cobertura
 
 ### Cobertura Completa (Guloso)
-- Implementa um algoritmo guloso que busca cobrir todos os vértices do grafo
-- Seleciona iterativamente os vértices que cobrem o maior número de vértices ainda não cobertos
-- Resultado: 61 câmeras para cobrir todos os 182 vértices
-- Média de 3,0 vértices cobertos por câmera
+- Objetivo: Encontrar o menor conjunto de vértices que cubra todo o grafo
+- Resultado: 61 câmeras necessárias para cobrir todos os 182 vértices
+- Média: 3,0 vértices cobertos por câmera
 
 ### Cobertura Máxima (Guloso)
-- Implementa um algoritmo guloso com limite de câmeras
-- Busca maximizar a cobertura usando no máximo 40 câmeras
-- Resultado: 142 vértices cobertos (78% do total)
-- Média de 3,55 vértices cobertos por câmera
+- Objetivo: Maximizar a cobertura com um número limitado de câmeras
+- Resultado: 40 câmeras cobrindo 153 vértices (84% do total)
+- Média: 3,83 vértices cobertos por câmera
 
 ### Cobertura Máxima (Genético)
-- Implementa um algoritmo genético para otimizar a cobertura
-- Usa população de 100 indivíduos e 200 gerações
-- Resultado: 156 vértices cobertos (85% do total) com 40 câmeras
-- Média de 3,9 vértices cobertos por câmera
+- Objetivo: Otimizar a cobertura usando algoritmo genético
+- Resultado: 40 câmeras cobrindo 156 vértices (86% do total)
+- Média: 3,9 vértices cobertos por câmera
 
 ## Resultados
 
-Os resultados são salvos em arquivos JSON na pasta `resultados/`:
-- `cobertura_completa.json`: Solução de cobertura completa
-- `cobertura_maxima.json`: Solução de cobertura máxima com algoritmo guloso
-- `ga_cobertura_ondina.json`: Solução de cobertura máxima com algoritmo genético
+Os resultados são salvos em arquivos JSON no diretório `resultados/`:
 
-Visualizações são geradas em:
-- `resultados/visualizacao_cobertura.png`: Comparação das soluções gulosas
-- `resultados/visualizacao_comparacao.png`: Comparação das três abordagens
+- `cobertura_completa.json`: Solução com cobertura total (61 câmeras)
+- `cobertura_maxima.json`: Solução com 40 câmeras (algoritmo guloso)
+- `ga_cobertura_ondina.json`: Solução com 40 câmeras (algoritmo genético)
+
+Visualizações:
+- `visualizacao_cobertura.png`: Comparação entre cobertura completa e máxima
+- `visualizacao_comparacao.png`: Comparação das três abordagens implementadas
