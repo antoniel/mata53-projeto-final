@@ -379,13 +379,13 @@ O grafo é definido como um conjunto de \textbf{nós} e \textbf{arestas}, organi
 \chapter{Solução Algorítmica}
 
 \section{Pseudo-Código e Algoritmo Utilizado}
-O algoritmo implementado para resolver o problema de cobertura de vértices utiliza duas abordagens principais: cobertura completa e cobertura máxima. Ambas são baseadas em uma estratégia gulosa (greedy) que seleciona iterativamente os vértices mais promissores.
+O problema de cobertura de vértices foi abordado utilizando três algoritmos principais: dois algoritmos gulosos (para cobertura completa e máxima) e um algoritmo genético. Cada abordagem foi implementada visando diferentes objetivos de otimização.
 
-\subsection{Algoritmo de Cobertura Completa}
-O algoritmo de cobertura completa visa encontrar o menor conjunto de vértices que cubra todo o grafo. Abaixo está o pseudocódigo detalhado:
+\subsection{Algoritmo de Cobertura Completa (Guloso)}
+O algoritmo de cobertura completa utiliza uma estratégia gulosa que seleciona iterativamente o vértice que cobre o maior número de vértices ainda não cobertos. Abaixo está o pseudocódigo detalhado:
 
 \begin{algorithm}[H]
-\caption{Algoritmo de Cobertura Completa}
+\caption{Algoritmo de Cobertura Completa (Guloso)}
 \begin{algorithmic}[1]
 \State \textbf{Entrada:} Grafo G = (V, E)
 \State \textbf{Saída:} Conjunto C de vértices selecionados para instalação de câmeras
@@ -417,11 +417,11 @@ O algoritmo de cobertura completa visa encontrar o menor conjunto de vértices q
 \end{algorithmic}
 \end{algorithm}
 
-\subsection{Algoritmo de Cobertura Máxima}
-O algoritmo de cobertura máxima busca maximizar a cobertura com um número limitado de câmeras:
+\subsection{Algoritmo de Cobertura Máxima (Guloso)}
+O algoritmo de cobertura máxima também utiliza uma estratégia gulosa, mas com um limite fixo de câmeras. A cada iteração, seleciona o vértice que maximiza a cobertura adicional:
 
 \begin{algorithm}[H]
-\caption{Algoritmo de Cobertura Máxima}
+\caption{Algoritmo de Cobertura Máxima (Guloso)}
 \begin{algorithmic}[1]
 \State \textbf{Entrada:} Grafo G = (V, E), número máximo de câmeras p
 \State \textbf{Saída:} Conjunto C de vértices selecionados e conjunto de vértices cobertos
@@ -453,11 +453,50 @@ O algoritmo de cobertura máxima busca maximizar a cobertura com um número limi
 \end{algorithmic}
 \end{algorithm}
 
+\subsection{Algoritmo de Cobertura Máxima (Genético)}
+O algoritmo genético implementa uma abordagem evolutiva para otimizar a cobertura com um número fixo de câmeras:
+
+\begin{algorithm}[H]
+\caption{Algoritmo de Cobertura Máxima (Genético)}
+\begin{algorithmic}[1]
+\State \textbf{Entrada:} Grafo G = (V, E), tamanho\_população, gerações, taxa\_crossover, taxa\_mutação
+\State \textbf{Saída:} Melhor solução encontrada
+\Statex
+\State \textbf{Inicialização:}
+\State população $\gets$ inicializa\_população(tamanho\_população)
+\State melhor\_solução $\gets$ null
+\State melhor\_fitness $\gets$ -$\infty$
+\Statex
+\For{g = 1 \textbf{to} gerações}
+    \State fitness\_scores $\gets$ avalia\_população(população)
+    \State melhor\_atual $\gets$ obtém\_melhor(população, fitness\_scores)
+    \If{fitness(melhor\_atual) > melhor\_fitness}
+        \State melhor\_solução $\gets$ melhor\_atual
+        \State melhor\_fitness $\gets$ fitness(melhor\_atual)
+    \EndIf
+    \State nova\_população $\gets$ seleciona\_elite(população, fitness\_scores)
+    \While{|nova\_população| < tamanho\_população}
+        \State pai1, pai2 $\gets$ seleciona\_pais(população, fitness\_scores)
+        \If{random() < taxa\_crossover}
+            \State filho1, filho2 $\gets$ crossover(pai1, pai2)
+        \Else
+            \State filho1, filho2 $\gets$ pai1, pai2
+        \EndIf
+        \State filho1 $\gets$ mutação(filho1, taxa\_mutação)
+        \State filho2 $\gets$ mutação(filho2, taxa\_mutação)
+        \State nova\_população $\gets$ nova\_população $\cup$ \{filho1, filho2\}
+    \EndWhile
+    \State população $\gets$ nova\_população
+\EndFor
+\State \Return melhor\_solução
+\end{algorithmic}
+\end{algorithm}
+
 \subsection{Complexidade Computacional}
 A análise de complexidade dos algoritmos implementados é a seguinte:
 
 \begin{itemize}
-    \item \textbf{Cobertura Completa:}
+    \item \textbf{Cobertura Completa (Guloso):}
     \begin{itemize}
         \item Tempo: O($\lvert V \rvert^2$), onde $\lvert V \rvert$ é o número de vértices no grafo
         \item Espaço: O($\lvert V \rvert$) para armazenar os conjuntos de vértices
@@ -465,50 +504,136 @@ A análise de complexidade dos algoritmos implementados é a seguinte:
         \item Para cada iteração, visitamos todos os vértices não cobertos
     \end{itemize}
     
-    \item \textbf{Cobertura Máxima:}
+    \item \textbf{Cobertura Máxima (Guloso):}
     \begin{itemize}
         \item Tempo: O(p$\lvert V \rvert$), onde p é o número máximo de câmeras
         \item Espaço: O($\lvert V \rvert$) para armazenar os conjuntos de vértices
         \item O loop principal executa exatamente p vezes
         \item Para cada iteração, visitamos todos os vértices não selecionados
     \end{itemize}
+
+    \item \textbf{Cobertura Máxima (Genético):}
+    \begin{itemize}
+        \item Tempo: O(G × P × $\lvert V \rvert$), onde:
+        \begin{itemize}
+            \item G é o número de gerações
+            \item P é o tamanho da população
+            \item $\lvert V \rvert$ é o número de vértices no grafo
+        \end{itemize}
+        \item Espaço: O(P × $\lvert V \rvert$) para armazenar a população
+        \item O algoritmo executa G gerações
+        \item Em cada geração:
+        \begin{itemize}
+            \item Avalia P indivíduos
+            \item Realiza operações de crossover e mutação em O($\lvert V \rvert$)
+            \item Calcula fitness para cada indivíduo em O($\lvert V \rvert$)
+        \end{itemize}
+    \end{itemize}
 \end{itemize}
 
-\subsection{Implementação}
-A implementação foi realizada em Python utilizando a biblioteca NetworkX para manipulação de grafos. A classe \texttt{CoberturaVertices} encapsula toda a lógica dos algoritmos:
+\subsection{Detalhamento da Implementação}
+A implementação do projeto foi dividida em três scripts principais, cada um com responsabilidades específicas e complementares:
+
+\subsubsection{Algoritmos de Cobertura (\texttt{5\_resolve\_cobertura.py})}
+Este script implementa os algoritmos gulosos para cobertura completa e máxima:
 
 \begin{itemize}
-    \item \textbf{Estruturas de Dados:}
+    \item \textbf{Cobertura Completa:}
     \begin{itemize}
-        \item Grafo representado como objeto \texttt{nx.Graph}
-        \item Matriz de adjacência para acesso rápido às conexões
-        \item Conjuntos para rastreamento de vértices cobertos/não cobertos
+        \item Utiliza uma matriz de adjacência para rápido acesso aos vizinhos
+        \item Implementa um mecanismo de cache para evitar recálculos de coberturas
+        \item Mantém um conjunto de vértices não cobertos para otimizar a busca
+        \item Usa estruturas de dados eficientes (sets) para operações de união e interseção
     \end{itemize}
     
-    \item \textbf{Principais Métodos:}
+    \item \textbf{Cobertura Máxima:}
     \begin{itemize}
-        \item \texttt{resolve\_cobertura\_completa()}: Implementa o algoritmo de cobertura completa
-        \item \texttt{resolve\_cobertura\_maxima(p)}: Implementa o algoritmo de cobertura máxima
-        \item \texttt{salvar\_resultado()}: Persiste os resultados em formato JSON
-    \end{itemize}
-    
-    \item \textbf{Otimizações:}
-    \begin{itemize}
-        \item Uso de estruturas de dados eficientes (sets) para operações de união e interseção
-        \item Cálculo incremental de coberturas para evitar recomputação
-        \item Armazenamento em cache da matriz de adjacência
+        \item Limita o número de câmeras a um valor predefinido (40)
+        \item Implementa uma função de avaliação incremental de cobertura
+        \item Utiliza early stopping quando não há mais ganho de cobertura
+        \item Mantém registro dos vértices já cobertos para evitar redundância
     \end{itemize}
 \end{itemize}
 
-Os resultados são salvos em arquivos JSON contendo:
+\subsubsection{Algoritmo Genético (\texttt{7\_resolve\_cobertura\_genetico.py})}
+O algoritmo genético apresenta características específicas para otimização da cobertura:
+
 \begin{itemize}
-    \item Lista de vértices selecionados para instalação de câmeras
-    \item Número total de câmeras utilizadas
-    \item Cobertura total alcançada (número de vértices cobertos)
-    \item Total de vértices no grafo
+    \item \textbf{Representação:}
+    \begin{itemize}
+        \item Cromossomo binário de tamanho |V| (número de vértices)
+        \item Cada gene representa a presença (1) ou ausência (0) de uma câmera
+        \item Mantém exatamente 40 genes com valor 1 em cada indivíduo
+    \end{itemize}
+    
+    \item \textbf{Operadores Genéticos:}
+    \begin{itemize}
+        \item Crossover preserva o número exato de câmeras
+        \item Mutação implementa troca de posições (swap) entre câmeras
+        \item Seleção por torneio com elitismo para preservar melhores soluções
+    \end{itemize}
+    
+    \item \textbf{Função Fitness:}
+    \begin{itemize}
+        \item Calcula o número de vértices cobertos
+        \item Penaliza soluções que violam o limite de câmeras
+        \item Considera a distribuição espacial das câmeras
+    \end{itemize}
 \end{itemize}
 
-Esta implementação está disponível no arquivo \texttt{5\_resolve\_cobertura.py} e pode ser executada após a geração do grafo inicial do bairro de Ondina.
+\subsubsection{Visualização Comparativa (\texttt{8\_visualiza\_comparacao.py})}
+O script de visualização oferece uma comparação visual das diferentes soluções:
+
+\begin{itemize}
+    \item \textbf{Características:}
+    \begin{itemize}
+        \item Gera visualizações lado a lado das três abordagens
+        \item Utiliza cores distintas para câmeras e vértices cobertos
+        \item Mantém o mesmo layout para facilitar comparação
+        \item Inclui informações estatísticas nos títulos
+    \end{itemize}
+    
+    \item \textbf{Aspectos Técnicos:}
+    \begin{itemize}
+        \item Usa NetworkX para layout e desenho do grafo
+        \item Implementa transparência nas arestas para melhor visualização
+        \item Ajusta tamanhos dos nós para destacar câmeras
+        \item Salva resultados em alta resolução (300 DPI)
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Aspectos Interessantes da Implementação}
+Alguns pontos notáveis da implementação incluem:
+
+\begin{itemize}
+    \item \textbf{Eficiência:}
+    \begin{itemize}
+        \item Uso de estruturas de dados otimizadas para operações frequentes
+        \item Implementação de cache para cálculos repetitivos
+        \item Otimização de loops e condições de parada
+    \end{itemize}
+    
+    \item \textbf{Modularidade:}
+    \begin{itemize}
+        \item Separação clara de responsabilidades entre os scripts
+        \item Interfaces bem definidas para entrada e saída de dados
+        \item Reutilização de código entre diferentes algoritmos
+    \end{itemize}
+    
+    \item \textbf{Extensibilidade:}
+    \begin{itemize}
+        \item Fácil adição de novos algoritmos de cobertura
+        \item Parâmetros configuráveis para experimentação
+        \item Estrutura preparada para diferentes métricas de avaliação
+    \end{itemize}
+    
+    \item \textbf{Documentação:}
+    \begin{itemize}
+        \item Código comentado com explicações detalhadas
+        \item Geração automática de relatórios de resultados
+        \item Visualizações informativas para análise dos resultados
+    \end{itemize}
+\end{itemize}
 
 \chapter{Experimentos}
 
