@@ -310,44 +310,60 @@ Em ambos os casos, a complexidade computacional pode se tornar um problema para 
 
 \subsubsection{Pseudoalgoritmo para o Problema de Localização com Cobertura Completa}
 \begin{enumerate}
-    \item \textbf{Entrada:} Conjunto de vértices de demanda (I), conjunto de vértices de instalação (J), matrizes de adjacência (A, B, C)
+    \item \textbf{Entrada:} Conjunto de vértices de demanda (I), conjunto de vértices de instalação (J), matriz de adjacência (M)
     \item \textbf{Inicialização:}
     \begin{itemize}
-        \item Variável \(x[j]\) (câmera instalada para direita/cima) = 0 para todo \(j\) em \(J\).
-        \item Variável \(z[j]\) (câmera instalada para esquerda/baixo) = 0 para todo \(j\) em \(J\).
-        \item Variável \(k[j]\) (câmera instalada para frente) = 0 para todo \(j\) em \(J\).
+        \item Variável \(x[j]\) (câmera instalada) = 0 para todo \(j\) em \(J\)
     \end{itemize}
-    \item \textbf{Função Objetivo:} Minimizar a soma de câmeras instaladas: \(\text{minimize} \sum_{j \in J} x[j] + \sum_{j \in J} z[j] + \sum_{j \in J} k[j]\) \cite{veloso2021localizacao}.
+    \item \textbf{Função Objetivo:} Minimizar o número total de câmeras instaladas: \(\text{minimize} \sum_{j \in J} x[j]\) \cite{veloso2021localizacao}
     \item \textbf{Restrições:}
     \begin{itemize}
-        \item Garantir que cada vértice de demanda seja coberto por pelo menos uma câmera: \(\forall i \in I, \sum_{j \in J} A[i][j] \cdot x[j] + \sum_{j \in J} B[i][j] \cdot z[j] + \sum_{j \in J} C[i][j] \cdot k[j] \geq 1\)
-        \item As variáveis devem ser binárias: \(x[j], z[j], k[j] \in \{0, 1\}\)
+        \item Garantir que cada vértice de demanda seja coberto por pelo menos uma câmera: \(\forall i \in I, \sum_{j \in J} (M[i][j] + \delta_{ij}) \cdot x[j] \geq 1\), onde \(\delta_{ij} = 1\) se \(i = j\), e 0 caso contrário
+        \item As variáveis devem ser binárias: \(x[j] \in \{0, 1\}\)
     \end{itemize}
-    \item \textbf{Resolver o modelo de programação linear inteira} usando CPLEX ou outro solver adequado.
-    \item \textbf{Saída:} Valores de \(x[j]\), \(z[j]\) e \(k[j]\) que indicam a localização das câmeras para cobertura completa.
+    \item \textbf{Resolver o modelo de programação linear inteira} usando CPLEX ou outro solver adequado
+    \item \textbf{Saída:} Valores de \(x[j]\) que indicam a localização das câmeras para cobertura completa
 \end{enumerate}
 
 \subsubsection{Pseudoalgoritmo para o Problema de Localização com Cobertura Máxima}
 \begin{enumerate}
-    \item \textbf{Entrada:} Conjunto de vértices de demanda (I), conjunto de vértices de instalação (J), matrizes de adjacência (A, B, C), número máximo de câmeras (p)
+    \item \textbf{Entrada:} Conjunto de vértices de demanda (I), conjunto de vértices de instalação (J), matriz de adjacência (M), número máximo de câmeras (p)
     \item \textbf{Inicialização:}
     \begin{itemize}
-        \item Variável \(x[j]\) (câmera instalada para direita/cima) = 0 para todo \(j\) em \(J\).
-        \item Variável \(z[j]\) (câmera instalada para esquerda/baixo) = 0 para todo \(j\) em \(J\).
-        \item Variável \(k[j]\) (câmera instalada para frente) = 0 para todo \(j\) em \(J\).
-        \item Variável \(y[i]\) (vértice \(i\) coberto) = 0 para todo \(i\) em \(I\).
-        \item Vetor \(w[i]\) (peso do vértice \(i\)) = 1 para todo \(i\) em \(I\).
+        \item Variável \(x[j]\) (câmera instalada) = 0 para todo \(j\) em \(J\)
+        \item Variável \(y[i]\) (vértice \(i\) coberto) = 0 para todo \(i\) em \(I\)
+        \item Vetor \(w[i]\) (peso do vértice \(i\)) = 1 para todo \(i\) em \(I\)
     \end{itemize}
     \item \textbf{Função Objetivo:} Maximizar a soma dos pesos dos vértices cobertos: \(\text{maximize} \sum_{i \in I} w[i] \cdot y[i]\)
     \item \textbf{Restrições:}
     \begin{itemize}
-        \item Garantir que um vértice seja coberto apenas se houver uma câmera que o cubra: \(\forall i \in I, \sum_{j \in J} A[i][j] \cdot x[j] + \sum_{j \in J} B[i][j] \cdot z[j] + \sum_{j \in J} C[i][j] \cdot k[j] - y[i] \geq 0\)
-        \item Limitar o número total de câmeras instaladas: \(\sum_{j \in J} x[j] + \sum_{j \in J} z[j] + \sum_{j \in J} k[j] \leq p\)
-        \item As variáveis devem ser binárias: \(x[j], z[j], k[j], y[i] \in \{0, 1\}\)
+        \item Garantir que um vértice seja coberto apenas se houver uma câmera que o cubra: \(\forall i \in I, \sum_{j \in J} (M[i][j] + \delta_{ij}) \cdot x[j] - y[i] \geq 0\)
+        \item Limitar o número total de câmeras instaladas: \(\sum_{j \in J} x[j] \leq p\)
+        \item As variáveis devem ser binárias: \(x[j], y[i] \in \{0, 1\}\)
     \end{itemize}
-    \item \textbf{Resolver o modelo de programação linear inteira} usando CPLEX ou outro solver adequado.
-    \item \textbf{Saída:} Valores de \(x[j]\), \(z[j]\), \(k[j]\) e \(y[i]\) que indicam a localização das câmeras e os vértices cobertos.
+    \item \textbf{Resolver o modelo de programação linear inteira} usando CPLEX ou outro solver adequado
+    \item \textbf{Saída:} Valores de \(x[j]\) e \(y[i]\) que indicam a localização das câmeras e os vértices cobertos
 \end{enumerate}
+
+\subsection{Implementação}
+A implementação do algoritmo foi realizada em Python, utilizando a biblioteca NetworkX para manipulação de grafos. Duas abordagens foram implementadas:
+
+\begin{itemize}
+    \item \textbf{Algoritmo de Cobertura Completa:} Implementa uma solução gulosa que seleciona iterativamente os vértices que cobrem o maior número de vértices ainda não cobertos, até que todos os vértices estejam cobertos. Esta implementação é baseada no pseudocódigo apresentado anteriormente e adaptada para utilizar as estruturas de dados do NetworkX.
+    
+    \item \textbf{Algoritmo de Cobertura Máxima:} Implementa uma solução que maximiza a cobertura com um número limitado de câmeras, selecionando os vértices que proporcionam a maior cobertura adicional a cada iteração. Esta implementação considera restrições práticas como o número máximo de câmeras disponíveis.
+\end{itemize}
+
+A implementação considera as restrições práticas do problema e utiliza estruturas de dados eficientes para manipulação dos conjuntos de vértices e cálculo das coberturas. Os resultados são salvos em formato JSON para posterior análise e visualização, incluindo informações como:
+
+\begin{itemize}
+    \item Vértices selecionados para instalação de câmeras
+    \item Número total de câmeras necessárias
+    \item Cobertura total alcançada
+    \item Total de vértices no grafo
+\end{itemize}
+
+Esta implementação está disponível no arquivo \texttt{5\_resolve\_cobertura.py} e pode ser executada após a geração do grafo inicial do bairro de Ondina.
 
 \chapter{Experimentos}
 
