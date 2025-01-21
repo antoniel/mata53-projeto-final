@@ -256,6 +256,117 @@ O grafo é definido como um conjunto de \textbf{nós} e \textbf{arestas}, organi
 % #TODO: melhorar o capítulo
 O problema de cobertura mínima de vértices tem sido extensivamente estudado na literatura, tanto em sua forma teórica quanto em aplicações práticas. Esta seção apresenta uma revisão dos principais trabalhos relacionados, focando em resultados teóricos fundamentais e aplicações similares ao nosso problema de posicionamento de câmeras.
 
+\chapter{Fundamentação Teórica}
+
+\section{Algoritmos Genéticos}
+Os Algoritmos Genéticos (GAs) são um ramo dos algoritmos evolucionários que utilizam modelos computacionais dos processos naturais de evolução para resolver problemas complexos de otimização \cite{Holland1975}. Segundo \cite{Linden2006}, eles são definidos como uma técnica de busca baseada na metáfora do processo biológico de evolução natural, oferecendo uma abordagem heurística para otimização global. No contexto do nosso problema de cobertura de vértices para posicionamento de câmeras no bairro de Ondina, os GAs se mostram particularmente úteis devido à sua capacidade de explorar eficientemente um espaço de soluções complexo.
+
+\subsection{Conceitos Fundamentais e Terminologia}
+\begin{itemize}
+    \item \textbf{Inspiração Biológica:} Holland \cite{Holland1975} desenvolveu os GAs inspirando-se na genética e na teoria da evolução das espécies, estabelecendo uma base teórica sólida que utiliza terminologia análoga aos conceitos biológicos.
+    
+    \item \textbf{Cromossomos e Genes:} 
+    \begin{itemize}
+        \item No nosso problema, cada cromossomo representa uma possível configuração de câmeras no bairro de Ondina
+        \item Os genes são bits que indicam presença (1) ou ausência (0) de câmera em cada vértice do grafo
+        \item O "alelo" é o valor binário que indica se há ou não câmera naquele ponto
+        \item O "locus" corresponde à posição específica no bairro onde pode ser instalada uma câmera
+    \end{itemize}
+    
+    \item \textbf{Genótipo e Fenótipo:}
+    \begin{itemize}
+        \item O "genótipo" é a sequência binária que representa a distribuição das câmeras
+        \item O "fenótipo" é a cobertura efetiva alcançada por essa configuração de câmeras no bairro
+    \end{itemize}
+    
+    \item \textbf{População:} Conforme explica \cite{Linden2006}, os GAs trabalham com uma população de soluções candidatas que evoluem através de operadores genéticos, sendo cada solução avaliada quanto à sua eficácia na cobertura do bairro.
+\end{itemize}
+
+\subsection{Funcionamento Básico}
+O algoritmo genético para o problema de cobertura de vértices opera através dos seguintes passos:
+
+\begin{enumerate}
+    \item \textbf{Inicialização:} Uma população inicial de configurações de câmeras é gerada aleatoriamente, respeitando o número máximo permitido de câmeras.
+    
+    \item \textbf{Avaliação:} Cada configuração é avaliada considerando:
+    \begin{itemize}
+        \item Número de vértices (pontos do bairro) cobertos
+        \item Custo total da solução (número de câmeras utilizadas)
+        \item Distribuição espacial das câmeras para maximizar a cobertura
+    \end{itemize}
+    
+    \item \textbf{Seleção de Pais:} As melhores configurações são selecionadas para reprodução, priorizando aquelas que oferecem maior cobertura com menos câmeras.
+    
+    \item \textbf{Operadores Genéticos:}
+    \begin{itemize}
+        \item \textbf{Crossover:} Combina características de duas boas configurações de câmeras
+        \item \textbf{Mutação:} Altera aleatoriamente a posição de algumas câmeras para explorar novas possibilidades
+    \end{itemize}
+    
+    \item \textbf{Atualização da População:} As novas configurações substituem as menos eficientes da população anterior.
+    
+    \item \textbf{Critério de Parada:} O processo continua até atingir uma cobertura satisfatória ou um número máximo de gerações.
+\end{enumerate}
+
+\subsection{Características Principais}
+Como destacado por \cite{Holland1975} e \cite{Linden2006}, os GAs possuem características que os tornam particularmente adequados para o problema de cobertura de vértices:
+
+\begin{itemize}
+    \item \textbf{Probabilístico:} A natureza probabilística permite explorar diferentes configurações de câmeras, evitando mínimos locais.
+    
+    \item \textbf{Simplicidade:} A implementação é relativamente simples, necessitando apenas de informações sobre a cobertura local de cada câmera.
+    
+    \item \textbf{População:} O trabalho com múltiplas soluções simultaneamente permite encontrar diferentes configurações eficientes de câmeras.
+    
+    \item \textbf{Codificação:} A representação binária é natural para o problema, onde cada bit representa a presença ou ausência de uma câmera.
+    
+    \item \textbf{Flexibilidade:} O algoritmo pode ser facilmente adaptado para diferentes critérios de otimização, como custo das câmeras ou priorização de áreas específicas do bairro.
+\end{itemize}
+
+\subsection{Representação e Operadores}
+\begin{itemize}
+    \item \textbf{Representação Cromossomial:}
+    \begin{itemize}
+        \item Cada cromossomo é um vetor binário de tamanho |V|, onde V é o conjunto de vértices do grafo
+        \item Um bit 1 indica a instalação de uma câmera naquele vértice
+        \item A soma dos bits deve respeitar o limite máximo de câmeras disponíveis
+    \end{itemize}
+    
+    \item \textbf{Função de Avaliação:}
+    \begin{itemize}
+        \item Calcula a cobertura total alcançada pela configuração
+        \item Penaliza soluções que excedem o número máximo de câmeras
+        \item Considera a distribuição espacial para evitar redundância na cobertura
+    \end{itemize}
+    
+    \item \textbf{Operadores Genéticos:}
+    \begin{itemize}
+        \item \textbf{Crossover:} Troca segmentos entre duas configurações promissoras
+        \item \textbf{Mutação:} Altera posições de câmeras para explorar novas áreas do bairro
+        \item \textbf{Elitismo:} Preserva as melhores configurações encontradas
+    \end{itemize}
+\end{itemize}
+
+\subsection{Aplicação no Problema de Cobertura de Vértices}
+No contexto específico do bairro de Ondina, o algoritmo genético foi implementado considerando:
+
+\begin{itemize}
+    \item \textbf{Representação:} Cada cromossomo representa uma possível distribuição das 40 câmeras disponíveis
+    \item \textbf{Genes:} Indicam a presença (1) ou ausência (0) de câmeras em cada esquina ou ponto estratégico
+    \item \textbf{Função de Avaliação:} Considera:
+    \begin{itemize}
+        \item Número de ruas e pontos cobertos
+        \item Distribuição espacial para maximizar a área monitorada
+        \item Priorização de pontos críticos (próximos a escolas, comércios, etc.)
+    \end{itemize}
+    \item \textbf{Restrições:} 
+    \begin{itemize}
+        \item Número máximo de 40 câmeras
+        \item Necessidade de cobrir pontos estratégicos
+        \item Limitações de visibilidade devido à topografia do bairro
+    \end{itemize}
+\end{itemize}
+
 \chapter{Descrição Formal do Problema}
 
 \section{Formalização}
