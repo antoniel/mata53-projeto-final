@@ -7,108 +7,208 @@
 \usepackage{csquotes}
 \usepackage{xcolor}
 \usepackage[portuguese]{babel}
-\usetheme{DCC}
+
+% ------------------------------------------------
+% Tema do Beamer (exemplo de um tema customizado)
+% ------------------------------------------------
+\usetheme{DCC} % <-- Ajuste conforme seu tema ou estilo
+
 \graphicspath{{imgs/}}
 
-\author{Antoniel Magalhães, João Leahy, Luis Felipe}
+\author[Magalhães, Leahy, Felipe]{%
+  \textbf{Antoniel Magalhães} \\
+  \textbf{João Leahy } \\
+  \textbf{Luis Felipe}
+}
 \title{Problema de Colocação Ótima de Câmeras de Segurança}
-\institute{Universidade Federal da Bahia}
+\institute{Universidade Federal da Bahia \\ Instituto de Computação}
 \date{\today}
 
 \begin{document}
 
-% Slide inicial: Título
+%-------------------------------------------------
+%  SLIDE DE TÍTULO
+%-------------------------------------------------
 \begin{frame}[plain,noframenumbering]
     \titlepage
 \end{frame}
 
-% Agenda
+%-------------------------------------------------
+%  SLIDE DE AGENDA
+%-------------------------------------------------
 \begin{frame}{Agenda}
     \tableofcontents
 \end{frame}
 
+%=================================================
 \section{Introdução}
-
-% Introdução
+%=================================================
 \begin{frame}{Introdução}
     \begin{itemize}
-        \item Contextualização e Motivação
-        \item Importância da Teoria dos Grafos na Segurança
+        \item \textbf{Contextualização e Motivação:}
+        \begin{itemize}
+            \item Aplicação de Teoria dos Grafos em problemas de segurança.
+            \item Cenário urbano: bairro de Ondina (Salvador).
+        \end{itemize}
+        \item \textbf{Justificativa:}
+        \begin{itemize}
+            \item Modelagem de problemas de vigilância como \emph{Cobertura de Vértices}.
+            \item Permite explorar algoritmos gulosos, programação dinâmica e heurísticas.
+        \end{itemize}
+        \item \textbf{Objetivo Geral:}
+        \begin{itemize}
+            \item Encontrar o menor conjunto de locais para instalação de câmeras que cubra todas as áreas de interesse.
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
+%=================================================
 \section{Descrição do Problema}
-
-% Descrição do Problema
+%=================================================
 \begin{frame}{Descrição do Problema}
     \begin{itemize}
-        \item Formalização do Problema
-        \item Modelagem em Grafos
-        \item Restrições e Função Objetivo
+        \item \textbf{Formalização:}
+        \begin{itemize}
+            \item Grafo \(G=(V, E)\): vértices representam locais para câmeras; arestas representam conexões que devem ser monitoradas.
+        \end{itemize}
+        \item \textbf{Restrições e Função Objetivo:}
+        \begin{itemize}
+            \item Minimizar número de câmeras (subconjunto de vértices).
+            \item Garantir que cada aresta possua ao menos um extremo coberto.
+        \end{itemize}
+        \item \textbf{Aplicação em Ondina:}
+        \begin{itemize}
+            \item Extração de dados via OpenStreetMap.
+            \item Simplificação das vias em um grafo.
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
+%=================================================
 \section{Solução Algorítmica}
-
-% Solução Algorítmica
+%=================================================
 \begin{frame}{Solução Algorítmica}
     \begin{itemize}
-        \item Abordagem Heurística: Algoritmo Guloso para Cobertura de Vértices
-        \item Visão Geral do Pseudo-Código
-        \item Complexidade e Aplicação em Teoria dos Grafos
+        \item \textbf{Cobertura de Vértices:}
+        \begin{itemize}
+            \item Problema clássico de otimização em grafos.
+            \item NP-completo; soluções exatas podem ser inviáveis para grandes instâncias.
+        \end{itemize}
+        \item \textbf{Abordagem Gulosa (Greedy):}
+        \begin{itemize}
+            \item Selecionar iterativamente o vértice que cobre o maior número de arestas não cobertas.
+            \item Boa eficiência computacional, mas não garante solução ótima em todos os casos.
+        \end{itemize}
+        \item \textbf{Pseudo-Código (Cobertura Completa):}
+        \begin{algorithm}[H]
+        \caption{Cobertura de Vértices Gulosa}
+        \begin{algorithmic}[1]
+        \State $C \gets \emptyset$
+        \State $E' \gets E$ \Comment{Conjunto de arestas não cobertas}
+        \While{$E' \neq \emptyset$}
+            \State Selecione $v \in V$ que incide em mais arestas de $E'$
+            \State $C \gets C \cup \{v\}$
+            \State Remova as arestas incidentes a $v$ de $E'$
+        \EndWhile
+        \State \textbf{return} $C$
+        \end{algorithmic}
+        \end{algorithm}
     \end{itemize}
 \end{frame}
 
+%=================================================
 \section{Detalhes de Implementação}
-
-% Detalhes de Implementação
+%=================================================
 \begin{frame}{Detalhes de Implementação}
     \begin{itemize}
-        \item Estrutura do Código e Design Orientado a Objetos
-        \item Estruturas de Dados: Listas de Adjacência
-        \item Técnicas de Otimização
+        \item \textbf{Ferramentas e Linguagens:}
+        \begin{itemize}
+            \item Python + NetworkX.
+            \item Scripts para extração de dados (OpenStreetMap) e conversão em \texttt{.json}.
+        \end{itemize}
+        \item \textbf{Estrutura do Projeto (GitHub):}
+        \begin{itemize}
+            \item \texttt{scripts/}: Implementações das heurísticas, criação do grafo, visualizações.
+            \item \texttt{instancias/}: Armazena dados do bairro de Ondina em formato JSON.
+            \item \texttt{resultados/}: Saídas dos algoritmos e visualizações.
+        \end{itemize}
+        \item \textbf{Otimizações:}
+        \begin{itemize}
+            \item Uso de \texttt{set} para controle de vértices cobertos.
+            \item Cálculo incremental das arestas não cobertas.
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
+%=================================================
 \section{Experimentos}
-
-% Experimentos
+%=================================================
 \begin{frame}{Experimentos}
     \begin{itemize}
-        \item Metodologia e Instâncias
-        \item Parâmetros e Critérios de Teste
+        \item \textbf{Metodologia:}
+        \begin{itemize}
+            \item Geração do grafo de Ondina via dados reais (OSM).
+            \item Aplicação do Algoritmo Guloso e variações (Cobertura Máxima, p-limitada).
+        \end{itemize}
+        \item \textbf{Critérios de Avaliação:}
+        \begin{itemize}
+            \item Taxa de cobertura (arestas ou vértices).
+            \item Número de câmeras utilizadas.
+            \item Tempo de execução.
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
+%=================================================
 \section{Resultados}
-
-% Resultados
+%=================================================
 \begin{frame}{Resultados}
     \begin{itemize}
-        \item Gráficos e Tabelas dos Resultados
-        \item Avaliação da Abordagem Heurística
+        \item \textbf{Exemplo de Execução em Ondina:}
+        \begin{itemize}
+            \item Cobertura Completa: 61 câmeras para cobrir 182 vértices.
+            \item Cobertura Máxima (p=40): 84\% de cobertura do grafo.
+        \end{itemize}
+        \item \textbf{Visualização:}
+        \begin{itemize}
+            \item Gráficos mostram os locais de instalação (pontos vermelhos) e vértices cobertos.
+        \end{itemize}
+        \item \textbf{Análise:}
+        \begin{itemize}
+            \item Algoritmos gulosos podem fornecer soluções de boa qualidade em tempo polinomial.
+            \item Para restrições orçamentárias, a cobertura máxima parcial pode ser suficiente.
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
+%=================================================
 \section{Conclusão}
-
-% Conclusão
+%=================================================
 \begin{frame}{Conclusão}
     \begin{itemize}
-        \item Aplicabilidade da Teoria dos Grafos
-        \item Eficiência e Praticidade da Solução
+        \item \textbf{Aplicabilidade:}
+        \begin{itemize}
+            \item Teoria dos Grafos oferece base sólida para problemas de vigilância urbana.
+            \item Solução viável para cenários reais de segurança pública.
+        \end{itemize}
+        \item \textbf{Contribuições:}
+        \begin{itemize}
+            \item Integração de conceitos de Cobertura de Vértices com dados abertos do OSM.
+            \item Comparação entre abordagens gulosas e outras heurísticas (por exemplo, genéticas).
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
+%=================================================
 \section{Referências}
-
-% Referências
+%=================================================
 \begin{frame}{Referências}
     \begin{itemize}
-        \item Lopes Filho, J. G. (2019). Problema do Caixeiro Viajante com Coleta Opcional de Bônus, Tempo de Coleta e Passageiros. Tese de Doutorado, Universidade Federal do Rio Grande do Norte, Natal-RN.
-        \item Carvalho, M. R. (2022). Métodos Heurísticos para o TSP-OBP. Journal of Combinatorial Optimization.
-        \item Carnielli, W. and Epstein, R. (2017). Computabilidade e Funções Computáveis. UNESP.
-        \item Goldbarg, M. and Goldbarg, E. (2012). Grafos: Conceitos, algoritmos e aplicações. Elsevier.
+        \item Lopes Filho, J. G. (2019). \emph{Problema do Caixeiro Viajante com Coleta Opcional de Bônus, Tempo de Coleta e Passageiros}. Tese de Doutorado, UFRN.
+        \item Carvalho, M. R. (2022). Métodos Heurísticos para o TSP-OBP. \emph{Journal of Combinatorial Optimization}.
+        \item Carnielli, W. e Epstein, R. (2017). \emph{Computabilidade e Funções Computáveis}. UNESP.
+        \item Goldbarg, M. e Goldbarg, E. (2012). \emph{Grafos: Conceitos, algoritmos e aplicações}. Elsevier.
+        \item Repositório do Projeto: \url{https://github.com/antoniel/mata53-projeto-final}
     \end{itemize}
 \end{frame}
 
