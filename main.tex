@@ -736,6 +736,113 @@ O projeto foi desenvolvido com foco na reprodutibilidade e facilidade de uso. Pa
 
 Os capítulos seguintes detalham cada aspecto do trabalho, desde a fundamentação teórica até a análise dos resultados obtidos, apresentando uma visão completa do desenvolvimento e das conclusões alcançadas.
 
+\section{Redução e Complexidade do Problema}
+
+O problema de posicionamento ótimo de câmeras de segurança pode ser formalmente reduzido ao problema de Cobertura de Vértices (Vertex Cover), que por sua vez é um caso especial do problema de Cobertura de Conjuntos (Set Cover). Esta seção apresenta uma análise formal dessas reduções e suas implicações para a complexidade computacional do problema.
+
+\subsection{Redução Formal ao Vertex Cover}
+Seja $P_{cam}$ o problema original de posicionamento de câmeras. Podemos reduzi-lo ao problema de Vertex Cover da seguinte forma:
+
+\begin{itemize}
+    \item \textbf{Definição Formal:}
+    \begin{itemize}
+        \item Seja $G = (V, E)$ o grafo que representa a malha viária
+        \item $V$ é o conjunto de interseções e pontos de monitoramento
+        \item $E$ é o conjunto de trechos de rua que precisam ser monitorados
+        \item Uma câmera em $v \in V$ monitora todas as arestas incidentes a $v$
+    \end{itemize}
+    
+    \item \textbf{Função de Redução $f$:}
+    \begin{itemize}
+        \item $f: P_{cam} \rightarrow$ Vertex Cover
+        \item Para cada instância $I_{cam}$ do problema original:
+        \item $f(I_{cam}) = (G, k)$ onde:
+            \begin{itemize}
+                \item $G$ é o grafo construído como acima
+                \item $k$ é o número máximo de câmeras permitido
+            \end{itemize}
+    \end{itemize}
+    
+    \item \textbf{Prova de Equivalência:}
+    \begin{itemize}
+        \item Uma solução $S_{cam}$ para $I_{cam}$ existe $\iff$ existe uma cobertura de vértices $C$ para $G$ com $|C| \leq k$
+        \item Se $S_{cam}$ é uma solução válida, então os vértices com câmeras formam uma cobertura de vértices
+        \item Se $C$ é uma cobertura de vértices, então posicionar câmeras nos vértices de $C$ é uma solução válida
+    \end{itemize}
+\end{itemize}
+
+\subsection{Redução ao Set Cover}
+O problema de Vertex Cover pode ser visto como um caso especial de Set Cover. A redução formal é:
+
+\begin{itemize}
+    \item \textbf{Construção:}
+    \begin{itemize}
+        \item Universo $U = E$ (conjunto de todas as arestas)
+        \item Para cada vértice $v \in V$, criamos um conjunto $S_v \subseteq U$
+        \item $S_v = \{e \in E : v \text{ é incidente a } e\}$
+        \item A família de conjuntos é $\mathcal{F} = \{S_v : v \in V\}$
+    \end{itemize}
+    
+    \item \textbf{Função de Redução $g$:}
+    \begin{itemize}
+        \item $g$: Vertex Cover $\rightarrow$ Set Cover
+        \item Para cada instância $(G, k)$ de Vertex Cover:
+        \item $g(G, k) = (U, \mathcal{F}, k)$ onde:
+            \begin{itemize}
+                \item $U$ é o conjunto de arestas de $G$
+                \item $\mathcal{F}$ é a família de conjuntos construída como acima
+                \item $k$ permanece o mesmo
+            \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\subsection{Implicações para a Complexidade}
+Estas reduções têm importantes implicações:
+
+\begin{itemize}
+    \item \textbf{Preservação da NP-completude:}
+    \begin{itemize}
+        \item As reduções são polinomiais: $f$ e $g$ são computáveis em tempo $O(|V| + |E|)$
+        \item Preservam respostas: $I_{cam}$ tem solução $\iff$ $f(I_{cam})$ tem solução
+        \item Como Set Cover é NP-completo, nosso problema também é
+    \end{itemize}
+    
+    \item \textbf{Limites de Aproximação:}
+    \begin{itemize}
+        \item Para Set Cover: fator de aproximação $H_n \approx \ln n$
+        \item Para Vertex Cover: fator de aproximação 2
+        \item Onde $n = |U|$ é o tamanho do universo
+    \end{itemize}
+    
+    \item \textbf{Garantias Algorítmicas:}
+    \begin{itemize}
+        \item Seja $OPT$ o tamanho da solução ótima
+        \item Algoritmo guloso garante solução $\leq OPT \cdot \ln n$
+        \item Para nosso grafo específico: $n = |E| = O(|V|^2)$
+    \end{itemize}
+\end{itemize}
+
+\subsection{Justificativa das Escolhas Algorítmicas}
+Com base nesta análise formal, nossas escolhas algorítmicas são justificadas:
+
+\begin{itemize}
+    \item \textbf{Algoritmo Guloso:}
+    \begin{itemize}
+        \item Complexidade temporal: $O(|V|^2)$
+        \item Garante aproximação logarítmica
+        \item Implementação simples e eficiente
+    \end{itemize}
+    
+    \item \textbf{Algoritmo Genético:}
+    \begin{itemize}
+        \item Explora o espaço de soluções: $2^{|V|}$ possibilidades
+        \item Pode encontrar soluções melhores que a garantia do guloso
+        \item Complexidade: $O(G \cdot P \cdot |V|)$ para $G$ gerações e população $P$
+    \end{itemize}
+\end{itemize}
+
+Esta fundamentação matemática fornece garantias teóricas sobre a qualidade das soluções obtidas e justifica a escolha de algoritmos de aproximação, dado que encontrar a solução ótima é computacionalmente intratável para instâncias grandes.
+
 %-------------Bibliografia------------------
 \newpage
 \renewcommand{\refname}{Referências Bibliográficas}
