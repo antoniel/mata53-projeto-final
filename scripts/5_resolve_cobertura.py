@@ -172,7 +172,11 @@ def main():
         return
         
     grafo = load_graph_from_json(str(json_path))
-    logger.info(f"Grafo carregado com {len(grafo.nodes())} vértices e {len(grafo.edges())} arestas")
+    total_vertices = len(grafo.nodes())
+    total_arestas = len(grafo.edges())
+    logger.info(f"\nGrafo de Ondina carregado:")
+    logger.info(f"- Total de vértices: {total_vertices}")
+    logger.info(f"- Total de arestas: {total_arestas}")
         
     solver = CoberturaVertices(grafo)
     
@@ -185,8 +189,30 @@ def main():
     cobertura_maxima, vertices_cobertos = solver.resolve_cobertura_maxima(p)
     solver.salvar_resultado(cobertura_maxima, "resultados/cobertura_maxima.json")
     
-    logger.info(f"Cobertura completa: {len(cobertura_completa)} câmeras")
-    logger.info(f"Cobertura máxima com {p} câmeras: {len(vertices_cobertos)} vértices cobertos")
+    # Log dos resultados em formato similar ao README
+    logger.info(f"\nResultados da execução:")
+    logger.info("Cobertura Completa:")
+    logger.info(f"- Necessita de {len(cobertura_completa)} câmeras para cobrir todos os {total_vertices} vértices")
+    logger.info(f"- Média de {total_vertices/len(cobertura_completa):.1f} vértices cobertos por câmera")
+    
+    vertices_cobertos_max = len(vertices_cobertos)
+    porcentagem_cobertura = (vertices_cobertos_max / total_vertices) * 100
+    logger.info("\nCobertura Máxima:")
+    logger.info(f"- Com {p} câmeras, consegue cobrir {vertices_cobertos_max} vértices ({porcentagem_cobertura:.1f}% do total)")
+    logger.info(f"- Média de {vertices_cobertos_max/p:.1f} vértices cobertos por câmera")
+    
+    # Salva um resumo em formato markdown
+    with open("resultados/README.md", "w") as f:
+        f.write("## Resultados da Execução\n\n")
+        f.write("Na execução com o grafo de Ondina:\n")
+        f.write(f"- Total de vértices no grafo: {total_vertices}\n")
+        f.write(f"- Total de arestas no grafo: {total_arestas}\n\n")
+        f.write("### Cobertura Completa\n")
+        f.write(f"- Necessita de {len(cobertura_completa)} câmeras para cobrir todos os {total_vertices} vértices\n")
+        f.write(f"- Média de {total_vertices/len(cobertura_completa):.1f} vértices cobertos por câmera\n\n")
+        f.write("### Cobertura Máxima\n")
+        f.write(f"- Com {p} câmeras, consegue cobrir {vertices_cobertos_max} vértices ({porcentagem_cobertura:.1f}% do total)\n")
+        f.write(f"- Média de {vertices_cobertos_max/p:.1f} vértices cobertos por câmera\n")
 
 if __name__ == "__main__":
     main() 
