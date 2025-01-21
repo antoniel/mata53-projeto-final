@@ -849,110 +849,37 @@ Os capítulos seguintes detalham cada aspecto do trabalho, desde a fundamentaç�
 
 \section{Redução e Complexidade do Problema}
 
-O problema de posicionamento ótimo de câmeras de segurança pode ser formalmente reduzido ao problema de Cobertura de Vértices (Vertex Cover), que por sua vez é um caso especial do problema de Cobertura de Conjuntos (Set Cover). Esta seção apresenta uma análise formal dessas reduções e suas implicações para a complexidade computacional do problema.
+\section*{Redução de Vertex Cover para Set Cover}
 
-\subsection{Redução Formal ao Vertex Cover}
-Seja $P_{cam}$ o problema original de posicionamento de câmeras. Podemos reduzi-lo ao problema de Vertex Cover da seguinte forma:
+O problema \textbf{Vertex Cover} (Cobertura de Vértices) é um problema clássico em teoria dos grafos, onde dado um grafo \(G = (V, E)\), busca-se um conjunto de vértices \(S \subseteq V\) tal que toda aresta \(e \in E\) tenha pelo menos uma extremidade em \(S\) 
+\cite{kleinberg2006algorithm}. Já o problema \textbf{Set Cover} (Cobertura de Conjuntos) é um problema mais geral, onde dado um conjunto universo \(U\) e uma coleção de subconjuntos \(S_1, S_2, \dots, S_m\) de \(U\), busca-se uma subcoleção de conjuntos cuja união cubra todo o conjunto \(U\) 
 
+\cite{kleinberg2006algorithm}.
+
+A redução de Vertex Cover para Set Cover demonstra que o problema Vertex Cover é um caso especial do problema Set Cover. A ideia chave desta redução é transformar uma instância do problema Vertex Cover em uma instância do problema Set Cover, de tal forma que a solução de uma corresponde à solução da outra 
+\cite{kleinberg2006algorithm}.
+
+\subsection*{Construção da Instância de Set Cover}
+Dada uma instância do problema Vertex Cover, definida por um grafo \(G = (V, E)\) e um número \(k\), construímos uma instância do problema Set Cover da seguinte forma:
 \begin{itemize}
-    \item \textbf{Definição Formal:}
-    \begin{itemize}
-        \item Seja $G = (V, E)$ o grafo que representa a malha viária
-        \item $V$ é o conjunto de interseções e pontos de monitoramento
-        \item $E$ é o conjunto de trechos de rua que precisam ser monitorados
-        \item Uma câmera em $v \in V$ monitora todas as arestas incidentes a $v$
-    \end{itemize}
-    
-    \item \textbf{Função de Redução $f$:}
-    \begin{itemize}
-        \item $f: P_{cam} \rightarrow$ Vertex Cover
-        \item Para cada instância $I_{cam}$ do problema original:
-        \item $f(I_{cam}) = (G, k)$ onde:
-            \begin{itemize}
-                \item $G$ é o grafo construído como acima
-                \item $k$ é o número máximo de câmeras permitido
-            \end{itemize}
-    \end{itemize}
-    
-    \item \textbf{Prova de Equivalência:}
-    \begin{itemize}
-        \item Uma solução $S_{cam}$ para $I_{cam}$ existe $\iff$ existe uma cobertura de vértices $C$ para $G$ com $|C| \leq k$
-        \item Se $S_{cam}$ é uma solução válida, então os vértices com câmeras formam uma cobertura de vértices
-        \item Se $C$ é uma cobertura de vértices, então posicionar câmeras nos vértices de $C$ é uma solução válida
-    \end{itemize}
+    \item O conjunto universo \(U\) da instância de Set Cover é o conjunto de arestas \(E\) do grafo \(G\).
+    \item Para cada vértice \(i \in V\) do grafo \(G\), criamos um conjunto \(S_i\) que contém todas as arestas incidentes a \(i\).
 \end{itemize}
 
-\subsection{Redução ao Set Cover}
-O problema de Vertex Cover pode ser visto como um caso especial de Set Cover. A redução formal é:
-
+\subsection*{Equivalência entre as Instâncias}
+Afirmamos que existe uma cobertura de vértices de tamanho no máximo \(k\) em \(G\) se e somente se existe uma cobertura de conjuntos de tamanho no máximo \(k\) em \(U\) 
+\cite{kleinberg2006algorithm}.
 \begin{itemize}
-    \item \textbf{Construção:}
-    \begin{itemize}
-        \item Universo $U = E$ (conjunto de todas as arestas)
-        \item Para cada vértice $v \in V$, criamos um conjunto $S_v \subseteq U$
-        \item $S_v = \{e \in E : v \text{ é incidente a } e\}$
-        \item A família de conjuntos é $\mathcal{F} = \{S_v : v \in V\}$
-    \end{itemize}
-    
-    \item \textbf{Função de Redução $g$:}
-    \begin{itemize}
-        \item $g$: Vertex Cover $\rightarrow$ Set Cover
-        \item Para cada instância $(G, k)$ de Vertex Cover:
-        \item $g(G, k) = (U, \mathcal{F}, k)$ onde:
-            \begin{itemize}
-                \item $U$ é o conjunto de arestas de $G$
-                \item $\mathcal{F}$ é a família de conjuntos construída como acima
-                \item $k$ permanece o mesmo
-            \end{itemize}
-    \end{itemize}
+    \item \textbf{Se} \( \{i_1, i_2, \dots, i_l\} \) com \(l \leq k\) é uma cobertura de vértices em \(G\), \textbf{então} os conjuntos \(S_{i_1}, S_{i_2}, \dots, S_{i_l}\) formam uma cobertura de conjuntos em \(U\) (pois toda aresta é coberta por pelo menos um dos vértices \(i_1, i_2, \dots, i_l\), e portanto, está em pelo menos um dos conjuntos correspondentes) 
+    \cite{kleinberg2006algorithm}.
+    \item \textbf{Se} \( \{S_{i_1}, S_{i_2}, \dots, S_{i_l}\} \) com \(l \leq k\) é uma cobertura de conjuntos em \(U\), \textbf{então} os vértices \( \{i_1, i_2, \dots, i_l\} \) formam uma cobertura de vértices em \(G\) (pois toda aresta em \(E\) está em pelo menos um dos conjuntos \(S_{i_1}, S_{i_2}, \dots, S_{i_l}\), e portanto, é coberta por pelo menos um dos vértices correspondentes) 
+    \cite{kleinberg2006algorithm}.
 \end{itemize}
 
-\subsection{Implicações para a Complexidade}
-Estas reduções têm importantes implicações:
-
-\begin{itemize}
-    \item \textbf{Preservação da NP-completude:}
-    \begin{itemize}
-        \item As reduções são polinomiais: $f$ e $g$ são computáveis em tempo $O(|V| + |E|)$
-        \item Preservam respostas: $I_{cam}$ tem solução $\iff$ $f(I_{cam})$ tem solução
-        \item Como Set Cover é NP-completo, nosso problema também é
-    \end{itemize}
-    
-    \item \textbf{Limites de Aproximação:}
-    \begin{itemize}
-        \item Para Set Cover: fator de aproximação $H_n \approx \ln n$
-        \item Para Vertex Cover: fator de aproximação 2
-        \item Onde $n = |U|$ é o tamanho do universo
-    \end{itemize}
-    
-    \item \textbf{Garantias Algorítmicas:}
-    \begin{itemize}
-        \item Seja $OPT$ o tamanho da solução ótima
-        \item Algoritmo guloso garante solução $\leq OPT \cdot \ln n$
-        \item Para nosso grafo específico: $n = |E| = O(|V|^2)$
-    \end{itemize}
-\end{itemize}
-
-\subsection{Justificativa das Escolhas Algorítmicas}
-Com base nesta análise formal, nossas escolhas algorítmicas são justificadas:
-
-\begin{itemize}
-    \item \textbf{Algoritmo Guloso:}
-    \begin{itemize}
-        \item Complexidade temporal: $O(|V|^2)$
-        \item Garante aproximação logarítmica
-        \item Implementação simples e eficiente
-    \end{itemize}
-    
-    \item \textbf{Algoritmo Genético:}
-    \begin{itemize}
-        \item Explora o espaço de soluções: $2^{|V|}$ possibilidades
-        \item Pode encontrar soluções melhores que a garantia do guloso
-        \item Complexidade: $O(G \cdot P \cdot |V|)$ para $G$ gerações e população $P$
-    \end{itemize}
-\end{itemize}
-
-Esta fundamentação matemática fornece garantias teóricas sobre a qualidade das soluções obtidas e justifica a escolha de algoritmos de aproximação, dado que encontrar a solução ótima é computacionalmente intratável para instâncias grandes.
+\subsection*{Conclusão}
+Esta redução estabelece que o problema Vertex Cover é um caso especial do problema Set Cover, e que qualquer algoritmo que resolva o problema Set Cover pode ser usado para resolver o problema Vertex Cover. No entanto, é importante notar que essa redução não necessariamente preserva a qualidade de aproximação das soluções.
+Por exemplo, apesar de termos um algoritmo de aproximação para Set Cover, isso não implica diretamente em um algoritmo com a mesma garantia de aproximação para o problema Vertex Cover, especialmente quando se busca soluções ótimas. Uma análise mais cuidadosa é necessária para entender como as garantias de aproximação são preservadas ou perdidas durante reduções.
+\cite{kleinberg2006algorithm}
 
 %-------------Bibliografia------------------
 \newpage
