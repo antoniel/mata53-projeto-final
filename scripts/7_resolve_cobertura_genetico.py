@@ -42,7 +42,7 @@ def load_graph_from_json(json_path: str) -> nx.Graph:
     return G
 
 class GeneticVertexCover:
-    def __init__(self, graph, population_size=100, generations=200, crossover_rate=0.8, mutation_rate=0.1):
+    def __init__(self, graph, population_size=1000, generations=200, crossover_rate=0.8, mutation_rate=0.1):
         self.graph = graph
         self.population_size = population_size
         self.generations = generations
@@ -120,6 +120,8 @@ class GeneticVertexCover:
     
     def run(self):
         population = self.initialize_population()
+        best_ever_fitness = float('-inf')
+        best_ever_solution = None
         
         for generation in range(self.generations):
             # Avalia a população
@@ -127,11 +129,15 @@ class GeneticVertexCover:
             fitness_scores.sort(reverse=True)
             
             # Atualiza a melhor solução
-            if fitness_scores[0][0] > self.best_fitness:
-                self.best_fitness = fitness_scores[0][0]
-                self.best_solution = fitness_scores[0][1]
-                print(f"Geração {generation}: Melhor fitness = {self.best_fitness}")
-                
+            current_best_fitness = fitness_scores[0][0]
+            if current_best_fitness > best_ever_fitness:
+                best_ever_fitness = current_best_fitness
+                best_ever_solution = fitness_scores[0][1].copy()  # importante fazer uma cópia
+                print(f"Geração {generation}: Melhor fitness = {best_ever_fitness}")
+            
+            self.best_fitness = best_ever_fitness
+            self.best_solution = best_ever_solution
+            
             # Seleção
             new_population = []
             elite_size = 2
