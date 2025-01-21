@@ -188,34 +188,6 @@ O projeto está organizado em diretórios específicos, cada um com uma responsa
     \end{itemize}
 \end{itemize}
 
-\subsection{Resultados Obtidos}
-Na execução com o grafo do bairro de Ondina, obtivemos resultados significativos que demonstram a eficácia dos algoritmos implementados:
-
-\begin{itemize}
-    \item \textbf{Cobertura Completa:}
-    \begin{itemize}
-        \item Necessita de 80 câmeras para cobrir todos os 182 vértices do grafo
-        \item Média de 2,3 vértices cobertos por câmera
-        \item Garante monitoramento completo da região
-    \end{itemize}
-    
-    \item \textbf{Cobertura Máxima:}
-    \begin{itemize}
-        \item Com apenas 10 câmeras, consegue cobrir 42 vértices
-        \item Representa 23\% do total de vértices do grafo
-        \item Média de 4,2 vértices cobertos por câmera
-        \item Solução otimizada para cenários com restrição de recursos
-    \end{itemize}
-\end{itemize}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{resultados/visualizacao_cobertura}
-    \caption{Comparação das soluções de cobertura. À esquerda: cobertura completa com 61 câmeras cobrindo 182 vértices. À direita: cobertura máxima com 10 câmeras cobrindo 48 vértices.}
-    \label{fig:visualizacao_cobertura}
-\end{figure}
-
-A Figura~\ref{fig:visualizacao_cobertura} apresenta uma comparação visual das duas soluções implementadas. Na solução de cobertura completa (esquerda), os pontos vermelhos indicam as 80 câmeras necessárias para monitorar toda a região. Na solução de cobertura máxima (direita), os pontos vermelhos mostram as 10 câmeras selecionadas, e os pontos verdes indicam os vértices cobertos por essas câmeras, demonstrando a eficiência da solução mesmo com recursos limitados.
 
 \subsection{Documentação e Reprodutibilidade}
 O projeto foi desenvolvido com foco na reprodutibilidade e facilidade de uso. Para isso, foram implementados:
@@ -494,6 +466,36 @@ Esta implementação está disponível no arquivo \texttt{5\_resolve\_cobertura.
 \section{Metodologia}
 \subsection{Instâncias}
 Os dados utilizados nos experimentos foram extraídos do OpenStreetMap, representando o bairro de Ondina. Os pontos potenciais para câmeras foram identificados com base na estrutura viária.
+
+\section{Resultados Obtidos}
+Na execução com o grafo do bairro de Ondina, obtivemos resultados significativos que demonstram a eficácia dos algoritmos implementados:
+
+\begin{itemize}
+    \item \textbf{Cobertura Completa:}
+    \begin{itemize}
+        \item Necessita de 80 câmeras para cobrir todos os 182 vértices do grafo
+        \item Média de 2,3 vértices cobertos por câmera
+        \item Garante monitoramento completo da região
+    \end{itemize}
+    
+    \item \textbf{Cobertura Máxima:}
+    \begin{itemize}
+        \item Com apenas 10 câmeras, consegue cobrir 42 vértices
+        \item Representa 23\% do total de vértices do grafo
+        \item Média de 4,2 vértices cobertos por câmera
+        \item Solução otimizada para cenários com restrição de recursos
+    \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{resultados/visualizacao_cobertura}
+    \caption{Comparação das soluções de cobertura. À esquerda: cobertura completa com 61 câmeras cobrindo 182 vértices. À direita: cobertura máxima com 10 câmeras cobrindo 48 vértices.}
+    \label{fig:visualizacao_cobertura}
+\end{figure}
+
+A Figura~\ref{fig:visualizacao_cobertura} apresenta uma comparação visual das duas soluções implementadas. Na solução de cobertura completa (esquerda), os pontos vermelhos indicam as 80 câmeras necessárias para monitorar toda a região. Na solução de cobertura máxima (direita), os pontos vermelhos mostram as 10 câmeras selecionadas, e os pontos verdes indicam os vértices cobertos por essas câmeras, demonstrando a eficiência da solução mesmo com recursos limitados.
+
 
 \chapter{Considerações Finais}
 
