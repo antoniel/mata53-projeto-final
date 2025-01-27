@@ -1,0 +1,79 @@
+ROTEIRO DE APRESENTAÇÃO - PROJETO FINAL MATA53
+
+[LUIS - Introdução e Contextualização] (~7 minutos)
+
+"Boa tarde galera! Hoje vamos apresentar nosso projeto final da disciplina de Teoria dos Grafos, que aborda um problema super interessante e prático: a otimização do posicionamento de câmeras de segurança no bairro de Ondina.
+
+Nosso trabalho está estruturado em três partes principais:
+- Primeiro, vou apresentar a contextualização e a modelagem do problema
+- Em seguida, o João vai detalhar os algoritmos e a implementação
+- Por fim, o Tony vai mostrar os resultados e conclusões
+
+Começando pela motivação do projeto: escolhemos trabalhar com um problema real de segurança urbana, especificamente em Ondina. A ideia é determinar os melhores pontos para instalar câmeras de segurança, minimizando custos e maximizando a cobertura.
+
+[Mostrando o grafo bruto]
+Aqui temos o grafo inicial que extraímos do OpenStreetMap. Cada vértice representa uma possível localização para câmera, e as arestas representam as ruas que precisam ser monitoradas.
+
+[Mostrando o grafo simplificado]
+Após um processamento inicial, chegamos a este grafo simplificado, que mantém apenas os pontos estratégicos para nosso problema. É importante notar que reduzimos a complexidade mantendo a essência do problema.
+
+Do ponto de vista teórico, modelamos isso como um problema de Cobertura de Vértices, que é NP-completo. Isso significa que encontrar a solução ótima é computacionalmente inviável para grafos grandes, justificando nossa abordagem com algoritmos aproximativos.
+
+Passo agora a palavra para o João, que vai explicar os algoritmos que desenvolvemos..."
+
+[JOÃO - Algoritmos e Implementação] (~7 minutos)
+
+"Obrigado, Luis. Como vimos, precisamos de algoritmos eficientes para resolver este problema. Implementamos três abordagens diferentes:
+
+1. Algoritmo Guloso para Cobertura Completa:
+   - Seleciona iterativamente o vértice que cobre mais arestas não cobertas
+   - Garante uma cobertura total, mas usa mais câmeras
+   - Complexidade O(|V| × |E|)
+
+2. Algoritmo Guloso para Cobertura Máxima:
+   - Similar ao anterior, mas com limite máximo de câmeras
+   - Otimiza a cobertura dado um orçamento fixo
+   - Mantém a mesma complexidade, mas com garantias diferentes
+
+3. Algoritmo Genético:
+   - População inicial de 300 indivíduos
+   - Cada indivíduo representa uma possível solução
+   - Operadores de crossover e mutação adaptados para o problema
+   - 1000 gerações com taxa de mutação de 0.3
+
+Na implementação, utilizamos Python com NetworkX, que nos permitiu:
+- Manipular o grafo eficientemente
+- Calcular métricas de cobertura
+- Visualizar os resultados
+
+Agora o Tony vai mostrar os resultados que obtivemos..."
+
+[TONY - Resultados e Conclusões] (~7 minutos)
+
+"Obrigado, João. Vou apresentar os resultados que obtivemos com cada abordagem:
+
+[Mostrando visualização de cobertura]
+Com o algoritmo de Cobertura Completa:
+- Necessitamos de 61 câmeras
+- Cobrimos 182 vértices (100% do grafo)
+- Média de 3 vértices por câmera
+
+Com o algoritmo de Cobertura Máxima, limitando a 40 câmeras:
+- Alcançamos 84% de cobertura (153 vértices)
+- Média de 3.83 vértices por câmera
+- Boa relação custo-benefício
+
+[Mostrando comparação com genético]
+O algoritmo genético, também com 40 câmeras:
+- Conseguiu cobrir 156 vértices (86%)
+- Média de 3.9 vértices por câmera
+- Melhor distribuição espacial das câmeras
+
+Conclusões principais:
+1. Os algoritmos gulosos são eficientes e fornecem boas soluções
+2. O genético conseguiu melhorar levemente a cobertura
+3. Com 40 câmeras, conseguimos cobrir mais de 80% dos pontos críticos
+
+Todo o código está disponível no GitHub, bem documentado e com instruções de uso.
+
+Agradeço a atenção de todos e estamos abertos para perguntas!"
